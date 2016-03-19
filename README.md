@@ -1,0 +1,2 @@
+# liblog
+build with thinks
