@@ -1,2 +1,2 @@
 # liblog
-build with thinks
+build with thinkjs
