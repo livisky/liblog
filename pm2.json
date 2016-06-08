@@ -1,0 +1,14 @@
+{
+  "apps": [{
+    "name": "liblog",
+    "script": "www/production.js",
+    "cwd": "E:/jsout/liblog",
+    "max_memory_restart": "1G",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+      
+    }
+  }]
+}
