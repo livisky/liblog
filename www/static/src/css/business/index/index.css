@@ -1,0 +1,260 @@
+.banner {
+	width: 670px; height: 280px; overflow: hidden;
+}
+#slide-runner {
+	width: 670px; height: 280px; overflow: hidden; position: absolute;
+}
+#slide-holder img {
+	position: absolute;
+}
+#slide-controls {
+	left: 0px; width: 670px; height: 34px; bottom: 0px; display: none; position: absolute;
+}
+#slide-controls p.text {
+	margin: 10px 0px 0px 20px; color: rgb(255, 255, 255); line-height: 16px; float: left; display: inline;
+}
+#slide-controls p#slide-nav {
+	margin: 5px 0px 0px; height: 24px; float: right; display: inline;
+}
+#slide-controls p#slide-nav a {
+	margin: 0px 5px 0px 0px; width: 24px; height: 24px; text-align: center; color: rgb(255, 255, 255); line-height: 24px; font-size: 11px; float: left; display: inline;
+}
+#slide-controls p#slide-nav a.on {
+	background-position: 0px -24px;
+}
+#slide-controls p#slide-nav a {
+	background-image: url("images/silde-nav.png");
+}
+.topnews {
+	margin: 20px 0px;
+    padding: 0 10px;
+}
+.topnews .breadcrumb {
+	background: none; list-style: none; padding: 0px; border-radius: 4px; margin-bottom: 0px;
+}
+.topnews a:hover {
+	color: rgb(219, 109, 76); text-decoration: none;
+}
+.topnews .h2 {
+	color: rgb(51, 51, 51); line-height: 36px; font-size: 16px; font-weight: bold; border-bottom-color: rgb(219, 109, 76); border-bottom-width: 4px; border-bottom-style: solid;
+}
+.topnews .h2 span {
+	font-size: 12px; font-weight: normal; float: right;
+}
+.topnews .h2 span a {
+	padding: 0px 5px; display: inline-block;
+}
+.blogs {
+	padding: 0px; overflow: hidden; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: solid; position: relative;
+}
+.blogs figure {
+	width: 22%; overflow: hidden; margin-top: 25px; float: left;
+}
+.blogs figure img {
+	margin: auto; transition:0.5s; width: 100%; -webkit-transition: all 0.5s; -o-transition: all 0.5s; -moz-transition: all 0.5s;
+}
+.blogs ul {
+	width: 76%; color: rgb(117, 111, 113); line-height: 22px; float: left;
+	margin-left: 14px;
+}
+.blogs figure a img {
+	-webkit-transition: all 0.8s ease-in-out;
+	-moz-transition: all 0.8s ease-in-out;
+	-o-transition: all 0.8s ease-in-out;
+	-ms-transition:all 0.8s ease-in-out;
+	transition: all 0.8s ease-in-out;
+}
+.blogs:hover figure a img{
+	-webkit-transform: scale(1.2) rotate(2deg);
+	-moz-transform: scale(1.2) rotate(2deg);
+	-o-transform: scale(1.2) rotate(2deg);
+	-ms-transform: scale(1.2) rotate(2deg);
+	transform: scale(1.2) rotate(2deg);
+}
+.blogs h3 {
+	transition:0.5s; font-size: 16px; font-weight: bold; margin-bottom: 10px;
+}
+.blogs h3 a {
+	color: rgb(71, 70, 69);
+}
+.blogs h3 a:hover {
+	color: rgb(0, 102, 102); text-decoration: underline;
+}
+.author {
+	color: rgb(131, 131, 131); overflow: hidden; clear: both; display: inline-block;margin: 10px 0px;
+}
+.author.second{float:right;}
+.author span {
+	margin: 0px 10px 0px 0px; padding-left: 20px;
+}
+.lm {
+	background: url("images/newsbg01.png") no-repeat left;
+}
+.dtime {
+	background: url("images/newsbg02.png") no-repeat left;
+}
+.viewnum {
+	background: url("images/newsbg04.png") no-repeat left;
+}
+.pingl {
+	background: url("images/newsbg03.png") no-repeat left;
+}
+.author span a {
+	color: rgb(117, 155, 8);
+}
+.author span a:hover {
+	text-decoration: underline;
+}
+.tit01 h3 {
+	height: 40px; color: rgb(56, 72, 90); line-height: 40px; font-size: 18px; border-bottom-color: rgb(230, 230, 230); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.gzwm ul {
+	margin: 30px 0px; width: 100%; overflow: hidden;
+}
+.gzwm li {
+	margin: 0px 18px 0px 5px; width: 52px; float: left;
+}
+.gzwm li a {
+	width: 52px; text-align: center; color: rgb(116, 127, 140); padding-top: 60px; float: left;
+}
+.gzwm .rss {
+	background: url("images/ico_04_1.jpg") no-repeat;
+}
+.gzwm .rss:hover {
+	background: url("images/ico_04.png") no-repeat; color: rgb(0, 0, 0);
+}
+.gzwm .xlwb {
+	background: url("images/ico_05_1.jpg") no-repeat;
+}
+.gzwm .xlwb:hover {
+	background: url("images/ico_05.png") no-repeat; color: rgb(0, 0, 0);
+}
+.gzwm .txwb {
+	background: url("images/ico_06_1.jpg") no-repeat;
+}
+.gzwm .txwb:hover {
+	background: url("images/ico_06.png") no-repeat; color: rgb(0, 0, 0);
+}
+.gzwm .wx {
+	background: url("images/ico_07_1.jpg") no-repeat;
+}
+.gzwm .wx:hover {
+	background: url("images/ico_07.png") no-repeat; color: rgb(0, 0, 0);
+}
+.tuwen {
+	margin: 20px 0px; width: 100%; overflow: hidden; clear: both;
+}
+.tuwen h3 {
+	height: 40px; color: rgb(56, 72, 90); line-height: 40px; font-size: 18px; margin-bottom: 30px; border-bottom-color: rgb(230, 230, 230); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.tuwen li {
+	overflow: hidden; clear: both; margin-bottom: 10px;
+}
+.tuwen li img {
+	width: 70px; margin-right: 15px; float: left;
+}
+.tuwen li b {
+	width: 100%; color: rgb(51, 51, 51); line-height: 30px; overflow: hidden; font-size: 14px; font-weight: normal;
+}
+.tuwen li a b:hover {
+	color: rgb(255, 102, 0); text-decoration: underline;
+}
+.tuwen p {
+	margin-top: 5px;
+}
+.tulanum {
+	background: url("images/lanmbq.png") no-repeat left; padding-left: 17px;
+}
+.tulanum a {
+	color: rgb(153, 153, 153);
+}
+.tulanmu a:hover {
+	color: rgb(0, 102, 102);
+}
+.tutime {
+	background: url("images/datepng.png") no-repeat left; padding-left: 15px;
+}
+.tuwen li:hover {
+	background: rgb(244, 243, 243);
+}
+.tuwen li span {
+	color: rgb(153, 153, 153); margin-right: 10px;
+}
+.ad {
+	margin: 30px 0px; width: 300px; overflow: hidden;
+}
+.ad img {
+	width: 300px;
+}
+.links {
+	width: 100%; overflow: hidden; clear: both;
+}
+.links h3 {
+	height: 40px; color: rgb(56, 72, 90); line-height: 40px; font-size: 18px; margin-bottom: 20px; border-bottom-color: rgb(230, 230, 230); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.links h3 span {
+	font-size: 12px; float: right;
+}
+.links h3 span a {
+	padding: 0px 5px; color: rgb(153, 153, 153);
+}
+.links h3 span a:hover {
+	color: rgb(255, 102, 0); text-decoration: underline;
+}
+.links ul {
+	background: rgb(249, 249, 249); padding: 10px; border: 1px solid rgb(233, 233, 233); border-image: none; overflow: hidden;
+}
+.links ul li {
+	padding: 5px 8px; float: left;
+}
+.links ul li a:hover {
+	color: rgb(0, 0, 0);
+}
+.activity .blogs {
+	padding: 0px 10px;
+}
+.activity .blogs ul {
+	width: 100%; margin-bottom: 0px;
+}
+.article.l_box {
+	padding-bottom: 0px;
+}
+.activity.l_box {
+	padding-top: 0px;
+    width: 100%;
+}
+.huodong-status {
+	right: 1%; top: 15px; position: absolute;
+}
+.topic_head_name .huodong-status {
+	left: 90%; top: 15px; position: absolute;
+}
+.huodong-status a {
+	padding: 5px 8px; width: 60px; text-align: center; color: white; text-decoration: none; display: block;
+}
+.topic_head_name .huodong-status a {
+	padding: 5px 8px; width: 50px; text-align: center; color: white; text-decoration: none; display: block;
+}
+.huodong-status a:hover {
+	color: rgb(255, 255, 255); text-decoration: underline;
+}
+.huodong-status a:focus {
+	color: rgb(255, 255, 255); text-decoration: underline;
+}
+.huodong-status .on {
+	background: rgb(10, 162, 132);
+}
+.readmore {
+	margin: 0px; text-align: right;line-height: 35px;
+}
+.articleul {
+	margin-bottom: 0px;
+}
+.qqregion{border-bottom: 1px solid #ddd;}
+.qqs div{
+	text-align: left;
+	padding: 0px 20px;
+	font-size: 14px;
+	line-height: 30px;
+}
+.qqs div span{padding: 3px; font-weight: bold}

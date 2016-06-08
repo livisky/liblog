@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html >
+    <%include inc/header.html%>
+    <title><%=title%></title>
+<body>
+    <!-- Table -->
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> <a href="/admin/index/welcome">首页</a><span class="c-gray en">&gt;</span> 系统设置 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+    <article class="page-container">
+        <form class="form form-horizontal" id="form-article-add">
+            <input type="hidden" value="" id="aid"/>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>网站名称：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text sitename" value="<%-sysdata.sitename%>" placeholder="" id="" name="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>网址：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text url" value="<%=sysdata.url%>" placeholder="" id="" name="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>关键词：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text keywords" value="<%=sysdata.keywords%>" placeholder="" id="" name="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>描述：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text description" value="<%=sysdata.description%>" placeholder="" id="" name="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>显示作者：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text author" value="<%=sysdata.author%>" placeholder="" id="" name="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>底部版权：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text copyright" value="<%=sysdata.copyright%>" placeholder="" id="" name="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>友情链接：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <textarea class="form-control textarea links" name="link" rows="4" cols="50" placeholder="友情链接" style="width: 100%; height: 98px;resize:none"><%=_web.links%></textarea></div>
+            </div>
+            <div class="row cl">
+                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                    <button class="btn btn-secondary radius" id="savetag" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+                    <button onClick="window.location.href='/admin/system'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+                </div>
+            </div>
+        </form>
+    </article>
+ 
+<script type="text/javascript">
+    $(function(){
+        $("#savetag").click(function(){
+            var newData={
+                sitename:$(".sitename").val(),
+                url:$(".url").val(),
+                keywords:$(".keywords").val(),
+                description:$(".description").val(),
+                author:$(".author").val(),
+                copyright:$(".copyright").val(),
+                links:$(".links").val(),
+                __CSRF__:G_csrf
+            }
+            $.ajax({
+                url:'/admin/system/edit',
+                data:newData,
+                type:'POST',
+                success:function(json){
+                    if(json.errno===0){
+                        alert("保存成功！");
+                        window.location.href="/admin/system"
+                    }
+                }
+            })                
+        })
+
+    })
+ </script> 
+</body>
+</html>

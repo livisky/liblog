@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <title><%=_web.sitename%></title>
+ <meta name="keywords" content="<%=_web.keywords%>">
+ <meta name="description" content="<%=_web.description%>">
+ <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<%include inc/header.html%>
+</head>
+<body>
+
+<%include inc/menu.html%>
+  <article class="mainbd">
+	  <div class="article">
+		<div class="l_box f_l article">
+		   <div class="topnews">
+			   <div class="h2">
+					<span>
+					  <a href="/more.html" target="_blank">更多>></a>
+					</span>
+					文章推荐
+			   </div>
+			   <% topList.forEach(function(item,i){%>
+				 <div class="blogs">
+					  <figure>
+						<a href="/page/<%=item.id%>.html" target="_blank"><img src="<%=_web.url%><%=(item.picurl==='')?'static/common/images/common/default.jpg':item.picurl%>"></a>
+					   </figure>
+					   <ul class="articleul">
+						 <h3><a href="/page/<%=item.id%>.html" target="_blank"><%=item.title%></a></h3>
+						  <p><%=item.abstract%></p>
+						 <div class="author">
+							<span class="lm f_l">
+								<a href="javascript:void(0);"><%=item.author%></a>
+							 </span>
+							 <span class="dtime f_l"><%=liFormatDate(think.datetime(item.cteatetime))%></span>
+						  </div>
+                          <div class="author">
+                             <span class="viewnum f_r">
+								浏览（<%=item.view%>）</span>
+							 <span class="pingl f_r">
+								评论（<span id="sourceId::<%=item.id%>" class="cy_cmt_count" style="margin: 0px;padding: 0px"></span>）
+							 </span>
+                          </div>
+						   <p class="readmore"><a href="/page/<%=item.id%>.html" target="_blank">阅读全部</a></p>
+					   </ul>
+				   </div>
+				 <%})%>
+		   </div>
+			<div class="l_box f_l activity" style="padding-left: 0px;padding-right:0px;">
+				<div class="topnews">
+					<div class="h2">
+					<span>
+					  <a href="/activity.html" target="_blank">更多>></a>
+					</span>
+						近期活动
+					</div>
+					<% actList.forEach(function(item,i){%>
+					<div class="blogs">
+						<ul>
+							<h3><a href="/page/<%=item.id%>.html"><%=item.title%></a></h3>
+							<div class="abstract"><%=item.abstract%></div>
+							<div class="huodong-status">
+								<a class="on" href="/page/<%=item.id%>.html" target="_blank" t="<%=(item.createtime).getTime()%>" s="<%=http.startTime%>">报名中</a>
+							</div>
+						</ul>
+					</div>
+					<%})%>
+				</div>
+			</div>
+		</div>
+
+	  <%include inc/right.html%>
+      <div style="clear: both"></div>
+	 </div>
+  </article>
+  <%include inc/footer.html%>
+  <script id="cy_cmt_num" src="http://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysoRJNxO"></script>
+</body>
+</html>

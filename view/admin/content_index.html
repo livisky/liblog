@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<%include inc/header.html%>
+<link rel="stylesheet" href="<%=_web.url%>static/vendors/webuploader/ezviz/upload.css"/>
+<script src="<%=_web.url%>static/vendors/webuploader/ezviz/jquery.form.js"></script>
+<script src="<%=_web.url%>static/vendors/webuploader/ezviz/uploader.js"></script>
+<style>
+    .modal-backdrop{background-color: #fff;}
+</style>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> <a href="/admin/index/welcome">首页</a><span class="c-gray en">&gt;</span> 文章列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container" style="margin-bottom: 140px;">
+    <% if(!isdraft){ %>
+        <div class="text-c">
+            <input type="text" name="" id="" placeholder=" 文章名称" style="width:250px" class="input-text">
+            <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont"></i> 搜资讯</button>
+        </div>
+    <%}%>
+    <div class="cl pd-5 bg-1 bk-gray mt-20" style="margin-bottom: 15px;">
+        <span class="l">
+            <a class="btn btn-primary radius" data-title="添加文章" href="/admin/content/article">
+                <i class="Hui-iconfont"></i> 普通文章
+            </a>
+            <a class="btn btn-primary radius" data-title="markdown文章" href="/admin/content/addmarkdown">
+                <i class="Hui-iconfont"></i> markdown文章
+            </a>
+            <a href="javascript:;" onclick="delsome()" class="btn btn-danger radius">
+                <i class="Hui-iconfont"></i> 批量删除
+            </a>
+        </span>
+
+        <span class="r">
+            标记筛选&nbsp;
+            <span class="select-box inline">
+                <select name="" class="select" id="markselect">
+                    <option value="totop">文章置顶</option>
+                    <option value="torecom">站长推荐</option>
+                    <option value="topicrecom">图文推荐</option>
+                </select>
+            </span>&nbsp;
+        </span>
+    </div>
+
+    <div class="dataTables_wrapper no-footer">
+        <table class="table table-border table-bordered table-bg table-hover table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+            <thead>
+                <tr class="text-c" role="row">
+                    <th width="25" class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 25px;">
+                        <input type="checkbox" name="" value="">
+                    </th>
+                    <th width="80" class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="descending" aria-label="ID: 升序排列" style="width: 80px;">ID</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="标题: 升序排列" style="width: 247px;">标题</th>
+                    <th width="80" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="分类: 升序排列" style="width: 80px;">文章类型</th>
+                    <th width="80" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="来源: 升序排列" style="width: 80px;">文章分类</th>
+                    <th width="120" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="更新时间: 升序排列" style="width: 120px;">更新时间</th>
+                    <th width="75" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="浏览次数: 升序排列" style="width: 75px;">浏览次数</th>
+                    <th width="60" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="发布状态: 升序排列" style="width: 60px;">发布状态</th><th width="120" class="sorting_disabled" rowspan="1" colspan="1" aria-label="操作" style="width: 120px;">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% articlelist.forEach(function(item,i){%>
+                    <tr class="text-c odd" role="row">
+                        <td><input type="checkbox" value="<%=item.aid%>" name=""></td>
+                        <td class="sorting_1"><%=(pagecount-1)*pagesize+i+1%></td>
+                        <td class="text-l">
+                            <% if(item.ispublished===1){%>
+                                <a style="cursor:pointer" class="text-primary" onclick="window.open('/page/<%=item.aid%>','_blank')" title="查看"><%=item.title%></a>
+                            <% }else{%>
+                            <a style="cursor:pointer" class="text-primary" onclick="window.open('/preview/<%=item.aid%>','_blank')" title="查看"><%=item.title%></a>
+                            <% }%>
+                        </td>
+                        <td><%=item.item%></td>
+                        <td><%=item.tagname%></td>
+                        <td><%=liFormatDate(think.datetime(item.cteatetime))%></td>
+                        <td><%=item.view%></td>
+                        <td class="td-status">
+                            <% if(item.ispublished===1){%>
+                                <span class="label label-success radius">已发布</span>
+                            <% }else{%>
+                                <span class="label label-defaunt radius">未发布</span>
+                            <% }%>
+                        </td>
+                        <td class="f-14 td-manage">
+                            <% if(isdraft){ %>
+                                <a style="text-decoration:none" id="published" pub-id="<%=item.aid%>" title="发布">发布</a>
+                            <% }%>
+                            <a style="text-decoration:none" class="ml-5 edit" href="/admin/content/article/<%=item.aid%>" title="编辑">
+                                <i class="Hui-iconfont"></i>
+                            </a>
+                            <a style="text-decoration:none" class="ml-5 delete" del-id="<%=item.aid%>" title="删除"><i class="Hui-iconfont"></i></a>
+                        </td>
+                    </tr>
+                <% })%>
+            </tbody>
+        </table>
+        <span class="l" style="line-height: 40px;">
+            共有数据：<strong><%=pageData.count%></strong> 条
+        </span>
+        <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+            <a class="paginate_button previous <%=pageData.preclass%>" href="<%=pageData.prelink%>" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" id="DataTables_Table_0_previous">上一页</a>
+                <% for(var i=1;i<=pageData.totalPages;i++){%>
+                    <span>
+                        <a href="?page=<%=i%>&pagesize=<%=pageData.numsPerPage%>" class="paginate_button <%=pageData.currentPage===i?'current':''%>" aria-controls="DataTables_Table_0" data-dt-idx="<%=i%>" tabindex="0"><%=i%></a>
+                    </span>
+                <%}%>
+            <a class="paginate_button next <%=pageData.nextclass%>" href="<%=pageData.nextlink%>" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0" id="DataTables_Table_0_next">下一页</a>
+        </div>
+    </div>
+</div>
+<script>
+    $('.add-img-btn input[type="file"]').on('change', function () {
+        var $this = $(this);
+        var addimgBtn=$this.parent();
+
+        if($this.val()){
+            $this.upload({
+                url: '/admin/content/uploadfile',
+                data:{__CSRF__:G_csrf},
+                success: function (result) {
+                    if (result) {
+                    } else {
+                        console.log('上传失败');
+                    }
+                },
+                error: function (code, xhr, status, error) {
+                    console.log(error ? ('上传失败: ' + error) : "上传失败");
+                }
+            });
+        }
+    });
+
+    $(function () {
+        $('.delete').bind('click', function () {
+            var delId = $(this).attr("del-id");
+            var delids=[];
+            delids.push(delId);
+            var r = confirm("确定删除？");
+            if (r) {
+                $.ajax({
+                    url: '/admin/content/delsome',
+                    data: {delarr:delids,__CSRF__: G_csrf},
+                    type: 'POST',
+                    success: function (json) {
+                        if (json.errno === 0) {
+                            alert("删除成功！");
+                            window.location.href = "/admin/content";
+                        }
+                    }
+                })
+            } else {
+            }
+        })
+
+        $("#markselect").on('change',function(){
+            var selval=$(this).val();
+            $.ajax({
+                url: '/admin/content/index',
+                data: {marksel:selval,__CSRF__: G_csrf},
+                type: 'POST'
+            })
+        })
+
+        //发布文章
+        $('#published').bind('click', function () {
+            var pubId = $(this).attr("pub-id");
+            var r = confirm("确定发布？");
+            if (r) {
+                $.ajax({
+                    url: '/admin/content/updatestatus',
+                    data: {id:pubId,__CSRF__: G_csrf},
+                    type: 'POST',
+                    success: function (json) {
+                        debugger
+                        if (json.errno === 0) {
+                            alert("发布成功！");
+                            window.location.href = "/admin/content/draftlist";
+                        }
+                    }
+                })
+            } else {
+            }
+        })
+    })
+
+
+    var delsome=function(){
+        var delids=[];
+        $.each($('input[type="checkbox"]','tbody'),function(i,item){
+            if($(item).is(':checked')){
+                delids.push($(this).val());
+            }
+        })
+        var r = confirm("确定删除？");
+        if (r) {
+            $.ajax({
+                url: '/admin/content/delsome',
+                data: {delarr:delids,__CSRF__: G_csrf},
+                type: 'POST',
+                success: function (json) {
+                    if (json.errno === 0) {
+                        alert("删除成功！");
+                        window.location.href = "/admin/content";
+                    }
+                }
+            })
+        } else {
+            return false
+        }
+    }
+</script>
+
+</body>
+</html>

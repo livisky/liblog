@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html >
+    <%include inc/header.html%>
+<body>
+    <!-- Table -->
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> <a href="/admin/index/welcome">首页</a><span class="c-gray en">&gt;</span> 新建分类 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+    <article class="page-container">
+        <form class="form form-horizontal" id="form-article-add">
+            <input type="hidden" value="" id="aid"/>
+            <div class="row cl">
+                <input type="hidden" value="<%-tags.id%>" id="tid"/>
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>标签名称：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text tagname" value="<%=tags.tagname%>" placeholder="" id="" name="">
+                </div>
+            </div>
+            <div class="row cl">
+                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                    <button class="btn btn-secondary radius" id="savetag" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+                    <button onClick="window.location.href='/admin/tag'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+                </div>
+            </div>
+        </form>
+    </article>
+    <script type="text/javascript" src="<%=_web.url%>static/src/js/business/admin/tag.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title><%=title%>-<%=_web.sitename%></title>
+    <meta name="keywords" content="<%-blogInfo.keywords%>">
+    <meta name="description" content="<%=title%>-<%=_web.sitename%>">
+    <%include inc/header.html%>
+    <link rel="stylesheet" href="<%=_web.url%>/static/vendors/github-markdown/github-markdown.css">
+</head>
+<body>
+<%include inc/menu.html%>
+<article class="mainbd">
+    <div class="l_box f_l">
+        <div class="topnews">
+            <div class="h2">
+                <span>
+                    <a href="#" target="_blank">武魂大罗</a>
+                    <a href="#" target="_blank">装逼大神</a>
+                    <a href="#" target="_blank">屌毛推荐</a>
+                </span>
+                <ol class="breadcrumb">
+                    <li><a href="<%=_web.url%>">首页</a></li>
+                    <li class="active"><%-blogInfo.title%></li>
+                </ol>
+            </div>
+            <article class="markdown-body">
+                <header class="article-header">
+                    <h1 class="article-title"><%-blogInfo.title%></h1>
+                    <div class="article-meta">
+                        <span><i class="glyphicon glyphicon-time"></i> 日期：<%=liFormatDate(think.datetime(blogInfo.cteatetime))%></span>
+                        <span>
+                            <i class="glyphicon glyphicon-tags"></i>
+                            栏目：<a href="/category/<%=blogInfo.tag%>.html" target="_blank"><%-tagname%></a>
+                        </span>
+                        <span><i class="glyphicon glyphicon-eye-open"></i> 浏览：<%-blogInfo.view%>次</span>
+                        <span><i class="glyphicon glyphicon-user"></i> 评论：0条</span>
+                     </div>
+                </header>
+                <div id="showContent"> <%-(particle.length>0)?particle:blogInfo.content%></div>
+                <div id="articlePages">
+                    <% for(i in strArray){var myid=i*1+1, pdid=pid*1; %>
+                        <a href='/page/<%=blogInfo.id%>?pid=<%=myid%>' class="<%=(pdid===myid)?'active':' '%>"><%=myid%></a>
+                    <%}%>
+                </div>
+            </article>
+        </div>
+    </div>
+    <%include inc/right.html%>
+</article>
+<%include inc/footer.html%>
+</body>
+</html>

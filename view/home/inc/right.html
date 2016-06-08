@@ -1,0 +1,98 @@
+<style>
+	.qqlist{margin-left: -22px;}
+	.qqlist a{float: left;line-height: 35px;
+		height: 35px;margin-left: 4px;}
+</style>
+<DIV class="r_box f_r">
+	<div class="cloud qqregion">
+		<h3>交流咨询</h3>
+		<ul class="qqs">
+			<div>前端汇官方QQ群<br/>群号<span>256687601,欢迎加入！</span>
+				<div class="qqlist">
+					<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=a9bb1b030c238e93e53f30003b0d31870533ba60902bc9733a72fca8342df7d8"><img border="0" src="<%=_web.url%>static/common/images/common/group.png" alt="前端汇-Liblog交流群" title="前端汇-Liblog交流群"></a>
+					<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=a9bb1b030c238e93e53f30003b0d31870533ba60902bc9733a72fca8342df7d8"><img border="0" src="<%=_web.url%>static/common/images/common/group.png" alt="前端汇-Liblog交流群" title="前端汇-Liblog交流群"></a>
+				</div>
+			</div>
+		</ul>
+	</div>
+	   <div class="tab" id="lp_right_select">
+
+	     <div class="tab-top">
+		      <ul class="hd" id="tb">
+			       <li class="cur"><a href="javascript:void(0);">点击排行</a></li>
+				   <li><a href="javascript:void(0);">最新文章</a></li>
+				   <li><a href="javascript:void(0);">站长推荐</a></li>
+			  </ul>
+		  </div>
+		  <div class="tab-main" id="tb-main">
+		      <div class="bd bd-news" style="display:block;">
+                    <ul>
+                         <% popularList.forEach(function(item,i){%>
+                            <li><a href="/page/<%=item.id%>.html" target="_blank" title="<%=item.title%>"><%=((item.title).length>17)?(item.title).substr(0,17)+"...":item.title%></a></li>
+                        <%})%>
+                    </ul>
+              </div>
+			   <div class="bd bd-news">
+                   <ul>
+                        <% newestList.forEach(function(item,i){%>
+                            <li><a href="/page/<%=item.id%>.html" target="_blank" title="<%=item.title%>"><%=((item.title).length>17)?(item.title).substr(0,17)+"...":item.title%></a></li>
+                        <%})%>
+                  </ul>
+              </div>
+			   <div class="bd bd-news">
+                    <ul>
+                         <% torecomList.forEach(function(item,i){%>
+                                <li><a href="/page/<%=item.id%>.html" target="_blank" title="<%=item.title%>"><%=((item.title).length>17)?(item.title).substr(0,17)+"...":item.title%></a></li>
+                         <%})%>                            
+                   </ul>
+              </div>
+		  </div>
+	   </div>
+	   <div class="cloud">
+	     <h3>标签云</h3>
+		  <ul>
+              <% tagList.forEach(function(item,i){%>
+                    <li><a href="/category/<%=item.id%>.html" target="_blank"><%=item.tagname%></a></li>
+              <%})%>               
+		  </ul>
+	   </div>
+	   <div class="tuwen">
+	     <h3>图文推荐</h3>
+		 <ul>
+             <% picrecomList.forEach(function(item,i){%>
+                <li><a href="/page/<%=item.id%>.html" ><img src="<%=_web.url%><%=(item.picurl==='')?'static/common/images/common/default.jpg':item.picurl%>" title="<%=item.title%>"><b title="<%=item.title%>"><%=((item.title).length>17)?(item.title).substr(0,15)+"...":item.title%></b></a>
+                    <p>
+                        <span class="tulanum"><a href="javascript:void(0);"><%=item.author%></a></span>
+                        <span class="tutime"><%=liFormatDate(think.datetime(item.cteatetime))%></span>
+                    </p>
+                </li>
+            <%})%>    
+		 </ul>
+	   </div>
+	   <div class="links">
+	     <h3><span><a href="/links.html">申请友情链接</a></span>友情链接</h3>
+		 <ul>
+		     <%-_web.links%>
+		 </ul>
+	   </div>
+</div>
+	<script>
+		window.onload=function()
+		{
+			var oLi=document.getElementById("tb").getElementsByTagName("li");
+			var oUl=document.getElementById("tb-main").getElementsByTagName("div");
+			for(var i=0;i<oLi.length;i++)
+			{
+				oLi[i].index=i;
+				oLi[i].onmouseover=function()
+				{
+					for(var n=0;n<oLi.length;n++)
+						oLi[n].className="";
+					this.className="cur";
+					for(var n=0;n<oUl.length;n++)
+						oUl[n].style.display="none";
+					oUl[this.index].style.display="block";
+				}
+			}
+		}
+	</script>

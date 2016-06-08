@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title><%=title%>-<%=_web.sitename%></title>
+    <meta name="keywords" content="<%=_web.keywords%>">
+    <meta name="description" content="<%=title%>-<%=_web.sitename%>">
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+     <link href="<%=_web.url%>static/src/css/business/about/about.css" rel="stylesheet">
+    <%include inc/header.html%>
+</head>
+<body>
+<%include inc/menu.html%>
+<article class="mainbd">
+    <div class="left">
+        <ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
+            <li role="presentation"><a href="/links.html">友情链接</a></li>
+            <li role="presentation"><a href="/guest.html">留言板</a></li>
+            <li role="presentation" class="active"><a href="/about.html">关于</a></li>
+        </ul>
+    </div>
+    <div class="right markdown-body">
+        <header class="article-header">
+            <h1 class="article-title">关于本站</h1>
+            前端汇，汇集前端最新技术博文，致力于打造最前沿的前端网站<br/>
+            站长联系方式：262248861@qq.com<br/>
+            官方QQ群：256687601<br/>
+        </header>
+    </div>
+</article>
+<%include inc/footer.html%>
+</body>
+</html>

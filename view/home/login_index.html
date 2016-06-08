@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <%include inc/header.html%>
+
+    <link rel="stylesheet" href="<%=_web.url%>static/src/css/business/login/login.css">
+    <title><%=title%></title>
+<body>
+    <div class="login-region" style="height: 330px">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">管理员登陆</h3>
+            </div>
+            <div class="panel-body">
+                <div>
+                    <div class="form-group">
+                        <label for="username">用户名</label>
+                        <input type="text" class="form-control" id="username" placeholder="用户名" style="width: 440px;">
+                        <input type="hidden" id="csrf" value="<%=csrf%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="text" class="form-control" id="password" placeholder="密码"style="width: 440px;">
+                    </div>
+                    <button type="submit" class="btn btn-default" id="loginBtn">登陆</button>
+                </div>
+            </div>
+        </div>            
+    </div>
+    <%include inc/footer.html%>
+    <script src="<%=_web.url%>static/src/js/business/login/login.js"></script>
+</body>
+</html>

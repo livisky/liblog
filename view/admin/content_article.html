@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html >
+<%include inc/header.html%>
+<link rel="stylesheet" type="text/css" href="<%=_web.url%>static/vendors/wangeditor/css/wangEditor.min.css">
+<link rel="stylesheet" href="<%=_web.url%>static/vendors/webuploader/ezviz/upload.css"/>
+<script src="<%=_web.url%>static/vendors/webuploader/ezviz/jquery.form.js"></script>
+<script src="<%=_web.url%>static/vendors/webuploader/ezviz/uploader.js"></script>
+<body>
+<style>
+    #filepick a{padding: 55px 15px;}
+    #filepick{text-align: center;vertical-align: middle; width: 140px; height: 130px}
+    .webuploader-pick{padding: 50px 50px; background: #fff; }
+    #uploader-demo{margin-top:20px;width: 142px; border: 1px dashed #ccc}
+    .flag span{margin-right: 10px;}
+    input[type=checkbox], input[type=radio]{margin:0px;}
+    .row {margin-top: 15px;}
+</style>
+<!-- Table -->
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> <a href="/admin/index/welcome">首页</a><span class="c-gray en">&gt;</span> 文章添加 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<article class="page-container">
+    <form class="form form-horizontal" id="form-article-add">
+        <input type="hidden" value="<%-article.id%>" id="aid"/>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text title" value="<%=article.title%>" placeholder="" id="" name="">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                    <span class="select-box">
+                        <select name="" class="select" id="itemselect">
+                            <option value="0">请选择栏目</option>
+                            <%itemList.forEach(function(item,i){%>
+                            <option value="<%=item.id%>" <%=(itemselectedId===item.id)?'selected':''%>><%=item.itemname%></option>
+                            <%})%>
+                        </select>
+				    </span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章类型：</label>
+            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+                <select name="" class="select" id="tagselect">
+                    <option value="0">请选择分类</option>
+                    <%tagsList.forEach(function(item,i){%>
+                    <option value="<%=item.id%>" <%=(tagselectedId===item.id)?'selected':''%>><%=item.tagname%></option>
+                    <%})%>
+                </select>
+				</span> </div>
+        </div>
+        <% if(ismarkdown){ %>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">导入markdown：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <div class="show-file-upload">
+                        <form>
+                            <a class="add-img-btn2">
+                                <input fileType="md" type="file" id='uploadfile' name="file" accept="md/*">
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% }%>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">文章摘要：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea name="" cols="" rows="" class="textarea abstract" id="abstract"  placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)"><%=article.abstract%></textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">文章内容：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <div id="editor" style="height:400px;max-height:500px;margin:15px 0;"><%-article.content%></div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">关键词：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text keywords" value="<%=article.keywords%>" placeholder="以英文','隔开" id="keywords" name="">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">文章作者：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text author" value="<%=_web.author%>" placeholder="" id="author" name="">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">文章来源：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text from" value="<%=article.from%>" placeholder="" id="" name="">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">允许评论：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="check-box" style="padding-left: 0px;">
+                    <input type="checkbox" id="allowcomment" <%=(article.allowcomment===1)?'checked':''%>>
+                    <label for="checkbox-pinglun">&nbsp;</label>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">标记：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="flag">
+                    <span>置顶 <input type="checkbox" id="totop" <%=(article.totop===1)?'checked':''%> ></span>
+                    <span>推荐 <input type="checkbox" id="torecom" <%=(article.torecom===1)?'checked':''%> ></span>
+                    <span>图文推荐 <input type="checkbox" id="topicrecom" <%=(article.topicrecom===1)?'checked':''%> ></span>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">缩略图：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="show-img-upload">
+                    <form>
+                        <a class="add-img-btn" style="background-image: url(<%=(article.picurl)?article.picurl:'/static/vendors/webuploader/ezviz/add_img.png'%>);background-position: left;">
+                            <input filetype="img" type="file" id="uploadfile" name="file" accept="image/*">
+                        </a>
+                    </form>
+                    <div id="list"></div>
+                    <input type="hidden" id="picUrl" value="<%=article.picurl%>">
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <button id="previewArticle" class="btn btn-primary radius" pid="<%=article.id%>" type="submit"><i class="Hui-iconfont">&#xe632;</i>预览</button>
+                <button id="addArticle" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 发布</button>
+                <button onClick="window.location.href='/admin/content'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+            </div>
+        </div>
+    </form>
+</article>
+
+<script type="text/javascript" src="<%=_web.url%>static/vendors/wangeditor/js/wangEditor.min.js"></script>
+<script type="text/javascript" src="<%=_web.url%>static/src/js/business/admin/content.js"></script>
+</body>
+</html>

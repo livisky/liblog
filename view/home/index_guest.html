@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title><%=title%>-<%=_web.sitename%></title>
+    <meta name="keywords" content="<%=_web.keywords%>">
+    <meta name="description" content="<%=title%>-<%=_web.sitename%>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="<%=_web.url%>static/src/css/business/about/about.css" rel="stylesheet">
+    <%include inc/header.html%>
+</head>
+<body>
+<%include inc/menu.html%>
+<article class="mainbd">
+    <div class="left">
+        <ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
+            <li role="presentation" ><a href="/links.html">友情链接</a></li>
+            <li role="presentation" class="active"><a href="/guest">留言板</a></li>
+            <li role="presentation"><a href="/about.html">关于</a></li>
+        </ul>
+    </div>
+    <div class="right markdown-body">
+        <header class="article-header">
+            <h1 class="article-title">留言板</h1>
+        </header>
+        <article class="article-content">
+            <h5>
+                请勿重复留言，如有需要，站长看到会第一时间联系您。
+            </h5>
+            <div class="right-main">
+                <form>
+                    <div class="form-group">
+                        <span class="c-red">*</span>
+                        <label for="username">昵称</label>
+                        <input type="text" class="form-control" id="nickname" placeholder="">
+                        <input type="hidden" id="csrf" value="<%=csrf%>">
+                    </div>
+                    <div class="form-group">
+                        <span class="c-red">*</span>
+                        <label for="">联系方式</label>
+                        <input type="text" class="form-control" id="contact" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="">留言</label>
+                        <textarea name="guest" class="form-control" id="guest" cols="30" rows="10" style="resize: none"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default" id="savetag">提交留言</button>
+                </form>
+            </div>
+        </article>
+    </div>
+</article>
+<%include inc/footer.html%>
+<script type="text/javascript">
+    $(function(){
+        $("#savetag").click(function(){
+            var newData={
+                nickname:$("#nickname").val(),
+                contact:$("#contact").val(),
+                guest:$("#guest").val(),
+                __CSRF__:$("#csrf").val()
+            }
+            $.ajax({
+                url:'/index/guestsave',
+                data:newData,
+                type:'POST',
+                success:function(json){
+                    if(json.errno===0){
+                        alert("提交成功！");
+                        window.location.href="/guest"
+                    }
+                }
+            })
+        })
+
+    })
+</script>
+</body>
+</html>

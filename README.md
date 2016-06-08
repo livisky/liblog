@@ -1,2 +1,23 @@
-# liblog
-build with thinkjs
+##liblog开源博客系统(v1.0)
+@(liblog)[thinkjs|nodejs|博客系统|liblog]
+>liblog是一个基于thinkjs框架的nodejs的开源博客系统。
+
+[toc]
+
+##主要功能
+###文章管理 
+文章的增、删、查、改，分类管理，标签管理
+###添加markdown文章
+上传markdown标准格式，自动解析为html文章
+###邮件验证
+注册用户邮件验证
+###用户管理
+用户的增、删、查、改及管理员管理
+###防止csrf攻击
+所有请求都有防csrf攻击
+###评论管理
+评论查看，删除，审核
+###留言板
+留言板
+###系统设置
+基本设置及邮件设置

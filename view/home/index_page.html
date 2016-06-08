@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title><%=title%>-<%=_web.sitename%></title>
+    <meta name="keywords" content="<%-blogInfo.keywords%>">
+    <meta name="description" content="<%=title%>-<%=_web.sitename%>">
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <%include inc/header.html%>
+    <link rel="stylesheet" href="<%=_web.url%>/static/vendors/github-markdown/github-markdown.css">
+    <style>
+        #ds-reset #replyat{float: left;line-height: 40px;padding-left: 10px;}
+        .com-post-report{display: none;}
+        .recom ul{
+            margin-left: 8px;
+        }
+        .recom ul li{
+            list-style-type: disc;
+            line-height: 26px;
+            font-size: 14px;
+        }
+        .nocontent{line-height: 600px;text-align: center;font-size: 16px;}
+        .recom .blogs{border-bottom: none;}
+        .topnews.recom{margin-left: 0px;padding-left: 0px}
+        .markdown-body .from{color: #bbb;line-height: 50px;font-size: 13px;}
+        .markdown-body .copyrights{
+            background-color: #eee;
+            padding-right: 30px;
+            font-size: 13px;
+            padding: 3px 0;
+            border-radius: 3px;
+            color: #aaa;
+            text-align: center;
+            line-height: 28px;
+        }
+        #showContent{margin-bottom: 45px;}
+    </style>
+</head>
+<body>
+<%include inc/menu.html%>
+<article class="mainbd">
+    <div class="l_box f_l">
+        <div class="topnews">
+            <div class="h2">
+                <span>
+                    <a href="#" target="_blank">更多>></a>
+                </span>
+                <ol class="breadcrumb">
+                    <li><a href="<%=_web.url%>">首页</a></li>
+                    <li class="active"><%-blogInfo.title%></li>
+                </ol>
+            </div>
+            <article class="markdown-body">
+                <header class="article-header">
+                    <input type="hidden" id="aid" value="<%=blogInfo.id%>"/>
+                    <h1 class="article-title"><%-blogInfo.title%></h1>
+                    <div class="article-meta">
+                        <span><i class="glyphicon glyphicon-time"></i> 日期：<%=liFormatDate(think.datetime(blogInfo.cteatetime))%></span>
+                        <span>
+                            <i class="glyphicon glyphicon-tags"></i>
+                            栏目：<a href="/category/<%=blogInfo.tag%>.html" target="_blank"><%-tagname%></a>
+                        </span>
+                        <span><i class="glyphicon glyphicon-eye-open"></i> 浏览：<%-blogInfo.view%>次</span>
+                        <span><i class="glyphicon glyphicon-user"></i> 评论：<a href="#SOHUCS" id="changyan_count_unit"></a>条</span>
+                     </div>
+                </header>
+                <div id="showContent"> <%-(particle.length>0)?particle:blogInfo.content%></div>
+                <div id="articlePages">
+                    <% for(i in strArray){var myid=i*1+1, pdid=pid*1; %>
+                        <a href='/page/<%=blogInfo.id%>?pid=<%=myid%>' class="<%=(pdid===myid)?'active':' '%>"><%=myid%></a>
+                    <%}%>
+                </div>
+                <% if(blogInfo.from!==""){ %>
+                    <div class="from">
+                        文章转载：<%=blogInfo.from %>
+                    </div>
+                <%}%>
+                <div class="copyrights">
+                    感谢你的阅读，本文由 <a href="http://www.jsout.com">前端汇</a> 版权所有。<br/>如若转载，请注明出处：前端汇（<%=_web.url%>page/<%=blogInfo.id%>.html）
+                </div>
+                <div class="topnews recom">
+                    <div class="h2">
+						<span>
+						  <a href="/more.html" target="_blank">更多&gt;&gt;</a>
+						</span>
+                        您可能感兴趣
+                    </div>
+                    <div class="blogs">
+                        <ul>
+                            <% relatearticle.forEach(function(item,i){%>
+                            <li><a href="/page/<%=item.id%>.html" target="_blank" title="<%=item.title%>"><%=item.title%></a></li>
+                            <%})%>
+                        </ul>
+                    </div>
+                </div>
+                <!--高速版-->
+                <script type="text/javascript" src="http://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+                <div id="SOHUCS" sid="<%-blogInfo.id%>"></div>
+                <script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
+                <script type="text/javascript">
+                    window.changyan.api.config({
+                        appid: 'cysoRJNxO',
+                        conf: 'prod_1fbcbcaf3589e576afe2785fe80d6684'
+                    });
+                </script>
+            </article>
+        </div>
+    </div>
+    <%include inc/right.html%>
+</article>
+<%include inc/footer.html%>
+<script src="<%=_web.url%>/static/src/js/business/page/page.js"></script>
+</body>
+</html>

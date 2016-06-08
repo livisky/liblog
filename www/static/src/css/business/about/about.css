@@ -1,0 +1,25 @@
+    .left{width:240px; background: #fff;float: left;}
+    .right.markdown-body{width: 77%;max-width: 78%;background: #fff;min-height:400px;height:auto;float: left;
+        margin-left: 20px; border-radius: 4px;margin-bottom: 20px;}
+    .right.markdown-body h1{color: #999}
+    .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+        color: #fff;
+        background-color: #61B3E6;
+    }
+    .article-content h5 {
+        font-size: 14px;
+        color: #999;
+        padding-left: 25px;
+        font-weight: normal
+    }
+    .right-main{
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin: 30px;
+        padding: 30px;
+    }
+    .right-main form{
+        width: 100%;
+    }
+    .c-red{color: red;}

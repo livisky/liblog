@@ -1,0 +1,22 @@
+article.mainbd{width: 100%;}
+.l_box{width: 100%}
+.r_box.f_r{width: 98%;margin-left: 0px;}
+.f_r{float: left}
+.site-navbar { margin-left: 5%; margin-top: 3%;}
+.site-navbar li {font-size: 12px;line-height: 23px;}
+.topmenu li{display: none}
+.blogs ul{margin-left: 2%;}
+.activity .blogs{padding: 0px;}
+.blogs h3{font-size: 14px;}
+.activity .blogs .abstract{width: 98%;}
+.articleul h3 a{font-size: 14px;line-height: 20px;}
+.activity .blogs h3{width: 70%;font-size: 14px;line-height: 20px;}
+.footer .container p{line-height: 20px;}
+.markdown-body .article-header h1{font-size: 14px;}
+.breadcrumb .active{display: none;}
+.topmenu{float: left}
+.author{margin: 0px;}
+.author.second{float:left;}
+.topnews.recom .blogs ul{width: 98%}
+.mainbd .left{display: none}
+.right.markdown-body{width: 100%;max-width: 100%;margin-left: 0px;line-height: 30px;}

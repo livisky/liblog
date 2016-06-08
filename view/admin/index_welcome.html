@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="indexApp">
+<%include inc/header.html%>
+<title><%=title%></title>
+<!-- Default panel contents -->
+<style>
+    .footer {
+        background: #eee;
+    }
+
+    .footer-main {
+        width: 500px;
+        margin: 0 auto;
+        line-height: 30px;
+        text-align: center;
+    }
+</style>
+<body>
+
+    <div style="padding-left:50px; padding-top: 40px;">
+        <h4 >Liblog 开源博客系统(v1.0)</h4>
+        <p> 程序员的的福音 liblog是基于thinkjs框架的nodejs博客系统，具备完善的轻量级网站后台，完全免费，简单灵活，兼容性好 让您快速搭建中小型网站、博客
+        </p>
+        <p>GIthub地址: https://github.com/livisky/liblog</p>
+        <p> 官方QQ群：256687601</p><br/>
+        <h4>  主要功能</h4>
+        <p> 文章管理 (文章的增、删、查、改，分类管理，标签管理)</p>
+
+        <p>文章内容分页 (文章内容太长，分页显示)</p>
+
+        <p>添加markdown文章 (上传markdown标准格式，自动解析为html文章)</p>
+
+        <p>邮件验证 (注册用户邮件验证)</p>
+
+        <p>用户管理 (用户的增、删、查、改及管理员管理)</p>
+
+        <p> 防止csrf攻击 (所有请求都有csrf验证)</p>
+
+        <p>评论管理 (评论查看，删除，审核)</p>
+
+        <p>留言板 (留言管理)</p>
+
+        <p>系统设置 (基本设置及邮件设置)</p>
+    </div>
+</body>
+</html>

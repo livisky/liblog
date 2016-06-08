@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title><%=title%>-<%=_web.sitename%></title>
+    <meta name="keywords" content="<%=_web.keywords%>">
+    <meta name="description" content="<%=title%>-<%=_web.sitename%>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="<%=_web.url%>static/src/css/business/about/about.css" rel="stylesheet">
+    <%include inc/header.html%>
+</head>
+<body>
+<%include inc/menu.html%>
+<article class="mainbd">
+    <div class="left">
+        <ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
+            <li role="presentation" class="active"><a href="/links.html">友情链接</a></li>
+            <li role="presentation"><a href="/guest.html">留言板</a></li>
+            <li role="presentation"><a href="/about.html">关于</a></li>
+        </ul>
+    </div>
+    <div class="right markdown-body">
+        <header class="article-header">
+            <h1 class="article-title">友情链接</h1>
+        </header>
+        <article class="article-content">
+            <h5>
+                展示本站所有友情站点，排列不分先后；如需友链，请先添加本站首页链接后提交申请。
+            </h5>
+            <div class="right-main">
+                <form>
+                    <div class="form-group">
+                        <span class="c-red">*</span>
+                        <label for="username">网站名</label>
+                        <input type="text" class="form-control" id="domain" placeholder="">
+                        <input type="hidden" id="csrf" value="<%=csrf%>">
+                    </div>
+                    <div class="form-group">
+                        <span class="c-red">*</span>
+                        <label for="">网站链接</label>
+                        <input type="text" class="form-control" id="link" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="">logo图片地址</label>
+                        <input type="text" class="form-control" id="logo" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <span class="c-red">*</span>
+                        <label for="">联系QQ</label>
+                        <input type="text" class="form-control" id="qq" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="">备注</label>
+                        <input type="text" class="form-control" id="notice" placeholder="">
+                    </div>
+                    <button type="submit" class="btn btn-default" id="savetag">提交申请</button>
+                </form>
+            </div>
+        </article>
+    </div>
+</article>
+<%include inc/footer.html%>
+<script type="text/javascript">
+    $(function(){
+        $("#savetag").click(function(){
+            var newData={
+                domain:$("#domain").val(),
+                link:$("#link").val(),
+                logo:$("#logo").val(),
+                qq:$("#qq").val(),
+                notice:$("#notice").val(),
+                __CSRF__:$("#csrf").val()
+            }
+            $.ajax({
+                url:'/index/linkssave',
+                data:newData,
+                type:'POST',
+                success:function(json){
+                    if(json.errno===0){
+                        alert("提交成功！");
+                        window.location.href="/links"
+                    }
+                }
+            })
+        })
+
+    })
+</script>
+</body>
+</html>
