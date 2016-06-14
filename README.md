@@ -117,7 +117,7 @@ nginx服务器配置，请参考根目录下的nginx.conf，把域名和路径�
 
 ### 五. 感谢
 
-Liblog的成长需要各位亲们支持！感谢你们使用Liblog，感激你们对Liblog的良好建议与Bug反馈。如果你的博客也是基于Liblog，请告知作者。
+Liblog的成长需要各位亲们支持！感谢你们使用Liblog，感激你们对Liblog的良好建议与Bug反馈。如果你的博客也是基于Liblog，请告知作者，无偿获取技术指导。
 
 Liblog QQ群：`256687601`  
 作者邮箱：`262248861@qq.com`    
