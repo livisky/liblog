@@ -162,7 +162,13 @@ article.mainbd {
 	margin-bottom: 0px; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none; box-shadow: none;
 }
 .logo {
-	width: 155px; overflow: hidden; padding-top: 5px; margin-top: -10px; margin-left: 6%; float: left;
+	padding-left: 10px;
+	overflow: hidden;
+	padding-top: 5px;
+	margin-top: -28px;
+	margin-left: 6%;
+	width:auto;
+	float: left;
 }
 .logo a {
 	background-position: 50% 50%; height: 44px; text-indent: -9999px; overflow: hidden; display: block; background-repeat: no-repeat;

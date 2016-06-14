@@ -9,11 +9,11 @@ export default {
   log_connect: true,
   adapter: {
     mysql: {
-      host: '127.0.0.1',
+      host: '139.196.185.229',
       port: '3306',
-      database: 'liblog',
+      database: 'online',
       user: 'root',
-      password: 'root',
+      password: '6286871',
       prefix: 'li_',
       encoding: 'utf8'
     },

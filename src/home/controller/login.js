@@ -37,7 +37,7 @@ export default class extends Base {
             await this.session("userInfo", info);
             return this.json({status:1,msg:"登陆成功!"});
       }else{
-            return this.json({status:0,msg:"用户名或密码错误!"});
+          return this.json({status:0,msg:"用户名或密码错误!"});
       }
   }
   
