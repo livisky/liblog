@@ -10,12 +10,9 @@
   },
   "dependencies": {
     "babel-runtime": "6.x.x",
-    "geetest": "^1.0.1",
     "marked": "^0.3.5",
     "nodemailer": "^0.7.1",
     "pm2": "^1.1.2",
-    "think-debug-toolbar": "^1.0.12",
-    "think-ip-filter": "^1.0.3",
     "thinkjs": "2.1.x"
   },
   "devDependencies": {
