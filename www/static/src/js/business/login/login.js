@@ -10,7 +10,7 @@ $(function(){
                 data:mydata,
                 type:'POST',
                 success:function(json){
-                    if(json.status===0){
+                    if(json.status===1){
                         alert(json.msg);
                         window.location.href="/admin/index";
                     }else {
