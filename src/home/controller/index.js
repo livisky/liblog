@@ -162,6 +162,7 @@ export default class extends Base {
     }
     //活动
     async activityAction(){
+        console.log(this.get("page"));
         this.getList(6,'activity');
     }
     //大杂烩
@@ -212,23 +213,22 @@ export default class extends Base {
         return this.display('category');
     }
     async categoryAction(){
-        let itemId=this.get("id");
-        //分页
-        var itemList=await this.model("article").where({item:itemId,ispublished:1}).order("createtime DESC").page(this.get("page"), this.get("pagesize")).select();
-        var result = await this.model("article").where({item:itemId,ispublished:1}).order("createtime DESC").page(this.get('page'),this.get('pagesize')).countSelect();
+        let pagenumber=this.get("page")||1;
+        let pagesize=this.get("pagesize")||10;
+        let itemId=await this.get("id");
+
+        var itemList=await this.model("article").where({tag:itemId,ispublished:1}).order("createtime DESC").page(pagenumber, pagesize).select();
+        var result = await this.model("article").where({tag:itemId,ispublished:1}).order("createtime DESC").page(pagenumber, pagesize).countSelect();
         var Page=think.adapter("template", "page");
         var page = new Page(this.http);
         var pageData=page.pagination(result);
-        if(!this.get("page")){
-            return this.redirect("?page=1&pagesize=10");
-        }
         this.assign("itemList",itemList);
         this.assign('pageData',pageData);
         //分页
-
         let category=await this.model("tags").where({id:itemId}).find();
         this.assign('categoryName',category.tagname);
         this.assign('more',0);
+        this.assign('menu','category/'+itemId);
         return this.display();
     }
     async linksAction(){
