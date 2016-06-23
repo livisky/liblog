@@ -2,6 +2,7 @@ module.exports = [
 
     [/^admin\/content\/article\/(\d+)$/,"admin/content/article?id=:1"],
     [/^admin\/tag\/item\/(\d+)$/,"admin/tag/item?id=:1"],
+    [/^admin\/item\/item\/(\d+)$/,"admin/item/item?id=:1"],
     [/^admin\/user\/item\/(\d+)$/,"admin/user/item?id=:1"],
     [/^category\/(\d+)$/,"home/index/category?id=:1"],
     [/^admin\/taglist\/edit\/(\d+)$/,"admin/taglist/edit?id=:1"],

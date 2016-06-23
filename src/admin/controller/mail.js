@@ -40,7 +40,6 @@ export default class extends Base {
         smtpTransport.sendMail({
             from: mailer.account,
               //to: "390039626@qq.com,livisky@163.com", // 收件列表
-              to: "chenlihua2 <chenlihua2@hikvision.com.cn>",
         subject : 'Node.JS通过SMTP协议从QQ邮箱发送邮件',
             html: 'have a try!'
         },function(err, res) {
