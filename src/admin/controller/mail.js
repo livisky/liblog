@@ -12,7 +12,7 @@ export default class extends Base {
         //    service: "QQ",
         //    auth: {
         //        user: "262248861@qq.com", // 账号
-        //        pass: "wvebvwxcsxpebiai" // 密码
+        //        pass: "12345678" // 密码
         //    }
         //});
         //smtpTransport.sendMail({
