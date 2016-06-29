@@ -207,7 +207,7 @@ CREATE TABLE `li_system` (
 -- ----------------------------
 -- Records of li_system
 -- ----------------------------
-INSERT INTO `li_system` VALUES ('1', '前端汇—优质web前端学习交流平台', 'http://localhost:8361/', '前端汇,liblog,thinkjs,全栈开发', '前端汇，汇集前端最新技术博文,以原创为主,专注web前端开发,javascript全栈开发,前端性能优化,网站建设优化,前端工程化,崇尚复杂的事情简单化,是前端编程从业者的交流和学习的平台。', '前端汇', '@2015 copyright', '', '0');
+INSERT INTO `li_system` VALUES ('1', '前端汇—优质web前端学习交流平台', '/', '前端汇,liblog,thinkjs,全栈开发', '前端汇，汇集前端最新技术博文,以原创为主,专注web前端开发,javascript全栈开发,前端性能优化,网站建设优化,前端工程化,崇尚复杂的事情简单化,是前端编程从业者的交流和学习的平台。', '前端汇', '@2015 copyright', '', '0');
 
 -- ----------------------------
 -- Table structure for li_tags
