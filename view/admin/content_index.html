@@ -4,16 +4,14 @@
 <link rel="stylesheet" href="<%=_web.url%>static/vendors/webuploader/ezviz/upload.css"/>
 <script src="<%=_web.url%>static/vendors/webuploader/ezviz/jquery.form.js"></script>
 <script src="<%=_web.url%>static/vendors/webuploader/ezviz/uploader.js"></script>
-<style>
-    .modal-backdrop{background-color: #fff;}
-</style>
+<link rel="stylesheet" href="<%=_web.url%>static/src/css/business/admin/article/article.css">
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> <a href="/admin/index/welcome">首页</a><span class="c-gray en">&gt;</span> 文章列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container" style="margin-bottom: 140px;">
     <% if(!isdraft){ %>
         <div class="text-c">
-            <input type="text" name="" id="" placeholder=" 文章名称" style="width:250px" class="input-text">
-            <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont"></i> 搜资讯</button>
+                <input type="text" name="searchText" id="searchText" placeholder=" 文章名称" style="width:250px" class="input-text">
+                <button name="" id="search_article" class="btn btn-success" type="submit"><i class="Hui-iconfont"></i> 搜资讯</button>
         </div>
     <%}%>
     <div class="cl pd-5 bg-1 bk-gray mt-20" style="margin-bottom: 15px;">
@@ -28,15 +26,16 @@
                 <i class="Hui-iconfont"></i> 批量删除
             </a>
         </span>
-
         <span class="r">
             标记筛选&nbsp;
             <span class="select-box inline">
                 <select name="" class="select" id="markselect">
-                    <option value="totop">文章置顶</option>
-                    <option value="torecom">站长推荐</option>
-                    <option value="topicrecom">图文推荐</option>
+                    <option value="" <%=(type==="all")?'selected':''%> >全部文章</option>
+                    <option value="totop" <%=(type==="totop")?'selected':''%> >文章置顶</option>
+                    <option value="torecom" <%=(type==="torecom")?'selected':''%> >站长推荐</option>
+                    <option value="topicrecom" <%=(type==="topicrecom")?'selected':''%> >图文推荐</option>
                 </select>
+                <input type="hidden" id="markval" value="<%=type%>">
             </span>&nbsp;
         </span>
     </div>
@@ -69,7 +68,7 @@
                             <a style="cursor:pointer" class="text-primary" onclick="window.open('/preview/<%=item.aid%>','_blank')" title="查看"><%=item.title%></a>
                             <% }%>
                         </td>
-                        <td><%=item.item%></td>
+                        <td><%=item.itemname%></td>
                         <td><%=item.tagname%></td>
                         <td><%=liFormatDate(think.datetime(item.cteatetime))%></td>
                         <td><%=item.view%></td>
@@ -107,107 +106,6 @@
         </div>
     </div>
 </div>
-<script>
-    $('.add-img-btn input[type="file"]').on('change', function () {
-        var $this = $(this);
-        var addimgBtn=$this.parent();
-
-        if($this.val()){
-            $this.upload({
-                url: '/admin/content/uploadfile',
-                data:{__CSRF__:G_csrf},
-                success: function (result) {
-                    if (result) {
-                    } else {
-                        console.log('上传失败');
-                    }
-                },
-                error: function (code, xhr, status, error) {
-                    console.log(error ? ('上传失败: ' + error) : "上传失败");
-                }
-            });
-        }
-    });
-
-    $(function () {
-        $('.delete').bind('click', function () {
-            var delId = $(this).attr("del-id");
-            var delids=[];
-            delids.push(delId);
-            var r = confirm("确定删除？");
-            if (r) {
-                $.ajax({
-                    url: '/admin/content/delsome',
-                    data: {delarr:delids,__CSRF__: G_csrf},
-                    type: 'POST',
-                    success: function (json) {
-                        if (json.errno === 0) {
-                            alert("删除成功！");
-                            window.location.href = "/admin/content";
-                        }
-                    }
-                })
-            } else {
-            }
-        })
-
-        $("#markselect").on('change',function(){
-            var selval=$(this).val();
-            $.ajax({
-                url: '/admin/content/index',
-                data: {marksel:selval,__CSRF__: G_csrf},
-                type: 'POST'
-            })
-        })
-
-        //发布文章
-        $('#published').bind('click', function () {
-            var pubId = $(this).attr("pub-id");
-            var r = confirm("确定发布？");
-            if (r) {
-                $.ajax({
-                    url: '/admin/content/updatestatus',
-                    data: {id:pubId,__CSRF__: G_csrf},
-                    type: 'POST',
-                    success: function (json) {
-                        debugger
-                        if (json.errno === 0) {
-                            alert("发布成功！");
-                            window.location.href = "/admin/content/draftlist";
-                        }
-                    }
-                })
-            } else {
-            }
-        })
-    })
-
-
-    var delsome=function(){
-        var delids=[];
-        $.each($('input[type="checkbox"]','tbody'),function(i,item){
-            if($(item).is(':checked')){
-                delids.push($(this).val());
-            }
-        })
-        var r = confirm("确定删除？");
-        if (r) {
-            $.ajax({
-                url: '/admin/content/delsome',
-                data: {delarr:delids,__CSRF__: G_csrf},
-                type: 'POST',
-                success: function (json) {
-                    if (json.errno === 0) {
-                        alert("删除成功！");
-                        window.location.href = "/admin/content";
-                    }
-                }
-            })
-        } else {
-            return false
-        }
-    }
-</script>
-
+<script type="text/javascript" src="<%=_web.url%>static/src/js/business/admin/contentList.js"></script>
 </body>
 </html>

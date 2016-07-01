@@ -12,17 +12,42 @@ export default class extends Base
      */
     async indexAction()
     {
-        let articlelist ={},result={}
+        let articlelist ={},result={},list={};
+        let selval=this.get('type');
+        let searchtxt=this.get('search');
         // 设置分页
-        if(this.post('marksel')){
-
+        if(selval){
+            //文章筛选
             let map={};
-            map[this.post('marksel')]=1;
-            articlelist = await this.model("article").field("*,li_article.id as aid").join("li_tags ON li_article.tag=li_tags.id").where(map).page(this.get("page"), this.get("pagesize")).order("createtime DESC").select();
+            map[this.get('type')]=1;
+            articlelist = await this.model("article").join({
+                tags: {on: "tag, id"},
+                item: {on: ["item", "id"]},
+            }).where(map).page(this.get("page"), this.get("pagesize")).order("createtime DESC").select();
             result = await this.model("article").where(map).page(this.get('page'), this.get('pagesize')).order("createtime DESC").countSelect();
+            this.assign("type", selval);
+        }else if(searchtxt){
+            //文章搜索
+            let map={title: ["like", "%"+searchtxt+"%"]};
+            articlelist = await this.model("article").join({
+                tags: {on: "tag, id"},
+                item: {on: ["item", "id"]},
+            }).where(map).page(this.get("page"), this.get("pagesize")).order("createtime DESC").select();
+            result = await this.model("article").where(map).page(this.get('page'), this.get('pagesize')).order("createtime DESC").countSelect();
+            if(articlelist.length==0){
+                let map={id:searchtxt*1};
+                articlelist = await this.model("article").where(map).page(this.get("page"), this.get("pagesize")).order("createtime DESC").select();
+                result = await this.model("article").where(map).page(this.get('page'), this.get('pagesize')).order("createtime DESC").countSelect();
+            }
+            this.assign("type", '');
         }else{
-            articlelist = await this.model("article").field("*,li_article.id as aid").join("li_tags ON li_article.tag=li_tags.id").page(this.get("page"), this.get("pagesize")).order("createtime DESC").select();
+            let map={};
+            articlelist = await this.model("article").join({
+                tags: {on: "tag, id"},
+                item: {on: ["item", "id"]},
+            }).where(map).page(this.get("page"), this.get("pagesize")).order("createtime DESC").select();
             result = await this.model("article").page(this.get('page'), this.get('pagesize')).order("createtime DESC").countSelect();
+            this.assign("type", '');
         }
         let Page = think.adapter("template", "page");
         let page = new Page(this.http);

@@ -1,11 +1,6 @@
 /**
  * Created by livi on 16/4/19.
  */
-
-    //生成编辑器
-    // var editor = new wangEditor('editor');
-    //     editor.create();
-    //上传markdown文件，返回html解析并赋值
     $('.add-img-btn2 input[type="file"]').on('change', function () {
         var $this = $(this);
         var addimgBtn=$this.parent();
