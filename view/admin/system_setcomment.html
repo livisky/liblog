@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html >
+    <%include inc/header.html%>
+    <title><%=title%></title>
+<body>
+    <!-- Table -->
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> <a href="/admin/index/welcome">首页</a><span class="c-gray en">&gt;</span> 畅言评论设置 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+    <article class="page-container">
+        <form class="form form-horizontal" id="form-article-add">
+            <input type="hidden" value="" id="aid"/>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>APP ID：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text appid" value="<%-sysdata.appid%>" placeholder="" id="" name="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>APP KEY：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text appkey" value="<%=sysdata.appkey%>" placeholder="" id="" name="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>安装代码：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <textarea class="form-control textarea appcode" name="link" rows="4" cols="50" placeholder="安装代码" style="width: 100%; height: 98px;resize:none"><%=sysdata.appcode%></textarea></div>
+            </div>
+            <div class="row cl">
+                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                    <button class="btn btn-secondary radius" id="savetag" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+                    <button onClick="window.location.href='/admin/system'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+                </div>
+            </div>
+        </form>
+    </article>
+ 
+<script type="text/javascript">
+    $(function(){
+        $("#savetag").click(function(){
+            var newData={
+                appid:$(".appid").val(),
+                appkey:$(".appkey").val(),
+                appcode:$(".appcode").val(),
+                __CSRF__:G_csrf
+            }
+            $.ajax({
+                url:'/admin/system/commentedit',
+                data:newData,
+                type:'POST',
+                success:function(json){
+                    if(json.errno===0){
+                        alert("保存成功！");
+                        window.location.href="/admin/system/setcomment"
+                    }
+                }
+            })                
+        })
+
+    })
+ </script> 
+</body>
+</html>

@@ -15,5 +15,16 @@ export default class extends Base {
                 let rs=await this.model('system').where({id:1}).update(mydata);
                 if(rs) return this.success();
     }
+    async commenteditAction(){
+        let mydata =await this.post();
+        let rs=await this.model('system_comment').where({id:1}).update(mydata);
+        if(rs) return this.success();
+    }
+    async setcommentAction(){
+        this.assign("title","评论设置");
+        let sysdata=await this.model('system_comment').where({id:1}).find();
+        this.assign('sysdata',sysdata);
+        return this.display();
+    }
 }
 

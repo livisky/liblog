@@ -6,7 +6,7 @@
     <meta name="description" content="<%=title%>-<%=_web.sitename%>">
      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <%include inc/header.html%>
-    <link rel="stylesheet" href="<%=_web.url%>/static/vendors/github-markdown/github-markdown.css">
+    <link rel="stylesheet" href="<%=_web.url%>static/vendors/github-markdown/github-markdown.css">
     <style>
         #ds-reset #replyat{float: left;line-height: 40px;padding-left: 10px;}
         .com-post-report{display: none;}
@@ -92,22 +92,15 @@
                         </ul>
                     </div>
                 </div>
-                <!--高速版-->
-                <script type="text/javascript" src="http://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
-                <div id="SOHUCS" sid="<%-blogInfo.id%>"></div>
-                <script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
-                <script type="text/javascript">
-                    window.changyan.api.config({
-                        appid: 'cysoRJNxO',
-                        conf: 'prod_1fbcbcaf3589e576afe2785fe80d6684'
-                    });
-                </script>
+                    <!--畅言评论代码-->
+                        <%-setting.appcode%>
+                    <!--畅言评论代码-->
             </article>
         </div>
     </div>
     <%include inc/right.html%>
 </article>
 <%include inc/footer.html%>
-<script src="<%=_web.url%>/static/src/js/business/page/page.js"></script>
+<script src="<%=_web.url%>static/src/js/business/page/page.js"></script>
 </body>
 </html>

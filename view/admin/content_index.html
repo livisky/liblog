@@ -10,7 +10,7 @@
 <div class="page-container" style="margin-bottom: 140px;">
     <% if(!isdraft){ %>
         <div class="text-c">
-                <input type="text" name="searchText" id="searchText" placeholder=" 文章名称" style="width:250px" class="input-text">
+                <input type="text" name="searchText" id="searchText" placeholder="文章名称或ID" style="width:250px" class="input-text">
                 <button name="" id="search_article" class="btn btn-success" type="submit"><i class="Hui-iconfont"></i> 搜资讯</button>
         </div>
     <%}%>
@@ -26,18 +26,20 @@
                 <i class="Hui-iconfont"></i> 批量删除
             </a>
         </span>
-        <span class="r">
-            标记筛选&nbsp;
-            <span class="select-box inline">
-                <select name="" class="select" id="markselect">
-                    <option value="" <%=(type==="all")?'selected':''%> >全部文章</option>
-                    <option value="totop" <%=(type==="totop")?'selected':''%> >文章置顶</option>
-                    <option value="torecom" <%=(type==="torecom")?'selected':''%> >站长推荐</option>
-                    <option value="topicrecom" <%=(type==="topicrecom")?'selected':''%> >图文推荐</option>
-                </select>
-                <input type="hidden" id="markval" value="<%=type%>">
-            </span>&nbsp;
-        </span>
+        <% if(!isdraft){ %>
+            <span class="r">
+                标记筛选&nbsp;
+                <span class="select-box inline">
+                    <select name="" class="select" id="markselect">
+                        <option value="" <%=(type==="all")?'selected':''%> >全部文章</option>
+                        <option value="totop" <%=(type==="totop")?'selected':''%> >文章置顶</option>
+                        <option value="torecom" <%=(type==="torecom")?'selected':''%> >站长推荐</option>
+                        <option value="topicrecom" <%=(type==="topicrecom")?'selected':''%> >图文推荐</option>
+                    </select>
+                    <input type="hidden" id="markval" value="<%=type%>">
+                </span>&nbsp;
+            </span>
+        <%}%>
     </div>
 
     <div class="dataTables_wrapper no-footer">

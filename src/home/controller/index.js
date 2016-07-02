@@ -14,6 +14,10 @@ export default class extends Base {
 
       let actList=await this.model("article").where({item:6,ispublished:1}).limit(5).order("createtime DESC").select();
       let now=new Date().getTime();
+
+      let setting=await this.model('system_comment').where({id:1}).find();
+      this.assign("setting",setting);
+
       this.assign('actList',actList);
       return this.display();
   }
@@ -42,17 +46,9 @@ export default class extends Base {
                   }
               }
           }
-
           //关联文章
           let relatearticle=await this.model("article").where({tag:blogInfo.tag,ispublished:1}).limit(6).select();
           this.assign("relatearticle",relatearticle);
-          ////判断登陆
-          //let userinfo=await this.session("userInfo");
-          //let showComment=false;
-          //if(!think.isEmpty(userinfo)){
-          //    showComment=true;
-          //}
-          //this.assign('showComment',showComment);
 
           //跳转到内容分页
           let tagname=tagItem.tagname||'';
@@ -68,17 +64,19 @@ export default class extends Base {
 
 
           //获取评论{belongid: {'=': 0},
+          //let commentList= await this.model('comment').where({belongid: {'=': 0},aid:aid}).select();
+          //let replyList= await this.model('comment').where({belongid: {'>': 0},aid:aid}).select();
+          //let count= await this.model('comment').where({aid:aid}).count();
+          //if(commentList.length===0){
+          //    commentList=replyList;
+          //}
+          //this.assign("commentList",commentList);
+          //this.assign("replyList",replyList);
+          //this.assign("count",count);
 
-          let commentList= await this.model('comment').where({belongid: {'=': 0},aid:aid}).select();
-          let replyList= await this.model('comment').where({belongid: {'>': 0},aid:aid}).select();
-          let count= await this.model('comment').where({aid:aid}).count();
-          if(commentList.length===0){
-              commentList=replyList;
-          }
-          this.assign("commentList",commentList);
-          this.assign("replyList",replyList);
-          this.assign("count",count);
-
+          //设置畅言appid及appkey
+          let setting=await this.model('system_comment').where({id:1}).find();
+          this.assign("setting",setting);
 
           return this.display();
       }else{
