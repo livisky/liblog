@@ -11,7 +11,7 @@ export default class extends think.controller.base {
         this.assign("csrf",csrf);
 
         //获取tags
-        let tagList=await this.model("tags").select();
+        let tagList=await this.model("tags").where({appear:1}).select();
         this.assign('tagList',tagList);
 
         //获取图文推荐列表
@@ -32,7 +32,7 @@ export default class extends think.controller.base {
 
         //获取导航链接
         let navList=await this.model('menu').select();
-        this.assign("navList",navList);           
+        this.assign("navList",navList);
 
     }
     async getConfig() {
