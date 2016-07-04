@@ -4,30 +4,11 @@
             <h1>Liblog <span style="font-size: 12px">v1.0</span></h1>
         </div>
         <ul class="site-nav site-navbar">
-            <li class="item current">
-                <a href="/"> 首页</a>
-            </li>
-            <li class="item common">
-                <a href="/news.html"> 前端资讯</a>
-            </li>
-            <li class="item common">
-                <a href="/node.html"> Node.js</a>
-            </li>
-            <li class="item common">
-                <a href="/mac.html"> mac精品</a>
-            </li>
-            <li class="item common">
-                <a href="/activity.html"> 活动</a>
-            </li>
-            <li class="item common">
-                <a href="/others.html"> 大杂烩</a>
-            </li>
-            <li class="item common">
-                <a href="/jobs.html"> 招聘</a>
-            </li>
-            <li class="item common">
-                <a href="/about.html"> 关于</a>
-            </li>
+           <% navList.forEach(function(item,i){%>
+              <li class="item">
+                  <a href="<%=item.url%>"> <%=item.menuname%></a>
+              </li>
+           <%})%>
             <li class="navto-search"><a href="javascript:;" class="search-show active"><i class="fa fa-search"></i></a></li>
         </ul>
         <div class="topbar">
