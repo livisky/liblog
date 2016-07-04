@@ -54,3 +54,24 @@
                 return false
             }
         }
+
+        //发布文章
+        $("#published").on('click',function(){
+          var aid=$(this).attr('pub-id');
+          var newData={
+            id:aid,
+            ispublished:1,
+            __CSRF__:G_csrf
+          }
+            $.ajax({
+                url:'/admin/content/doadd/',
+                data:newData,
+                type:'POST',
+                success:function(json){
+                  if(json.errno===0){
+                      alert("发布成功！");
+                      window.location.href='/admin/content/draftlist';
+                  }
+                }
+            })
+        })

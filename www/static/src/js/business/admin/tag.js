@@ -68,3 +68,25 @@ $(function(){
             return false
         }
     }
+
+    //显示/隐藏标签
+    $(".isappear").on('click',function(){
+      var tid=$(this).attr('tag-id');
+      var tagVal=$(this).attr('tag-val');
+      var newData={
+        id:tid,
+        appear:tagVal,
+        __CSRF__:G_csrf
+      }
+        $.ajax({
+            url:'/admin/tag/save',
+            data:newData,
+            type:'POST',
+            success:function(json){
+              if(json.errno===0){
+                  alert("操作成功！");
+                  window.location.href='/admin/tag/index';
+              }
+            }
+        })
+    })
