@@ -24,20 +24,20 @@ export default class extends Base {
                 return this.redirect("/admin/menu/index?page=1&pagesize="+pagesize);
             }
         // 初始化分页
-            this.assign("title","菜单管理");
+            this.assign("title","导航管理");
             return this.display();
       }
-  
-  
+
+
      async itemAction(){
          if (this.get('id')) {
              //编辑item
-             this.assign("title","菜单编辑");
+             this.assign("title","导航编辑");
              let id=this.get('id');
              let item=await this.model("menu").where({id:id}).find();
              this.assign("item",item);
          }else{
-             this.assign("title","菜单添加");
+             this.assign("title","导航添加");
              this.assign("item",{});
          }
          return this.display();

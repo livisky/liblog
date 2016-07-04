@@ -3,20 +3,20 @@
     <%include inc/header.html%>
 <body>
     <!-- Table -->
-    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> <a href="/admin/index/welcome">首页</a><span class="c-gray en">&gt;</span> 新建菜单 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> <a href="/admin/index/welcome">首页</a><span class="c-gray en">&gt;</span> 新建导航 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
     <article class="page-container">
         <form class="form form-horizontal" id="form-article-add">
             <input type="hidden" value="" id="aid"/>
             <div class="row cl">
                 <input type="hidden" value="<%-item.id%>" id="tid"/>
-                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>菜单名称：</label>
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>导航名称：</label>
                 <div class="formControls col-xs-8 col-sm-9">
                     <input type="text" class="input-text menuname" value="<%=item.menuname%>" placeholder="" id="" name="">
                 </div>
             </div>
             <div class="row cl">
                 <input type="hidden" value="<%-item.id%>" id="tid"/>
-                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>菜单链接：</label>
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>导航链接：</label>
                 <div class="formControls col-xs-8 col-sm-9">
                     <input type="text" class="input-text url" value="<%=item.url%>" placeholder="" id="" name="">
                 </div>
