@@ -10,7 +10,7 @@ ul {
 	padding: 0px;
 }
 a {
-	
+
 }
 a:link {
 	color: rgb(102, 102, 102); text-decoration: none;
@@ -28,7 +28,7 @@ a:hover {
 	float: right;
 }
 .l_box {
-	background: rgb(255, 255, 255); padding: 10px 0px 10px 0px; border-radius: 6px; 
+	background: rgb(255, 255, 255); padding: 10px 0px 10px 0px; border-radius: 6px;
     width: 74%;
 }
 .r_box {
@@ -258,7 +258,7 @@ article.mainbd {
 	float: none;
 }
 .site-nav .sub-menu a:hover {
-	
+
 }
 .site-nav li:hover > .sub-menu {
 	display: block;
@@ -366,7 +366,7 @@ article.mainbd {
 	margin: 0px 0px 18px 46px;
 }
 .article-content ul {
-	
+
 }
 .article-content ol {
 	list-style: decimal;
@@ -453,3 +453,14 @@ article.mainbd {
 	bottom: 200px;
 	display: none;
 }
+.site-search{background-color: #fff;background-color: rgba(255,255,255,0.95);position: absolute;top:0;left:0;right:0;height: 100px;z-index: 1;}
+.site-search.active{top: 108px;}
+.site-search-form{padding: 25px 10%;overflow: hidden;}
+.search-input{float:left;color:#999;border:solid 1px #ddd;width:80%;height: 48px;padding: 0px 12px;border-right: none;font-size: 16px;border-radius: 2px 0 0 2px;outline: none}
+.search-input:focus{border-color: #45B6F7;}
+.search-btn{color:#fff;border: none;background: #45B6F7;height: 50px;font-size: 16px;padding: 0 12px;border-radius: 0 2px 2px 0;width: 10%;}
+.search-btn:hover, .search-btn:focus{color:#fff;opacity: 0.85;filter:alpha(opacity=85);}
+.search-btn .fa{font-size: 16px;width: 16px;}
+.site-search-form a{margin-left: 20px;color: #999;}
+.site-search-form a:hover{color: #45B6F7;}
+.search .site-search{position: relative;margin: -15px 0 15px;border-bottom: 1px solid #eaeaea;}

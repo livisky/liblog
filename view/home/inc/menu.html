@@ -9,12 +9,18 @@
                   <a href="<%=item.url%>"> <%=item.menuname%></a>
               </li>
            <%})%>
-            <li class="navto-search"><a href="javascript:;" class="search-show active"><i class="fa fa-search"></i></a></li>
+            <li class="navto-search">
+                <a href="javascript:;" class="search-show active">
+                  <i class="fa fa-search"></i>
+                </a>
+            </li>
         </ul>
         <div class="topbar">
             <ul class="site-nav topmenu">
                 <li style="display: block;">
-                    <a class="red" href="http://livisky.github.io/" target="_blank"><i class="glyphicon glyphicon-thumbs-up"></i>推荐:Liblog v1.0</a>
+                    <a class="red" href="http://livisky.github.io/" target="_blank">
+                      <i class="glyphicon glyphicon-thumbs-up"></i>推荐:Liblog v1.0
+                    </a>
                 </li>
                 <li>
                     <a href="/links.html">友情链接</a>
@@ -27,6 +33,12 @@
                 </li>
             </ul>
         </div>
-        <i class="fa fa-bars m-icon-nav"></i>
     </div>
 </header>
+<div class="site-search">
+<div class="container">
+	<form method="get" class="site-search-form" action="/search?keyword=">
+		<input class="search-input" name="keyword" type="text" placeholder="输入关键字搜索"><button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+	</form>
+</div>
+</div>

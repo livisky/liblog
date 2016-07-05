@@ -9,3 +9,8 @@ $(window).scroll(function() {
     }
 });
 $("#back-top").on("click",function(){$("html,body").animate({scrollTop:"0"})})
+//搜素
+$(".search-show").on('click',function(){
+    $(".site-search").toggleClass('active')
+    $(this).find(".fa-search").toggleClass('fa-remove');
+})
