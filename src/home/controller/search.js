@@ -10,7 +10,7 @@ export default class extends Base {
   async indexAction(){
       // 搜索功能
       let keywords=this.get('keyword');
-      let map={content: ["like", "%"+keywords+"%"]};
+      let map={content: ["like", "%"+keywords+"%"],ispublished:1};
 
       let pagenumber=this.get("page")||1;
       let pagesize=this.get("pagesize")||10;
