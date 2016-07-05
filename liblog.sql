@@ -1,7 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Date: 2016-07-05 10:34:42
+Source Server         : localhost_liblog_3306
+Source Server Version : 50540
+Source Host           : localhost:3306
+Source Database       : liblog
+
+Target Server Type    : MYSQL
+Target Server Version : 50540
+File Encoding         : 65001
+
+Date: 2016-07-05 11:21:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;

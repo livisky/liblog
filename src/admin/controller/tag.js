@@ -27,8 +27,8 @@ export default class extends Base {
             this.assign("title","分类管理");
             return this.display();
       }
-  
-  
+
+
      async itemAction(){
          if (this.get('id')) {
              //编辑tags
@@ -48,7 +48,7 @@ export default class extends Base {
     //编辑或者新增
         let data=await this.post();
         if(!think.isEmpty(this.post("id"))){
-            let rs=await this.model("tags").update(data);
+            let rs=await this.model("tags").where({id:this.post("id")}).update(data);
             if(rs) return this.success();
         }else{
             let rs=await this.model("tags").add(data);
