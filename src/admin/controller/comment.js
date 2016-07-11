@@ -1,44 +1,37 @@
 'use strict';
-
+let init={
+    mydb:"comment",
+    title:"评论管理",
+    action:"comment"
+}
 import Base from './base.js';
-
 export default class extends Base {
   /**
    * index action
    * @return {Promise} []
    */
   async indexAction(){
-
-    // 分页
-    let commentList=await this.model("comment").page(this.get("page"), this.get("pagesize")).select();
-    let result = await this.model("comment").page(this.get('page'),this.get('pagesize')).countSelect();
-    let Page=think.adapter("template", "page");
-    let page = new Page(this.http);
-    let pageData=page.pagination(result);
-    this.assign("commentList",commentList);
-    this.assign('pageData',pageData);
-    // 分页
-    // 初始化分页
-    let pagesize=await this.config("pagesize");
-    if(!this.get("page")){
-      return this.redirect("/admin/comment/index?page=1&pagesize="+pagesize);
-    }
-    // 初始化分页
-    this.assign("title","评论管理");
-    return this.display();
+      let info={
+        db:init.mydb,
+        page:this.get("page")||1,
+        pagesize:this.get("pagesize")||10
+      }
+      let mydata=await this.model('util').getIndex(info);
+      this.assign("itemList",mydata.itemList);
+      this.assign('pageData',mydata.pageData);
+      this.assign("title",init.title);
+      this.assign("action",init.action);
+      return this.display();
   }
-
-
   //删除或批量删除接口
   async delsomeAction(){
-    let arr=await this.post('delarr[]');
-    let rs=this.model("comment").where({id: ["IN", arr]}).delete();
-    if(rs){
-      //操作成功
-      return this.success();
-    }
+        let info={
+          db:init.mydb,
+          arr:this.post('delarr[]')
+        }
+        let rs=await this.model(info.db).where({id: ["IN", info.arr]}).delete();
+        if(rs) return this.success();
   }
-
   //举报列表
   async tiplistAction(){
 

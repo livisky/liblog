@@ -1,22 +1,20 @@
-/**
- * Created by livi on 16/4/20.
- */
+
 $(function(){
-    $("#savemenu").click(function(){
+    $("#saveitem").click(function(){
         var newData={
             id:$("#tid").val(),
-            menuname:$(".menuname").val(),
-            url:$(".url").val(),
+            role:$(".role").val(),
+            rolename:$(".itemname").val(),
             __CSRF__:G_csrf
         }
         $.ajax({
-            url:'/admin/menu/save',
+            url:'/admin/role/save',
             data:newData,
             type:'POST',
             success:function(json){
                 if(json.errno===0){
                     alert("保存成功！");
-                    window.location.href="/admin/menu"
+                    window.location.href="/admin/role"
                 }else{
                     alert(json.errmsg)
                 }
@@ -31,13 +29,13 @@ $(function(){
         var r = confirm("确定删除？");
         if (r) {
             $.ajax({
-                url: '/admin/menu/delsome',
+                url: '/admin/role/delsome',
                 data: {delarr:delids,__CSRF__: G_csrf},
                 type: 'POST',
                 success: function (json) {
                     if (json.errno === 0) {
                         alert("删除成功！");
-                        window.location.href = "/admin/menu";
+                        window.location.href = "/admin/role";
                     }else{
                         alert(json.errmsg)
                     }
@@ -59,13 +57,13 @@ $(function(){
         var r = confirm("确定删除？");
         if (r) {
             $.ajax({
-                url: '/admin/menu/delsome',
+                url: '/admin/role/delsome',
                 data: {delarr:delids,__CSRF__: G_csrf},
                 type: 'POST',
                 success: function (json) {
                     if (json.errno === 0) {
                         alert("删除成功！");
-                        window.location.href = "/admin/menu";
+                        window.location.href = "/admin/role";
                     }else{
                         alert(json.errmsg)
                     }
@@ -75,3 +73,32 @@ $(function(){
             return false
         }
     }
+
+    $("#savepermission").on('click',function(){
+          var prr=[],pids=[];
+          $.each($('input[type="checkbox"]',$('.main')),function(i,item){
+              if($(item).is(':checked')){
+                  prr.push($(this).val());
+                  pids.push($(this).attr('pid'))
+              }
+          })
+          var newData={
+              id:$("#rid").val(),
+              pid:pids.join(","),
+              permission:prr.join(","),
+              __CSRF__:G_csrf
+          }
+          $.ajax({
+              url:'/admin/role/rolesave',
+              data:newData,
+              type:'POST',
+              success:function(json){
+                  if(json.errno===0){
+                      alert("保存成功！");
+                      window.location.href="/admin/role"
+                  }else{
+                      alert(json.errmsg)
+                  }
+              }
+          })
+    })

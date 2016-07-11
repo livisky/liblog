@@ -24,6 +24,8 @@
                         if (json.errno === 0) {
                             alert("删除成功！");
                             window.location.href = "/admin/content";
+                        }else{
+                            alert(json.errmsg)
                         }
                     }
                 })
@@ -47,6 +49,8 @@
                         if (json.errno === 0) {
                             alert("删除成功！");
                             window.location.href = "/admin/content";
+                        }else{
+                            alert(json.errmsg)
                         }
                     }
                 })
@@ -71,6 +75,8 @@
                   if(json.errno===0){
                       alert("发布成功！");
                       window.location.href='/admin/content/draftlist';
+                  }else{
+                      alert(json.errmsg)
                   }
                 }
             })

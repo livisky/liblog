@@ -28,20 +28,13 @@ export default class extends Base
             this.assign("type", selval);
         }else if(searchtxt){
             //文章搜索
-            let map={title: ["like", "%"+searchtxt+"%"]};
+            let map={title: ["like", "%"+searchtxt+"%"],['li_article.id']:["like", "%"+searchtxt*1+"%"],_logic: "OR"};
+
             articlelist = await this.model("article").field("*,li_article.id as aid").join({
                 tags: {on: "tag, id"},
                 item: {on: ["item", "id"]},
             }).where(map).page(this.get("page"), this.get("pagesize")).order("createtime DESC").select();
             result = await this.model("article").where(map).page(this.get('page'), this.get('pagesize')).order("createtime DESC").countSelect();
-            if(articlelist.length==0){
-                let map={id:searchtxt*1};
-                articlelist = await this.model("article").field("*,li_article.id as aid").join({
-                    tags: {on: "tag, id"},
-                    item: {on: ["item", "id"]},
-                }).where(map).page(this.get("page"), this.get("pagesize")).order("createtime DESC").select();
-                result = await this.model("article").where(map).page(this.get('page'), this.get('pagesize')).order("createtime DESC").countSelect();
-            }
             this.assign("type", '');
         }else{
             let map={};
@@ -173,7 +166,7 @@ export default class extends Base
     }
 
     async updatestatusAction()
-    {   //编辑或者新增
+    {   //草稿箱发布接口
         let pid=await this.post("id");
         if(!think.isEmpty(pid)){
            let rs = await this.model("article").where({id:pid}).update({ispublished:1});

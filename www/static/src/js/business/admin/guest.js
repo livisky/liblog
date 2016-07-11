@@ -17,6 +17,8 @@ $(function(){
                     if (json.errno === 0) {
                         alert("删除成功！");
                         window.location.href = "/admin/guest";
+                    }else{
+                        alert(json.errmsg)
                     }
                 }
             })
@@ -43,6 +45,8 @@ $(function(){
                     if (json.errno === 0) {
                         alert("删除成功！");
                         window.location.href = "/admin/guest";
+                    }else{
+                        alert(json.errmsg)
                     }
                 }
             })

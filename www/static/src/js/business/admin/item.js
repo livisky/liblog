@@ -16,6 +16,8 @@ $(function(){
                 if(json.errno===0){
                     alert("保存成功！");
                     window.location.href="/admin/item"
+                }else{
+                    alert(json.errmsg)
                 }
             }
         })
@@ -35,6 +37,8 @@ $(function(){
                     if (json.errno === 0) {
                         alert("删除成功！");
                         window.location.href = "/admin/item";
+                    }else{
+                        alert(json.errmsg)
                     }
                 }
             })
@@ -61,6 +65,8 @@ $(function(){
                     if (json.errno === 0) {
                         alert("删除成功！");
                         window.location.href = "/admin/item";
+                    }else{
+                        alert(json.errmsg)
                     }
                 }
             })

@@ -1,71 +1,95 @@
 'use strict';
-
+let init={
+    mydb:"user",
+    title:"用户管理",
+    edit:"用户编辑",
+    add:"用户添加",
+    action:"user"
+}
 import Base from './base.js';
-
 export default class extends Base {
   /**
    * index action
    * @return {Promise} []
    */
-  async indexAction(){
 
-    // 分页
-    let userList=await this.model("user").page(this.get("page"), this.get("pagesize")).select();
-    let result = await this.model("user").page(this.get('page'),this.get('pagesize')).countSelect();
-    let Page=think.adapter("template", "page");
-    let page = new Page(this.http);
-    let pageData=page.pagination(result);
-    this.assign("userList",userList);
-    this.assign('pageData',pageData);
-    // 分页
-    // 初始化分页
-    let pagesize=await this.config("pagesize");
-    if(!this.get("page")){
-      return this.redirect("/admin/user/index?page=1&pagesize="+pagesize);
+      async indexAction(){
+          let info={
+            db:init.mydb,
+            page:this.get("page")||1,
+            pagesize:this.get("pagesize")||10
+          }
+          let itemList = await this.model(info.db).field("*,li_user.id as uid").join({
+               manage_role: {on: "role, id"}
+           }).page(info.page,info.pagesize).select();
+          let result = await this.model(info.db).page(info.page,info.pagesize).countSelect();
+          let Page=think.adapter("template", "page");
+          let page = new Page();
+          let pageData=page.pagination(result,info.page);
+          this.assign("itemList",itemList);
+          this.assign('pageData',pageData);
+          this.assign("title",init.title);
+          this.assign("action",init.action);
+          return this.display();
+      }
+      async adminlistAction(){
+        let info={
+          db:init.mydb,
+          page:this.get("page")||1,
+          pagesize:this.get("pagesize")||10
+        }
+        let map={'li_user.role':{'>':0}};
+        let itemList = await this.model(info.db).field("*,li_user.id as uid").join({
+             manage_role: {on: "role, id"}
+         }).where(map).page(info.page,info.pagesize).select();
+        let result = await this.model(info.db).page(info.page,info.pagesize).where(map).countSelect();
+        let Page=think.adapter("template", "page");
+        let page = new Page();
+        let pageData=page.pagination(result,info.page);
+        this.assign("itemList",itemList);
+        this.assign('pageData',pageData);
+        this.assign("title",init.title);
+        this.assign("action",init.action);
+        return this.display('index');
+      }
+     async itemAction(){
+
+           let info={
+             db:init.mydb,
+             edit:init.edit,
+             add:init.add,
+             id:this.get('id')
+           }
+           let mydata=await this.model('util').getItem(info);
+           let roleList=await this.model('manage_role').select();
+           this.assign("roleList",roleList);
+           this.assign("title",mydata.title);
+           this.assign('item',mydata.item);
+           this.assign("action",init.action);
+           return this.display();
+     }
+
+     //编辑或者新增接口
+     async saveAction() {
+          let newData=this.post();
+              newData.password=think.md5(newData.password);
+          let info={
+            db:init.mydb,
+            data:newData,
+            id:this.post('id')
+          }
+          let mydata=await this.model('util').doSave(info);
+          if(mydata.status===1) return this.success();
     }
-    // 初始化分页
-    this.assign("title","用户管理");
-    return this.display();
-  }
 
-
-  async itemAction(){
-    if (this.get('id')) {
-      //编辑tags
-      this.assign("title","用户编辑");
-      let id=this.get('id');
-      let user=await this.model("user").where({id:id}).find();
-      console.log(user);
-      this.assign("user",user);
-
-    }else{
-      this.assign("title","用户添加");
-      this.assign("user",{});
+    //删除或批量删除接口
+    async delsomeAction(){
+          let info={
+            db:init.mydb,
+            arr:this.post('delarr[]')
+          }
+          let rs=await this.model(info.db).where({id: ["IN", info.arr]}).delete();
+          if(rs) return this.success();
     }
-    return this.display();
-  }
-
-  //提交接口
-  async saveAction() {
-    //编辑或者新增
-    let data=await this.post();
-    if(!think.isEmpty(this.post("id"))){
-      let rs=await this.model("tags").update(data);
-      if(rs) return this.success();
-    }else{
-      let rs=await this.model("tags").add(data);
-      if(rs) return this.success();
-    }
-  }
-
-  //删除或批量删除接口
-  async delsomeAction(){
-    let arr=await this.post('delarr[]');
-    let rs=this.model("tags").where({id: ["IN", arr]}).delete();
-    if(rs){
-      //操作成功
-      return this.success();
-    }
-  }
 
 }

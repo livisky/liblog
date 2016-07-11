@@ -7,24 +7,28 @@ export default class extends think.adapter.base {
    * init
    * @return {[]}         []
    */
-  
-    // let userList=await this.model("user").page(this.get("page"), this.get("pagesize")).select(); 
+
+    // let userList=await this.model("user").page(this.get("page"), this.get("pagesize")).select();
     // let result = await this.model("user").page(this.get('page'),this.get('pagesize')).countSelect();
-    // let Page=think.adapter("template", "page"); 
-    // let page = new Page(this.http);  
-    // let pageData=page.pagination(result); 
+    // let Page=think.adapter("template", "page");
+    // let page = new Page(this.http);
+    // let pageData=page.pagination(result);
     // this.assign("nameList",userList);
-    // this.assign('pageData',pageData); 
+    // this.assign('pageData',pageData);
     init(http){
         super.init(http);
         this.http = http;
     }
-    pagination(pageData){
-        let page=this.http.get("page")||1;
-        console.log(this.http.get("page"));
-        let nextclass='',preclass='',nextlink='',prelink='';    
+    pagination(pageData,pageNumber){
+        let page='';
+        if(pageNumber){
+          page=pageNumber
+        }else {
+          page=this.http.get("page")||1
+        }
+        let nextclass='',preclass='',nextlink='',prelink='';
         if(page){
-            
+
             //下一页判断
             if(pageData.currentPage===pageData.totalPages){
                     nextclass='disabled';
@@ -73,6 +77,6 @@ export default class extends think.adapter.base {
                 "numsPerPage":pageData.numsPerPage,
                 "currentPage":pageData.currentPage
             }
-        }       
-    }  
+        }
+    }
 }

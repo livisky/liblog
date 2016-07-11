@@ -2,21 +2,20 @@
  * Created by livi on 16/4/20.
  */
 $(function(){
-    $("#savemenu").click(function(){
+    $("#saveitem").click(function(){
         var newData={
             id:$("#tid").val(),
-            menuname:$(".menuname").val(),
-            url:$(".url").val(),
+            name:$(".itemname").val(),
             __CSRF__:G_csrf
         }
         $.ajax({
-            url:'/admin/menu/save',
+            url:'/admin/pertag/save',
             data:newData,
             type:'POST',
             success:function(json){
                 if(json.errno===0){
                     alert("保存成功！");
-                    window.location.href="/admin/menu"
+                    window.location.href="/admin/pertag"
                 }else{
                     alert(json.errmsg)
                 }
@@ -31,13 +30,13 @@ $(function(){
         var r = confirm("确定删除？");
         if (r) {
             $.ajax({
-                url: '/admin/menu/delsome',
+                url: '/admin/pertag/delsome',
                 data: {delarr:delids,__CSRF__: G_csrf},
                 type: 'POST',
                 success: function (json) {
                     if (json.errno === 0) {
                         alert("删除成功！");
-                        window.location.href = "/admin/menu";
+                        window.location.href = "/admin/pertag";
                     }else{
                         alert(json.errmsg)
                     }
@@ -59,13 +58,13 @@ $(function(){
         var r = confirm("确定删除？");
         if (r) {
             $.ajax({
-                url: '/admin/menu/delsome',
+                url: '/admin/pertag/delsome',
                 data: {delarr:delids,__CSRF__: G_csrf},
                 type: 'POST',
                 success: function (json) {
                     if (json.errno === 0) {
                         alert("删除成功！");
-                        window.location.href = "/admin/menu";
+                        window.location.href = "/admin/pertag";
                     }else{
                         alert(json.errmsg)
                     }

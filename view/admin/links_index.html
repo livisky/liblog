@@ -29,7 +29,7 @@
             </tr>
             </thead>
             <tbody>
-            <% linksList.forEach(function(item,i){%>
+            <% itemList.forEach(function(item,i){%>
             <tr class="text-c odd" role="row">
                 <td><input type="checkbox" value="<%=item.id%>" name=""></td>
                 <td><%=item.id%></td>
@@ -55,6 +55,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="<%=_web.url%>static/src/js/business/admin/links.js"></script>
+<script type="text/javascript" src="<%=_web.url%>static/src/js/business/admin/<%=action%>.js"></script>
 </body>
 </html>

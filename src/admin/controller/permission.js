@@ -1,10 +1,10 @@
 'use strict';
 let init={
-    mydb:"menu",
-    title:"导航管理",
-    edit:"导航编辑",
-    add:"导航添加",
-    action:"menu"
+    mydb:"manage_permission",
+    title:"权限管理",
+    edit:"权限编辑",
+    add:"权限添加",
+    action:"permission"
 }
 import Base from './base.js';
 export default class extends Base {
@@ -12,13 +12,27 @@ export default class extends Base {
    * index action
    * @return {Promise} []
    */
+       async getIndex(info){
+
+              let itemList = await this.model(info.db).field("*,li_manage_permission.id as pid").join({
+                   manage_tag: {on: "tag, id"}
+               }).page(info.page,info.pagesize).select();
+              let result = await this.model(info.db).page(info.page,info.pagesize).countSelect();
+              let Page=think.adapter("template", "page");
+              let page = new Page();
+              let pageData=page.pagination(result,info.page);
+              return {
+                 itemList:itemList,
+                 pageData:pageData
+              };
+       }
       async indexAction(){
           let info={
             db:init.mydb,
             page:this.get("page")||1,
             pagesize:this.get("pagesize")||10
           }
-          let mydata=await this.model('util').getIndex(info);
+          let mydata=await this.getIndex(info);
           this.assign("itemList",mydata.itemList);
           this.assign('pageData',mydata.pageData);
           this.assign("title",init.title);
@@ -35,6 +49,8 @@ export default class extends Base {
              id:this.get('id')
            }
            let mydata=await this.model('util').getItem(info);
+           let tagList=await this.model('manage_tag').select();
+           this.assign("tagList",tagList);
            this.assign("title",mydata.title);
            this.assign('item',mydata.item);
            this.assign("action",init.action);

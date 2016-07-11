@@ -109,6 +109,8 @@
                         $("#previewArticle").attr("pid",json.data.id);
                         $("#addArticle").attr("pid",json.data.id);
                         window.location.href='/admin/content';
+                    }else{
+                        alert(json.errmsg)
                     }
                 })
             }else{
@@ -117,6 +119,8 @@
                     if(json.errno===0){
                         alert("发布成功！");
                         window.location.href='/admin/content';
+                    }else{
+                        alert(json.errmsg)
                     }
                 })
             }
@@ -157,10 +161,10 @@
                 success:callback
             })
         }
-        
-        
-        
-   
+
+
+
+
     var editor = new wangEditor('editor');
     editor.config.uploadParams = {
         __CSRF__:G_csrf
@@ -175,6 +179,6 @@
     editor.config.uploadImgUrl = '/admin/content/uploadeditor';
     console.log(G_csrf);
     // 表情
-    editor.create();     
-        
+    editor.create();
+
 })

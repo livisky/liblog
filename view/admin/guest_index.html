@@ -3,7 +3,7 @@
 <%include inc/header.html%>
 <body>
 <!-- Table -->
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> <a href="/admin/index/welcome">首页</a><span class="c-gray en">&gt;</span> 用户管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> <a href="/admin/index/welcome">首页</a><span class="c-gray en">&gt;</span> 留言管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="main" style="width:96%;margin:0 auto;">
     <div class="cl pd-5 bg-1 bk-gray mt-20" style="margin-bottom: 15px;">
         <span class="l">
@@ -28,7 +28,7 @@
             </tr>
             </thead>
             <tbody>
-            <% guestList.forEach(function(item,i){%>
+            <% itemList.forEach(function(item,i){%>
             <tr class="text-c odd" role="row">
                 <td><input type="checkbox" value="<%=item.id%>" name=""></td>
                 <td><%=item.id%></td>
@@ -53,6 +53,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="<%=_web.url%>static/src/js/business/admin/guest.js"></script>
+<script type="text/javascript" src="<%=_web.url%>static/src/js/business/admin/<%=action%>.js"></script>
 </body>
 </html>

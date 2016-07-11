@@ -1,10 +1,10 @@
 'use strict';
 let init={
-    mydb:"menu",
-    title:"导航管理",
-    edit:"导航编辑",
-    add:"导航添加",
-    action:"menu"
+    mydb:"manage_tag",
+    title:"权限分类",
+    edit:"分类编辑",
+    add:"分类添加",
+    action:"pertag"
 }
 import Base from './base.js';
 export default class extends Base {
@@ -37,6 +37,7 @@ export default class extends Base {
            let mydata=await this.model('util').getItem(info);
            this.assign("title",mydata.title);
            this.assign('item',mydata.item);
+           console.log(mydata.item);
            this.assign("action",init.action);
            return this.display();
      }

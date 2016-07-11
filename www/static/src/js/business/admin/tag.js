@@ -16,6 +16,8 @@ $(function(){
                 if(json.errno===0){
                     alert("保存成功！");
                     window.location.href="/admin/tag"
+                }else{
+                    alert(json.errmsg)
                 }
             }
         })
@@ -35,6 +37,8 @@ $(function(){
                     if (json.errno === 0) {
                         alert("删除成功！");
                         window.location.href = "/admin/tag";
+                    }else{
+                        alert(json.errmsg)
                     }
                 }
             })
@@ -61,6 +65,8 @@ $(function(){
                     if (json.errno === 0) {
                         alert("删除成功！");
                         window.location.href = "/admin/tag";
+                    }else{
+                        alert(json.errmsg)
                     }
                 }
             })
@@ -86,6 +92,8 @@ $(function(){
               if(json.errno===0){
                   alert("操作成功！");
                   window.location.href='/admin/tag/index';
+              }else{
+                  alert(json.errmsg)
               }
             }
         })

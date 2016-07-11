@@ -7,7 +7,7 @@
     <div class="main" style="width:96%;margin:0 auto;">
         <div class="cl pd-5 bg-1 bk-gray mt-20" style="margin-bottom: 15px;">
         <span class="l">
-            <a class="btn btn-primary radius" data-title="添加标签" href="/admin/tag/item">
+            <a class="btn btn-primary radius" data-title="添加标签" href="/admin/<%=action%>/item">
                 <i class="Hui-iconfont"></i> 添加标签
             </a>
             <a href="javascript:;" onclick="delsome()" class="btn btn-danger radius">
@@ -30,7 +30,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <% tagList.forEach(function(item,i){%>
+                    <% itemList.forEach(function(item,i){%>
                     <tr class="text-c odd" role="row">
                         <td><input type="checkbox" value="<%=item.id%>" name=""></td>
                         <td><%=item.id%></td>
@@ -53,7 +53,7 @@
                                 </a>
                             <% }%>
 
-                            <a style="text-decoration:none" class="ml-5 edit" href="/admin/tag/item/<%=item.id%>" title="编辑">
+                            <a style="text-decoration:none" class="ml-5 edit" href="/admin/<%=action%>/item/<%=item.id%>" title="编辑">
                                 <i class="Hui-iconfont"></i>
                             </a>
                             <a style="text-decoration:none" class="ml-5 delete" del-id="<%=item.id%>" title="删除"><i class="Hui-iconfont"></i></a>
@@ -73,6 +73,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="<%=_web.url%>static/src/js/business/admin/tag.js"></script>
+    <script type="text/javascript" src="<%=_web.url%>static/src/js/business/admin/<%=action%>.js"></script>
 </body>
 </html>

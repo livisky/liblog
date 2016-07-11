@@ -8,15 +8,14 @@ import Base from './base.js';
  * @param  {object} data 数据包 {article: [], list: [], search: []}
  */
 Create.createXml = function(data) {
-   
+
     let arr = [];
     // let now = think.datatime(new Date(), 'yyyy-MM-dd');
     let now = think.datetime(new Date(),'YYYY-MM-DD')
-    console.log(now);
     arr.push('<?xml version="1.0" encoding="UTF-8"?>');
     arr.push('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
 
-    
+
     // 添加主页
     arr.push('<url>');
     arr.push('<loc>' + data.homeurl + '</loc>');
@@ -35,7 +34,7 @@ Create.createXml = function(data) {
         arr.push('<priority>0.9</priority>');
         arr.push('</url>');
     });
-    
+
     //添加文章
     data.article.forEach(function(val) {
         arr.push('<url>');
@@ -54,7 +53,7 @@ Create.createXml = function(data) {
         arr.push('<priority>0.8</priority>');
         arr.push('</url>');
     });
-    
+
     arr.push('</urlset>');
     fs.writeFileSync(path.resolve(think.ROOT_PATH, './www/sitemap.xml'), arr.join('\n'));
 }

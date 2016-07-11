@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <%include inc/header.html%>
+    <style>
+        .dataTables_wrapper{
+          padding: 10px 60px;
+          float: left;
+          min-height: 300px;
+          /*border-bottom: 1px solid #ccc;*/
+        }
+        .submit_region{width: 100%;margin: 0 auto;text-align: center;margin: 10px;}
+    </style>
+<body>
+    <!-- Table -->
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> <a href="/admin/index/welcome">首页</a><span class="c-gray en">&gt;</span>权限编辑 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+    <input type="hidden" id="rid" value="<%=rid%>">
+    <div class="main" style="width:96%;margin:0 auto;">
+        <div class="cl pd-5 bg-1 bk-gray mt-20" style="margin-bottom: 15px;">
+            <% itemList.forEach(function(tag,i){%>
+            <div class="dataTables_wrapper no-footer">
+              <h4><%=tag.name%></h4>
+                <ul>
+                    <% var list=tag.perlist; list.forEach(function(item,i){%>
+                        <li>
+                          <span><input type="checkbox" class="percheck"name="name" value="<%=item.permission%>" pid='<%=item.id%>' <%=(newArr.indexOf(item.id)>=0)?'checked':''%> ></span>
+                          <span><%=item.pername%></span>
+                          <input type="hidden" class="pids" value="">
+                          <input type="hidden" class="permissions" value="">
+                        </li>
+                  <% })%>
+                </ul>
+            </div>
+            <% })%>
+            <div style="clear:both"></div>
+            <div class="row cl submit_region">
+                <div class="">
+                    <button class="btn btn-secondary radius" id="savepermission" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+                    <button onClick="window.location.href='/admin/role'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="<%=_web.url%>static/src/js/business/admin/role.js"></script>
+</body>
+</html>

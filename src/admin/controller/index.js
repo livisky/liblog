@@ -7,14 +7,16 @@ export default class extends Base {
    * index action
    * @return {Promise} []
    */
-  indexAction(){
+  async indexAction(){
         this.assign("title","后台管理");
+        let uinfo=await this.session('userInfo');
+        this.assign("loginName",uinfo.name);
         return this.display();
   }
   async logoutAction(){
        await this.session("userInfo","");
         return this.redirect("/login");
-  }  
+  }
   welcomeAction(){
       this.assign("title","欢迎登陆！");
       return this.display();
@@ -37,7 +39,7 @@ export default class extends Base {
                         { id: 6, itemname: '活动',url:'activity.html' },
                         { id: 7, itemname: '关于',url:'about.html' },
                         { id: 8, itemname: '友情链接',url:'links.html' },
-                        { id: 8, itemname: '留言板',url:'guest.html' }     
+                        { id: 8, itemname: '留言板',url:'guest.html' }
                    ];
         data={
             homeurl:sysdata.url,
