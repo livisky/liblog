@@ -279,38 +279,18 @@ article.mainbd {
 	border: 1px solid rgb(219, 109, 76); border-image: none;
 }
 .footer {
-	padding: 40px 30px; text-align: center; color: rgb(153, 153, 153); line-height: 12px; clear: both; font-size: 12px; margin-top: 40px; border-top-color: rgb(234, 234, 234); border-top-width: 1px; border-top-style: solid; position: relative; z-index: 9; background-color: rgb(255, 255, 255);
+	padding: 40px 5% 10px 5%; text-align: center; color: rgb(153, 153, 153); line-height: 12px; clear: both; font-size: 12px; margin-top: 40px; border-top-color: rgb(234, 234, 234); border-top-width: 1px; border-top-style: solid; position: relative; z-index: 9; background-color: rgb(255, 255, 255);
 }
-.footer a {
-	color: rgb(153, 153, 153);
-}
-.footer a:hover {
-	color: rgb(102, 102, 102);
-}
-.footer-menu {
-	margin: 0px -2% 30px 0px; text-align: left; overflow: hidden; padding-bottom: 30px; border-bottom-color: rgb(73, 73, 73); border-bottom-width: 1px; border-bottom-style: solid;
-}
-.footer-menu dl {
-	margin: 0px 2% 0px 0px; width: 14.66%; vertical-align: top; display: inline-block;
-}
-.footer-menu dt {
-	height: 25px; overflow: hidden; font-size: 18px; font-weight: normal; margin-bottom: 10px; white-space: nowrap; -ms-text-overflow: ellipsis;
-}
-.footer-menu dd a {
-	margin: 5px 0px; padding: 0px 5px 0px 24px; line-height: 20px; display: block;
-}
-.footer-menu .fa-weibo {
-	width: 12px; text-align: center;
-}
-.footer-menu .fa-tencent-weibo {
-	width: 12px; text-align: center;
-}
-.footer-menu .fa-envelope-o {
-	width: 12px; text-align: center;
-}
-.footer-menu .fa-rss {
-	width: 12px; text-align: center;
-}
+.brand{top: -16px;}
+.footer{text-align: left;}
+.footer_inner {height:120px;font-family:Arial;color:#CCC;}
+.footer_inner p{line-height:26px;margin:0 auto;}
+.footer_inner p a{margin:0 8px;color:#000;}
+.footer_inner p span{padding:0 8px;display:inline-block;color:#000;}
+.footer_inner p .email{background:url(images/icon_email.gif) 0 7px no-repeat;color:#000; padding-left:18px;display:inline-block;}
+.footer_logo{float: left;width: 32%;padding-top: 40px;padding-left: 5%}
+.footer_right{float: left;width: 50%}
+.footer_inner li{float: left;margin: 0px 10px;}
 .markdown-body .article-header {
 	text-align: center; padding-bottom: 20px; margin-bottom: 20px; border-bottom-color: rgb(238, 238, 238); border-bottom-width: 1px; border-bottom-style: solid;
 }

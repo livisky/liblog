@@ -21,3 +21,5 @@ article.mainbd{width: 100%;}
 .mainbd .left{display: none}
 .right.markdown-body{width: 100%;max-width: 100%;margin-left: 0px;line-height: 30px;}
 .navto-search{display: none}
+.footer_logo{display: none;}
+.footer_right{width: 100%;}
