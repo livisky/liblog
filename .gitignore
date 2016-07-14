@@ -1,0 +1,6 @@
+app
+node_modules
+runtime
+npm-debug.log
+src/common/config/db.js
+pm2.json
