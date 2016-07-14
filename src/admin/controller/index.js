@@ -10,6 +10,8 @@ export default class extends Base {
   async indexAction(){
         this.assign("title","后台管理");
         let uinfo=await this.session('userInfo');
+        let userInfo=await this.model('user').join({manage_role:{on:"role,id"}}).where({name:uinfo.name}).find();
+        this.assign("roleName",userInfo.rolename);
         this.assign("loginName",uinfo.name);
         return this.display();
   }
