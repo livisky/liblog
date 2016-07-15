@@ -15,11 +15,11 @@ export default class extends think.controller.base {
         this.assign('tagList',tagList);
 
         //获取图文推荐列表
-        let picrecomList=await this.model("article").where({topicrecom:1,ispublished:1}).limit(5).select();
+        let picrecomList=await this.model("article").where({topicrecom:1,ispublished:1}).order("createtime DESC").limit(5).select();
         this.assign("picrecomList",picrecomList);
 
         //获取站长推荐列表
-        let torecomList=await this.model("article").where({torecom:1,ispublished:1}).limit(5).select();
+        let torecomList=await this.model("article").where({torecom:1,ispublished:1}).order("createtime DESC").limit(5).select();
         this.assign("torecomList",torecomList);
 
         //获取点击排行列表
