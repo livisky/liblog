@@ -72,7 +72,7 @@
                         </td>
                         <td><%=item.itemname%></td>
                         <td><%=item.tagname%></td>
-                        <td><%=liFormatDate(think.datetime(item.cteatetime))%></td>
+                        <td><%=think.datetime(item.createtime,"YYYY-MM-DD")%></td>
                         <td><%=item.view%></td>
                         <td class="td-status">
                             <% if(item.ispublished===1){%>

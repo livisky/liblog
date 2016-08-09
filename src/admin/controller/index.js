@@ -10,7 +10,7 @@ export default class extends Base {
   async indexAction(){
         this.assign("title","后台管理");
         let uinfo=await this.session('userInfo');
-        let userInfo=await this.model('user').join({manage_role:{on:"role,id"}}).where({name:uinfo.name}).find();
+        let userInfo=await this.model('admin').getUserJoinRecord({manage_role:{on:"role,id"}},{name:uinfo.name});
         this.assign("roleName",userInfo.rolename);
         this.assign("loginName",uinfo.name);
         return this.display();
@@ -27,7 +27,7 @@ export default class extends Base {
 
         //生成xml
         let data={};
-        let sysdata=await this.model('system').where({id:1}).find();
+        let sysdata=await this.model('admin').findOne('system');
         //获取分类页list
         let list = await this.model("item").select();
         //获取文章列表article

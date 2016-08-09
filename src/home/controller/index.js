@@ -8,28 +8,32 @@ export default class extends Base {
    * @return {Promise} []
    */
   async indexAction(){
-      
-      let topList=await this.model("article").where({totop:1,ispublished:1}).limit(5).order("createtime DESC").select();
-          this.assign('topList',topList);
 
-      let actList=await this.model("article").where({item:6,ispublished:1}).limit(5).order("createtime DESC").select();
-      let now=new Date().getTime();
+      //获取置顶文章
+      let topList=await this.model("home").getArticleList({totop:1,ispublished:1});
+      this.assign('topList',topList);
 
-      let setting=await this.model('system_comment').where({id:1}).find();
+      //获取近期活动
+      let actList=await this.model("home").getArticleList({item:6,ispublished:1});
+      this.assign('actList',actList);
+
+      //获取后台畅言评论设置
+      let setting=await this.model('home').findOne('system_comment');
       this.assign("setting",setting);
 
-      this.assign('actList',actList);
       return this.display();
   }
   async pageAction(){
       let aid= await this.get("aid");
-      let blogInfo=await this.model("article").where({id:aid}).find();
+      let blogInfo=await this.model("home").findOne('article');
       if(blogInfo.ispublished===1){
           // 设置浏览量加1
-          let viewcount=await this.model("article").where({id:aid}).increment('view',1);
+          let viewcount=await this.model("home").addViewCount({id:aid});
+
           //获取标签名
-          let tagItem=await this.model("tags").field("tagname").where({id:blogInfo.tag}).find();
+          let tagItem=await this.model("home").findOne("tags",{id:blogInfo.tag});
           this.assign('blogInfo',blogInfo);
+
           //设置文章分页
           let html=blogInfo.content;
           let strArray=[],particle='',ainfo='';
@@ -46,8 +50,8 @@ export default class extends Base {
                   }
               }
           }
-          //关联文章
-          let relatearticle=await this.model("article").where({tag:blogInfo.tag,ispublished:1}).limit(6).select();
+          //您可能感兴趣文章
+          let relatearticle=await this.model("home").getArticleList({tag:blogInfo.tag,ispublished:1})
           this.assign("relatearticle",relatearticle);
 
           //跳转到内容分页
@@ -62,7 +66,6 @@ export default class extends Base {
           this.assign('pid',pid);
           this.assign('tagname',tagname);
 
-
           //获取评论{belongid: {'=': 0},
           //let commentList= await this.model('comment').where({belongid: {'=': 0},aid:aid}).select();
           //let replyList= await this.model('comment').where({belongid: {'>': 0},aid:aid}).select();
@@ -74,19 +77,20 @@ export default class extends Base {
           //this.assign("replyList",replyList);
           //this.assign("count",count);
 
-          //设置畅言appid及appkey
-          let setting=await this.model('system_comment').where({id:1}).find();
+          //获取后台畅言评论设置
+          let setting=await this.model('home').findOne('system_comment');
           this.assign("setting",setting);
 
           return this.display();
-      }else{
-          return this.display("common/error/404");
-      }
+        }else{
+            return this.display("common/error/404");
+        }
     }
     //顶
     async postdigAction(){
         let id=this.post("id");
-        let rs=this.model("comment").where({id:id}).update({dig:1});
+        let newData={dig:1};
+        let rs=await this.model("home").updateRecord("comment",{id:id},newData);
         if(rs){
             return this.success();
         }
@@ -94,16 +98,18 @@ export default class extends Base {
     //举报
     async postreportAction(){
         let id=this.post("id");
-        let rs=this.model("comment").where({id:id}).update({tipoff:1});
+        let newData={tipoff:1};
+        let rs=await this.model("home").updateRecord("comment",{id:id},newData);
         if(rs){
             return this.success();
         }
     }
+    //提交接口
     async postcommentAction(){
         let mycreatetime=think.datetime(this.post("createtime"));
         let data = this.post();
         data.createtime=mycreatetime;
-        let rs=this.model("comment").add(data);
+        let rs=await this.model("home").addRecord("comment",data);
         if(rs){
             //操作成功
             return this.success();
@@ -111,11 +117,12 @@ export default class extends Base {
     }
     async previewAction(){
         let aid= await this.get("aid");
-        let blogInfo=await this.model("article").where({id:aid}).find();
+        let blogInfo=await this.model("home").findOne("article",{id:aid});
         // 设置浏览量加1
-        let viewcount=await this.model("article").where({id:aid}).increment('view',1);
+        let viewcount=await this.model("home").addViewCount({id:aid});
+
         //获取标签名
-        let tagItem=await this.model("tags").field("tagname").where({id:blogInfo.tag}).find();
+        let tagItem=await this.model("home").findOne("tags",{id:blogInfo.tag});
         this.assign('blogInfo',blogInfo);
         //设置文章分页
         let html=blogInfo.content;
@@ -176,8 +183,8 @@ export default class extends Base {
         let pagenumber=this.get("page")||1;
         let pagesize=this.get("pagesize")||10;
         //分页
-        var itemList=await this.model("article").where({item:itemId,ispublished:1}).order("createtime DESC").page(pagenumber, pagesize).select();
-        var result = await this.model("article").where({item:itemId,ispublished:1}).order("createtime DESC").page(pagenumber,pagesize).countSelect();
+        let itemList=await this.model("home").getPageSelect({item:itemId,ispublished:1},pagenumber,pagesize);
+        let result = await this.model("home").getPageCountSelect({item:itemId,ispublished:1},pagenumber,pagesize);
         var Page=think.adapter("template", "page");
         var page = new Page(this.http);
         var pageData=page.pagination(result);
@@ -187,7 +194,7 @@ export default class extends Base {
         this.assign('menu',menu);
         //分页
 
-        let item=await this.model("item").where({id:itemId}).find();
+        let item=await this.model("home").findOne("item",{id:itemId});
         this.assign('categoryName',item.itemname);
         this.assign('more',0);
         return this.display('item');
@@ -196,8 +203,8 @@ export default class extends Base {
         let pagenumber=this.get("page")||1;
         let pagesize=this.get("pagesize")||10;
         //分页
-        let itemList=await this.model("article").where({ispublished:1}).order("createtime DESC").page(pagenumber, pagesize).select();
-        let result = await this.model("article").where({ispublished:1}).order("createtime DESC").page(pagenumber, pagesize).countSelect();
+        let itemList=await this.model("home").getPageSelect({ispublished:1},pagenumber,pagesize);
+        let result = await this.model("home").getPageCountSelect({ispublished:1},pagenumber,pagesize);
         let Page=think.adapter("template", "page");
         let page = new Page(this.http);
         let pageData=page.pagination(result);
@@ -215,15 +222,15 @@ export default class extends Base {
         let pagesize=this.get("pagesize")||10;
         let itemId=await this.get("id");
 
-        var itemList=await this.model("article").where({tag:itemId,ispublished:1}).order("createtime DESC").page(pagenumber, pagesize).select();
-        var result = await this.model("article").where({tag:itemId,ispublished:1}).order("createtime DESC").page(pagenumber, pagesize).countSelect();
+        let itemList=await this.model("home").getPageSelect({tag:itemId,ispublished:1},pagenumber,pagesize);
+        let result = await this.model("home").getPageCountSelect({tag:itemId,ispublished:1},pagenumber,pagesize);
         var Page=think.adapter("template", "page");
         var page = new Page(this.http);
         var pageData=page.pagination(result);
         this.assign("itemList",itemList);
         this.assign('pageData',pageData);
         //分页
-        let category=await this.model("tags").where({id:itemId}).find();
+        let category=await this.model("home").findOne("tags",{id:itemId});
         this.assign('categoryName',category.tagname);
         this.assign('more',0);
         this.assign('menu','category/'+itemId);
@@ -236,12 +243,12 @@ export default class extends Base {
 
     async linkssaveAction(){
         let mydata =await this.post();
-        let rs=await this.model('links').add(mydata);
+        let rs=await this.model("home").addRecord("links",mydata);
         if(rs) return this.success();
     }
     async guestsaveAction(){
         let mydata =await this.post();
-        let rs=await this.model('guest').add(mydata);
+        let rs=await this.model("home").addRecord("guest",mydata);
         if(rs) return this.success();
     }
     async guestAction(){

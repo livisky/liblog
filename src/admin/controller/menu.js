@@ -58,7 +58,8 @@ export default class extends Base {
             db:init.mydb,
             arr:this.post('delarr[]')
           }
-          let rs=await this.model(info.db).where({id: ["IN", info.arr]}).delete();
+          let where={id: ["IN", info.arr]};
+          let rs=await this.model("admin").deleteRecord(info.db,where);
           if(rs) return this.success();
     }
 

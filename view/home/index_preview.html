@@ -28,7 +28,7 @@
                 <header class="article-header">
                     <h1 class="article-title"><%-blogInfo.title%></h1>
                     <div class="article-meta">
-                        <span><i class="glyphicon glyphicon-time"></i> 日期：<%=liFormatDate(think.datetime(blogInfo.cteatetime))%></span>
+                        <span><i class="glyphicon glyphicon-time"></i> 日期：<%=think.datetime(blogInfo.createtime,"YYYY-MM-DD")%></span>
                         <span>
                             <i class="glyphicon glyphicon-tags"></i>
                             栏目：<a href="/category/<%=blogInfo.tag%>.html" target="_blank"><%-tagname%></a>

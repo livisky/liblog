@@ -27,7 +27,7 @@
                     <ul>
                          <% torecomList.forEach(function(item,i){%>
                                 <li><a href="/page/<%=item.id%>.html" target="_blank" title="<%=item.title%>"><%=((item.title).length>17)?(item.title).substr(0,17)+"...":item.title%></a></li>
-                         <%})%>                            
+                         <%})%>
                    </ul>
               </div>
 		  </div>
@@ -37,7 +37,7 @@
 		  <ul>
               <% tagList.forEach(function(item,i){%>
                     <li><a href="/category/<%=item.id%>.html" target="_blank"><%=item.tagname%></a></li>
-              <%})%>               
+              <%})%>
 		  </ul>
 	   </div>
 	   <div class="tuwen">
@@ -47,10 +47,10 @@
                 <li><a href="/page/<%=item.id%>.html" ><img src="<%=_web.url%><%=(item.picurl==='')?'static/common/images/common/default.jpg':item.picurl%>" title="<%=item.title%>"><b title="<%=item.title%>"><%=((item.title).length>17)?(item.title).substr(0,15)+"...":item.title%></b></a>
                     <p>
                         <span class="tulanum"><a href="javascript:void(0);"><%=item.author%></a></span>
-                        <span class="tutime"><%=liFormatDate(think.datetime(item.cteatetime))%></span>
+                        <span class="tutime"><%=think.datetime(item.createtime,"YYYY-MM-DD")%></span>
                     </p>
                 </li>
-            <%})%>    
+            <%})%>
 		 </ul>
 	   </div>
 	   <div class="links">

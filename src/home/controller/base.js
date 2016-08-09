@@ -11,32 +11,32 @@ export default class extends think.controller.base {
         this.assign("csrf",csrf);
 
         //获取tags
-        let tagList=await this.model("tags").where({appear:1}).select();
+        let tagList=await this.model("home").findAll('tags',{appear:1});
         this.assign('tagList',tagList);
 
         //获取图文推荐列表
-        let picrecomList=await this.model("article").where({topicrecom:1,ispublished:1}).order("createtime DESC").limit(5).select();
+        let picrecomList=await this.model("home").getArticleList({topicrecom:1,ispublished:1});
         this.assign("picrecomList",picrecomList);
 
         //获取站长推荐列表
-        let torecomList=await this.model("article").where({torecom:1,ispublished:1}).order("createtime DESC").limit(5).select();
+        let torecomList=await this.model("home").getArticleList({torecom:1,ispublished:1});
         this.assign("torecomList",torecomList);
 
         //获取点击排行列表
-        let popularList=await this.model("article").where({ispublished:1}).order("view DESC").limit(5).select();
+        let popularList=await this.model("home").getPopularList({ispublished:1});
         this.assign("popularList",popularList);
 
          //获取最新文章列表
-        let newestList=await this.model("article").where({ispublished:1}).order("createtime DESC").limit(5).select();
+        let newestList=await this.model("home").getArticleList({ispublished:1})
         this.assign("newestList",newestList);
 
         //获取导航链接
-        let navList=await this.model('menu').select();
+        let navList=await this.model("home").findAll('menu');
         this.assign("navList",navList);
 
     }
     async getConfig() {
-        let sysdata=await this.model('system').where({id:1}).find();
+        let sysdata=await this.model("home").findOne('system');
         this.assign('_web',sysdata);
     }
 }

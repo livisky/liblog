@@ -4,3 +4,4 @@ runtime
 npm-debug.log
 src/common/config/db.js
 pm2.json
+.idea/

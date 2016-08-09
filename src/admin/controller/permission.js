@@ -14,10 +14,9 @@ export default class extends Base {
    */
        async getIndex(info){
 
-              let itemList = await this.model(info.db).field("*,li_manage_permission.id as pid").join({
-                   manage_tag: {on: "tag, id"}
-               }).page(info.page,info.pagesize).select();
+              let itemList = await this.model('admin').getRoleJoinRecord({manage_tag: {on: "tag, id"}},info.page,info.pagesize);
               let result = await this.model(info.db).page(info.page,info.pagesize).countSelect();
+              //分页thinkjs分页数据
               let Page=think.adapter("template", "page");
               let page = new Page();
               let pageData=page.pagination(result,info.page);
@@ -74,7 +73,8 @@ export default class extends Base {
             db:init.mydb,
             arr:this.post('delarr[]')
           }
-          let rs=await this.model(info.db).where({id: ["IN", info.arr]}).delete();
+          let where={id: ["IN", info.arr]};
+          let rs=await this.model("admin").deleteRecord(info.db,where);
           if(rs) return this.success();
     }
 

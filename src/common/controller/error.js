@@ -40,21 +40,21 @@ export default class extends think.controller.base {
     });
   }
   /**
-   * Bad Request 
+   * Bad Request
    * @return {Promise} []
    */
   _400Action(){
     return this.displayError(400);
   }
   /**
-   * Forbidden 
+   * Forbidden
    * @return {Promise} []
    */
   _403Action(){
     return this.displayError(403);
   }
   /**
-   * Not Found 
+   * Not Found
    * @return {Promise}      []
    */
   _404Action(){

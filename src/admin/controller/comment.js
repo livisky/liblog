@@ -29,13 +29,14 @@ export default class extends Base {
           db:init.mydb,
           arr:this.post('delarr[]')
         }
-        let rs=await this.model(info.db).where({id: ["IN", info.arr]}).delete();
+        let where={id: ["IN", info.arr]};
+        let rs=await this.model("admin").deleteRecord(info.db,where);
         if(rs) return this.success();
   }
   //举报列表
   async tiplistAction(){
 
-    let tiplist=await this.model('comment').where({tipoff:1}).select();
+    let tiplist=await this.model('admin').findAll('comment',{tipoff:1});
     this.assign('tiplist',tiplist);
     this.assign('title','评论举报列表')
     return this.display();

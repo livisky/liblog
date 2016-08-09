@@ -19,9 +19,7 @@ export default class extends Base {
             page:this.get("page")||1,
             pagesize:this.get("pagesize")||10
           }
-          let itemList = await this.model(info.db).field("*,li_user.id as uid").join({
-               manage_role: {on: "role, id"}
-           }).page(info.page,info.pagesize).select();
+          let itemList = await this.model('admin').getUserListJoinRecord({},info.page,info.pagesize);
           let result = await this.model(info.db).page(info.page,info.pagesize).countSelect();
           let Page=think.adapter("template", "page");
           let page = new Page();
@@ -39,9 +37,7 @@ export default class extends Base {
           pagesize:this.get("pagesize")||10
         }
         let map={'li_user.role':{'>':0}};
-        let itemList = await this.model(info.db).field("*,li_user.id as uid").join({
-             manage_role: {on: "role, id"}
-         }).where(map).page(info.page,info.pagesize).select();
+        let itemList = await this.model('admin').getUserListJoinRecord(map,info.page,info.pagesize);
         let result = await this.model(info.db).page(info.page,info.pagesize).where(map).countSelect();
         let Page=think.adapter("template", "page");
         let page = new Page();
@@ -61,7 +57,7 @@ export default class extends Base {
              id:this.get('id')
            }
            let mydata=await this.model('util').getItem(info);
-           let roleList=await this.model('manage_role').select();
+           let roleList=await this.model('admin').findAll('manage_role');
            this.assign("roleList",roleList);
            this.assign("title",mydata.title);
            this.assign('item',mydata.item);
@@ -88,7 +84,8 @@ export default class extends Base {
             db:init.mydb,
             arr:this.post('delarr[]')
           }
-          let rs=await this.model(info.db).where({id: ["IN", info.arr]}).delete();
+          let where={id: ["IN", info.arr]};
+          let rs=await this.model("admin").deleteRecord(info.db,where);
           if(rs) return this.success();
     }
 

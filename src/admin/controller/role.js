@@ -58,18 +58,19 @@ export default class extends Base {
             db:init.mydb,
             arr:this.post('delarr[]')
           }
-          let rs=await this.model(info.db).where({id: ["IN", info.arr]}).delete();
+          let where={id: ["IN", info.arr]};
+          let rs=await this.model("admin").deleteRecord(info.db,where);
           if(rs) return this.success();
     }
     //权限列表
     async perlistAction(){
 
-      let tagList=await this.model('manage_tag').select();
-      let rolePermissions=await this.model('manage_role').where({id:this.get('id')}).find();
+      let tagList=await this.model('admin').findAll('manage_tag');
+      let rolePermissions=await this.model('admin').findOne('manage_role',{id:this.get('id')});
       let arr=[];
       for(var i in tagList){
         let ilist={},obj={};
-        ilist=await this.model('manage_permission').where({tag:tagList[i].id}).select();
+        ilist=await this.model('admin').findAll('manage_permission',{tag:tagList[i].id});
         let prr=[],pbj={};
         //循环权限
         for(var j in ilist){
@@ -109,7 +110,7 @@ export default class extends Base {
            let newdata=await this.post();
            console.log(newdata);
            if(!think.isEmpty(this.post('id'))){
-               let rs=await this.model('manage_role').where({id:this.post('id')}).update(newdata);
+               let rs=await this.model('admin').updateRecord('manage_role',{id:this.post('id')},newdata);
                if(rs) return this.success();
            }
     }

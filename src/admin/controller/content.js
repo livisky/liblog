@@ -15,34 +15,26 @@ export default class extends Base
         let articlelist ={},result={},list={};
         let selval=this.get('type');
         let searchtxt=this.get('search');
+        let pagenumber=this.get('page')|1;
+        let pagesize=this.get('pagesize')|1;
         // 设置分页
         if(selval){
             //文章筛选
             let map={};
             map[this.get('type')]=1;
-            articlelist = await this.model("article").field("*,li_article.id as aid").join({
-                tags: {on: "tag, id"},
-                item: {on: ["item", "id"]},
-            }).where(map).page(this.get("page"), this.get("pagesize")).order("createtime DESC").select();
-            result = await this.model("article").where(map).page(this.get('page'), this.get('pagesize')).order("createtime DESC").countSelect();
+            articlelist = await this.model("admin").getArticleJoinRecord(map,pagenumber,pagesize);
+            result = await this.model("admin").getPageCountSelect(map,pagenumber,pagesize);
             this.assign("type", selval);
         }else if(searchtxt){
             //文章搜索
             let map={title: ["like", "%"+searchtxt+"%"],['li_article.id']:["like", "%"+searchtxt*1+"%"],_logic: "OR"};
-
-            articlelist = await this.model("article").field("*,li_article.id as aid").join({
-                tags: {on: "tag, id"},
-                item: {on: ["item", "id"]},
-            }).where(map).page(this.get("page"), this.get("pagesize")).order("createtime DESC").select();
-            result = await this.model("article").where(map).page(this.get('page'), this.get('pagesize')).order("createtime DESC").countSelect();
+            articlelist = await this.model("admin").getArticleJoinRecord(map,pagenumber,pagesize);
+            result = await this.model("admin").getPageCountSelect(map,pagenumber,pagesize);
             this.assign("type", '');
         }else{
             let map={};
-            articlelist = await this.model("article").field("*,li_article.id as aid").join({
-                tags: {on: "tag, id"},
-                item: {on: ["item", "id"]},
-            }).where(map).page(this.get("page"), this.get("pagesize")).order("createtime DESC").select();
-            result = await this.model("article").page(this.get('page'), this.get('pagesize')).order("createtime DESC").countSelect();
+            articlelist = await this.model("admin").getArticleJoinRecord(map,pagenumber,pagesize);
+            result = await this.model("admin").getPageCountSelect(map,pagenumber,pagesize);
             this.assign("type", '');
         }
         let Page = think.adapter("template", "page");
@@ -52,21 +44,26 @@ export default class extends Base
         this.assign('pageData', pageData);
 
         // 设置分页
-        let pagesize = await this.config("pagesize");
+        let pageSize = await this.config("pagesize");
         if (!this.get("page")) {
-            return this.redirect("/admin/content/index?page=1&pagesize=" + pagesize);
+            return this.redirect("/admin/content/index?page=1&pagesize=" + pageSize);
         }
         this.assign("title", "文章管理");
         this.assign("pagecount",this.get("page"));
-        this.assign("pagesize",pagesize);
+        this.assign("pagesize",pageSize);
         this.assign('isdraft', false);
         return this.display();
     }
 
     async draftlistAction(){
         // 设置分页
-        let articlelist = await this.model("article").field("*,li_article.id as aid").join("li_tags ON li_article.tag=li_tags.id").where({ispublished:0}).page(this.get("page"), this.get("pagesize")).order("createtime DESC").select();
-        let result = await this.model("article").where({ispublished:0}).page(this.get('page'), this.get('pagesize')).order("createtime DESC").countSelect();
+        let map={ispublished:0};
+        let pagenumber=this.get('page')|1;
+        let pagesize=this.get('pagesize')|1;
+        let articlelist = await this.model("admin").getDraftJoinRecord({
+            tags: {on: "tag, id"}
+        },map,pagenumber,pagesize);
+        let result = await this.model("admin").getPageCountSelect(map,pagenumber,pagesize);
         let Page = think.adapter("template", "page");
         let page = new Page(this.http);
         let pageData = page.pagination(result);
@@ -75,27 +72,27 @@ export default class extends Base
         this.assign('isdraft', true);
 
         // 设置分页
-        let pagesize = await this.config("pagesize");
+        let pageSize = await this.config("pagesize");
         if (!this.get("page")) {
-            return this.redirect("/admin/content/draftlist?page=1&pagesize=" + pagesize);
+            return this.redirect("/admin/content/draftlist?page=1&pagesize=" + pageSize);
         }
         this.assign("title", "草稿箱列表");
         this.assign("pagecount",this.get("page"));
-        this.assign("pagesize",pagesize);
+        this.assign("pagesize",pageSize);
         return this.display('index');
     }
     //文章编辑/新增
     async articleAction()
     {
         //获取分类
-        let tagsList=await this.model("tags").select();
+        let tagsList=await this.model("admin").findAll("tags");
         this.assign("tagsList",tagsList);
         //获取类型
-        let itemList=await this.model("item").select();
+        let itemList=await this.model("admin").findAll("item");
         this.assign("itemList",itemList);
         //编辑或者新增
         if (this.get('id')) {
-            let article = await this.model('article').where({id:this.get('id')}).find();
+            let article = await this.model('admin').findOne('article',{id:this.get('id')});
             let picurl=(article.picurl==='')?'/static/common/images/common/default.jpg':article.picurl;
             let tag_selected_id=article.tag;
             let item_selected_id=article.item;
@@ -132,10 +129,10 @@ export default class extends Base
     async addmarkdownAction()
     {
         //获取分类
-        let tagsList=await this.model("tags").select();
+        let tagsList=await this.model("admin").findAll("tags");
         this.assign("tagsList",tagsList);
         //获取类型
-        let itemList=await this.model("item").select();
+        let itemList=await this.model("admin").findAll("item");
         this.assign("itemList",itemList);
         //新增
         this.assign("title", "markdown文章添加");
@@ -157,10 +154,10 @@ export default class extends Base
         let data=await this.post();
         data.createtime=mycreatetime;
         if(!think.isEmpty(this.post("id"))){
-            let rs=await this.model("article").update(data);
+            let rs=await this.model("admin").updateRecord("article",{},data);
             if(rs) return this.success();
         }else{
-            let articleinfo=await this.model("article").add(data);
+            let articleinfo=await this.model("admin").addRecord("article",data);
             return this.success({id:articleinfo});
         }
     }
@@ -169,7 +166,7 @@ export default class extends Base
     {   //草稿箱发布接口
         let pid=await this.post("id");
         if(!think.isEmpty(pid)){
-           let rs = await this.model("article").where({id:pid}).update({ispublished:1});
+           let rs=await this.model("admin").updateRecord("article",{id:pid},{ispublished:1});
             if(rs){
                 return this.success();
             }
@@ -178,7 +175,8 @@ export default class extends Base
     //删除或批量删除接口
     async delsomeAction(){
         let arr=await this.post('delarr[]');
-        let rs=this.model("article").where({id: ["IN", arr]}).delete();
+        let where={id: ["IN", arr]};
+        let rs=await this.model("admin").deleteRecord("article",where);
         if(rs){
             //操作成功
             return this.success();
@@ -228,9 +226,8 @@ export default class extends Base
         });
 
         let file = think.extend({}, this.file('file'));
-        console.log(file.path);
-        var data = await getContent(file.path);
-        var html = await marked(data);
+        let data = await getContent(file.path);
+        let html = await marked(data);
 
         function encodeHTMLContent(str) {
             return str.replace(/&quot;/g, '"').replace(/&lt;!--/g,"<!--").replace(/--&gt;/g,"-->");

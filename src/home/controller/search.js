@@ -15,9 +15,12 @@ export default class extends Base {
       let pagenumber=this.get("page")||1;
       let pagesize=this.get("pagesize")||10;
       let itemId=await this.get("id");
-      //
-      var itemList=await this.model("article").where(map).order("createtime DESC").page(pagenumber, pagesize).select();
-      var result = await this.model("article").where(map).order("createtime DESC").page(pagenumber, pagesize).countSelect();
+
+      //分页
+      let itemList=await this.model("home").getPageSelect(map,pagenumber,pagesize);
+      let result = await this.model("home").getPageCountSelect(map,pagenumber,pagesize);
+
+
       var Page=think.adapter("template", "page");
       var page = new Page(this.http);
       var pageData=page.pagination(result);

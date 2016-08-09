@@ -39,7 +39,7 @@
                     <span class="lm f_l">
                         <a href="javascript:void(0);"><%=item.author%></a>
                         </span>
-                        <span class="dtime f_l"><%=liFormatDate(think.datetime(item.cteatetime))%></span>
+                        <span class="dtime f_l"><%=think.datetime(item.createtime,"YYYY-MM-DD")%></span>
                     </div>
                     <div class="author second">
                         <span class="viewnum f_r">
@@ -50,7 +50,7 @@
                     </div>
 			   </ul>
 	       </div>
-         <%})%>  
+         <%})%>
 	   </div>
 		<% if(pageData.count>10){ %>
 			<%include inc/pagination.html%>

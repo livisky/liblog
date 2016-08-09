@@ -17,11 +17,10 @@ export default class extends think.controller.base {
 
         //判断权限
         let myurl=this.http.module+"/"+this.http.controller+"/"+this.http.action;
-        console.log(myurl)
         let uinfo=await this.session('userInfo');
         let username=uinfo.name;
-        let userData=await this.model('user').where({name:username}).find();
-        let roleData=await this.model('manage_role').where({id:userData.role}).find();
+        let userData=await this.model('admin').findOne('user',{name:username});
+        let roleData=await this.model('admin').findOne('manage_role',{id:userData.role});
         let permissions=(roleData.permission).split(",");
         //没有权限
         if(permissions.indexOf(myurl)<0){
@@ -32,14 +31,14 @@ export default class extends think.controller.base {
           }
         }
         //判断权限
-
+        
         // csrf 防止模拟提交
         let csrf=await this.session("__CSRF__");
         this.assign("csrf",csrf);
 
     }
     async getConfig() {
-        let sysdata=await this.model('system').where({id:1}).find();
+        let sysdata=await this.model('admin').findOne('system');
         this.assign('_web',sysdata);
     }
 }
