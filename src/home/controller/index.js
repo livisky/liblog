@@ -25,7 +25,7 @@ export default class extends Base {
   }
   async pageAction(){
       let aid= await this.get("aid");
-      let blogInfo=await this.model("home").findOne('article');
+      let blogInfo=await this.model("home").findOne('article',{id:aid});
       if(blogInfo.ispublished===1){
           // 设置浏览量加1
           let viewcount=await this.model("home").addViewCount({id:aid});
@@ -65,17 +65,6 @@ export default class extends Base {
           this.assign('particle',particleVal);
           this.assign('pid',pid);
           this.assign('tagname',tagname);
-
-          //获取评论{belongid: {'=': 0},
-          //let commentList= await this.model('comment').where({belongid: {'=': 0},aid:aid}).select();
-          //let replyList= await this.model('comment').where({belongid: {'>': 0},aid:aid}).select();
-          //let count= await this.model('comment').where({aid:aid}).count();
-          //if(commentList.length===0){
-          //    commentList=replyList;
-          //}
-          //this.assign("commentList",commentList);
-          //this.assign("replyList",replyList);
-          //this.assign("count",count);
 
           //获取后台畅言评论设置
           let setting=await this.model('home').findOne('system_comment');
