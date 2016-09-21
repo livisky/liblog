@@ -5,7 +5,6 @@
 
 ![image](https://raw.githubusercontent.com/livisky/liblog/master/liblog.png)
 
-![image](https://raw.githubusercontent.com/livisky/liblog/master/admin.png)
 
 ### 二.功能特点
 
