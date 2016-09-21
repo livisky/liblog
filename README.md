@@ -36,7 +36,9 @@
 3. 系统主题设置
 4. 小型社区(类似cnodejs.org)/发布主题/编辑主题/添加回复/编辑回复
 5. 改nodejs模版引擎ejs改为nunjucks,通过标签配置即可实现内容的读取如：
-{% article data = "topList",limit= "6",flag="totop"%}
+```javascript
+  {% article data = "topList",limit= "6",flag="totop"%}
+```
 详见：http://www.jsout.com/topic/item/33.html
 
 ### 五.感谢
