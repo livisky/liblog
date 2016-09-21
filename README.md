@@ -1,10 +1,11 @@
-﻿﻿### Liblog开源博客系统
+﻿### 一.简介
 
-### 一.简介
 Liblog是一个简单易用的Markdown博客系统，它是基于开源框架[thinkJS](http://www.thinkjs.org)(使用 ES6/7 特性开发 Node.js 框架)开发的nodejs项目
 需要mysql数据库支持，具有管理后台功能，更新博客分为普通文章和markdown文章，markdown文章只需要导入你写好的Markdown文件即可。它摆脱了在线编辑器排版困难，无法实时预览的缺点，一切都交给Markdown来完成，一篇博客就是一个Markdown文件。同时也支持评论，代码高亮，分类，标签云，留言板、友情链接、系统设置等常用功能。Liblog提供了不同的主题样式，你可以根据自己的喜好配置，如果你想自己制作博客主题，也是非常容易的。Liblog还支持整站静态网页生成，同时有发布相关的配置，使用nginx做反向代理，动静态资源分离，静态缓存等，使您发布后的博客访问秒开。
 
 ![image](https://raw.githubusercontent.com/livisky/liblog/master/liblog.png)
+
+![image](https://raw.githubusercontent.com/livisky/liblog/master/admin.png)
 
 ### 二.功能特点
 
@@ -18,10 +19,13 @@ Liblog是一个简单易用的Markdown博客系统，它是基于开源框架[th
 8. 登陆/注册/个人中心/个人设置
 9. 小型bbs，讨论社区
 10. 支持cms标签循环
+11. 完善的后台及权限控制
 
 ### 三.安装及其他介绍
 
 详见：http://www.jsout.com/page/423.html
+前台登陆：admin@jsout.com   123456
+后台登陆：admin 123456
 
 安装Liblog之前，请`star`并`fork`项目给作者以鼓励。
 如果你认可并支持Liblog，还可通过扫描二维码捐赠Liblog(http://www.jsout.com/donate.html）
