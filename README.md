@@ -23,9 +23,9 @@
 
 ### 三.安装及其他介绍
 
-详见：http://www.jsout.com/page/423.html
-前台登陆：admin@jsout.com   123456
-后台登陆：admin 123456
+>详见：http://www.jsout.com/page/423.html
+>前台登陆：admin@jsout.com   123456
+>后台登陆：admin 123456
 
 >安装Liblog之前，请`star`并`fork`项目给作者以鼓励。
 >如果你认可并支持Liblog，还可通过扫描二维码捐赠Liblog(http://www.jsout.com/donate.html）
@@ -44,6 +44,6 @@
 
 >Liblog的成长需要各位亲们支持！感谢你们使用Liblog，感激你们对Liblog的良好建议与Bug反馈。如果你的博客也是基于Liblog，请告知作者，无偿获取技术指导。
 
-Liblog QQ群：`256687601`  
-作者邮箱：`262248861@qq.com`    
-演示网站：http://www.jsout.com
+>Liblog QQ群：`256687601`  
+>作者邮箱：`262248861@qq.com`    
+>演示网站：http://www.jsout.com
