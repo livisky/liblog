@@ -9,12 +9,13 @@ var instance = new thinkjs({
   ROOT_PATH: rootPath,
   RESOURCE_PATH: __dirname,
   UPLOAD_PATH: __dirname + "/static/upload", // 定义文件上传的目录
+  THEME_PATH:__dirname+path.sep+"static"+path.sep+"theme",
   env: 'development'
 });
 
 //compile src/ to app/
 instance.compile({
-  retainLines: true, 
+  retainLines: true,
   log: true
 });
 

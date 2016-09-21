@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>访问受限</title>
-    <link rel="stylesheet" type="text/css" href="<%=_web.url%>static/admin/css/H-ui.min.css" />
-    <link rel="stylesheet" type="text/css" href="<%=_web.url%>static/admin/css/H-ui.admin.css" />
-    <link rel="stylesheet" type="text/css" href="<%=_web.url%>static/admin/lib/Hui-iconfont/1.0.7/iconfont.css" />
-    <script src="<%=_web.url%>static/src/js/widget/jquery/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="<%=_web.url%>static/admin/js/H-ui.js"></script>
-    <script type="text/javascript" src="<%=_web.url%>static/admin/js/H-ui.admin.js"></script>
+{% extends "../admin/inc/admin_base.html" %}
+{% block head %}
+    {{ super() }}
     <style>
         .breadcrumb{padding: 0 15px;}
         .alert-danger {
@@ -21,6 +13,7 @@
             margin-bottom: 20px;
             border: 1px solid transparent;
             border-radius: 4px;
+            text-align: center;
         }
         .main{
             width:96%;margin:0 auto;
@@ -31,17 +24,14 @@
             position: absolute;
         }
     </style>
-</head>
+{% endblock %}
 
-<body>
-    <!-- Table -->
-    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> <a href="/admin/index/welcome">首页</a><span class="c-gray en">&gt;</span>访问受限<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+{% block content %}
     <div class="main">
         <div class="alert alert-danger" role="alert">
           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
           <span class="sr-only">Error:</span>
-              抱歉，您没有权限访问,请与系统管理员联系
+              抱歉，您没有权限访问,请与系统管理员联系!
         </div>
     </div>
-</body>
-</html>
+{% endblock %}

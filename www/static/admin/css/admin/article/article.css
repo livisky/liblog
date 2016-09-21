@@ -1,0 +1,8 @@
+#filepick a{padding: 55px 15px;}
+#filepick{text-align: center;vertical-align: middle; width: 140px; height: 130px}
+.webuploader-pick{padding: 50px 50px; background: #fff; }
+#uploader-demo{margin-top:20px;width: 142px; border: 1px dashed #ccc}
+.flag span{margin-right: 10px;}
+input[type=checkbox], input[type=radio]{margin:0px;}
+.row {margin-top: 15px;}
+.modal-backdrop{background-color: #fff;}

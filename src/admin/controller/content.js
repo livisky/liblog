@@ -193,7 +193,7 @@ export default class extends Base
         think.mkdir(uploadPath);
         let basename = path.basename(filepath);
         fs.renameSync(filepath, uploadPath + basename);
-        this.json({path: "/static/upload/pics/" + newpath + basename});
+        this.json({path: "static/upload/pics/" + newpath + basename});
     }
 
     //上传图片接口

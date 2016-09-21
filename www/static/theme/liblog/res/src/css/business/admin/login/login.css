@@ -1,0 +1,12 @@
+.login-regions{
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 12%;
+  margin-bottom: 15%;
+}
+.footer{
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  padding: 40px 0px 0px 0px;
+}

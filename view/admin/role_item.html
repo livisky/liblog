@@ -1,34 +1,33 @@
-<!DOCTYPE html>
-<html >
-    <%include inc/header.html%>
-<body>
-    <!-- Table -->
-    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> <a href="/admin/index/welcome">首页</a><span class="c-gray en">&gt;</span> <%=title%> <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
-    <article class="page-container">
-        <form class="form form-horizontal" id="form-article-add">
-            <input type="hidden" value="" id="aid"/>
-            <div class="row cl">
-                <input type="hidden" value="<%-item.id%>" id="tid"/>
-                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>角色(英文)：</label>
-                <div class="formControls col-xs-8 col-sm-9">
-                    <input type="text" class="input-text role" value="<%=item.role%>" placeholder="" id="" name="">
-                </div>
+{% extends "../admin/inc/admin_base.html" %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+    <form class="form form-horizontal" id="form-article-add">
+        <input type="hidden" value="" id="aid"/>
+        <div class="row cl">
+            <input type="hidden" value="{{item.id}}" id="tid"/>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>角色(英文)：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text role" value="{{item.role}}" placeholder="" id="" name="">
             </div>
-            <div class="row cl">
-                <input type="hidden" value="<%-item.id%>" id="tid"/>
-                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>角色名称：</label>
-                <div class="formControls col-xs-8 col-sm-9">
-                    <input type="text" class="input-text itemname" value="<%=item.rolename%>" placeholder="" id="" name="">
-                </div>
+        </div>
+        <div class="row cl">
+            <input type="hidden" value="{{item.id}}" id="tid"/>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>角色名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text itemname" value="{{item.rolename}}" placeholder="" id="" name="">
             </div>
-            <div class="row cl">
-                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                    <button class="btn btn-secondary radius" id="saveitem" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
-                    <button onClick="window.location.href='/admin/<%=action%>'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
-                </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <button class="btn btn-secondary radius" id="saveitem" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+                <button onClick="window.location.href='/admin/{{action}}'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
             </div>
-        </form>
-    </article>
-    <script type="text/javascript" src="<%=_web.url%>static/src/js/business/admin/<%=action%>.js"></script>
-</body>
-</html>
+        </div>
+    </form>
+{% endblock %}
+{% block footer_other %}
+    <script type="text/javascript" src="{{_web.url}}static/admin/js/admin/{{action}}.js"></script>
+{% endblock %}

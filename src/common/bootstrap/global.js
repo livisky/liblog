@@ -5,9 +5,9 @@
 
 /**
  * use global.xxx to define global functions
- * 
+ *
  * global.fn1 = function(){
- *     
+ *
  * }
  */
 'use strict';
@@ -18,6 +18,13 @@ global.liFormatDate = function(formatStr) {
     let newdate=formatStr.split(' ')[0].replace(/-/g, "/");
     return newdate;
 };
+
+global.totimestamp=function(stringTime){
+  // var stringTime = "2014-07-10 10:21:12";
+    var timestamp = Date.parse(new Date(stringTime));
+        timestamp = timestamp / 1000;
+        return timestamp
+}
 
 //去掉首尾空格
 global.trimStr = function (str) {
@@ -48,7 +55,7 @@ global.formatDate = function(formatStr, fdate) {
 		var minutes=(fTime.getMinutes()>9)?fTime.getMinutes():"0"+fTime.getMinutes();
 		var seconds=(fTime.getSeconds()>9)?fTime.getSeconds():"0"+fTime.getSeconds();
 		var formatArr = [
-			fTime.getFullYear().toString(), 
+			fTime.getFullYear().toString(),
 			month.toString(),
 			date.toString(),
 			hours.toString(),
@@ -103,7 +110,7 @@ global.removeTag = function(str) {
 		str = str.replace(/[ | ]*\n/g, '\n'); //去除行尾空白
 		//str = str.replace(/\n[\s| | ]*\r/g,'\n'); //去除多余空行
 		str = str.replace(/&nbsp;/ig, ''); //去掉&nbsp;
-		str = str.replace(/ /ig, ''); //去掉 
+		str = str.replace(/ /ig, ''); //去掉
 		return str;
 	}
 	//读取文件

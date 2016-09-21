@@ -1,0 +1,33 @@
+.agree a{text-decoration: none; color: #337ab7;line-height: 45px;}
+.glyphicon.notop{top:0px;}
+.right-main form{width: 70%; margin: 0 auto;}
+.register-item{margin: 15px 0px 15px 0px;}
+.input-group .form-control{width: 90%;}
+.alert-danger{width: 91%;}
+.isright{line-height: 34px;margin-left: 10px;color: green}
+.iswrong{line-height: 34px;margin-left: 10px;color: #a94442}
+.iserror{line-height: 34px;margin-left: 10px;color: red}
+.input-group-addon{font-size: 18px;}
+.code-left{float: left;width: 40%;}
+.code-left .code{margin: 0px 0px 10px 0px;}
+.code-right{float: left;width: 40%;margin: 0px 0px 10px 10px;}
+.code-right img{width: 56%;}
+.clear:after{display: block;content: "";height: 0;clear: both;visibility: hidden;}
+.clear{zoom:1}
+.markdown-body .article-title{text-align: center;padding-top: 10px;}
+.right-main{margin-top: 10px;width: 90%;margin: 0 auto;padding: 5% 12%;}
+.agree-region{margin-bottom: 10px;}
+.code-region{margin-bottom: 0px;}
+#register{width: 90%;}
+.help-block{height: 30px;line-height: 30px;}
+.help-block.alert{padding-top:0px;}
+.ipt-right{float: left;}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+#notice {
+  color: red;
+}

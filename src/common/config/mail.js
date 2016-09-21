@@ -3,7 +3,7 @@
  * config
  */
 export default {
-  // 发送邮件配置
+  //发送邮件配置
   // host:"smtp.qq.com",
   // port: 465,
   // domains:'["qq.com"]',

@@ -4,6 +4,20 @@
  */
 export default class extends think.model.base {
 
+    // 添加新用户
+    addUser(data){
+          return this.model('user').add(data);
+    }
+    //保存用户信息
+    saveUserInfo(data,where){
+          return this.model('user').where(where).update(data);
+    }
+
+    //查找用户
+    findUser(where){
+          return this.model('user').where(where).select();
+    }
+
     //返回全部列表
     findAll(db,where){
         return this.model(db).where(where).select();

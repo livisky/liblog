@@ -1,0 +1,61 @@
+<header class="head-region mini">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-2 logo-region">
+              <div class="logo">
+                  <a href="/" title="{{_web.sitename}}">
+                      <img src="{{_web.url}}{{theme_url}}/common/images/common/logo.jpg" alt="前端汇">
+                  </a>
+              </div>
+          </div>
+          <div class="col-md-8">
+            <ul class="site-nav site-navbar">
+               {% for item in navList %}
+                 <li class="item">
+                     <a href="{{ item.url }}">{{ item.menuname }}</a>
+                       {% if (item.menuname=="社区") %}
+                         <i class="newicon"></i>
+                       {% endif %}
+                 </li>
+               {%endfor%}
+
+            </ul>
+          </div>
+          <div class="col-md-2">
+            {% if islogin==1 %}
+              <ul class="nav navbar-nav navbar-right profile">
+
+                      <li id="userInfo" class="dropdown">
+                          <a href="/personal/@{{logininfo.name}}" class="dropdown-toggle">
+                              <img class="img-circle" src="{{_web.url}}{{theme_url}}/{{'common/images/pic/man.jpg' if logininfo.pic=='' else logininfo.pic}}" title="{{logininfo.name}}">
+                              <b class="caret"></b>
+                          </a>
+                          <ul id="userMenu" class="dropdown-menu" style="display: none;">
+                              <!-- <li>
+                                  <a href="/message">我的消息
+                                      <span class="fa fa-envelope pull-right"></span>
+                                  </a>
+                              </li>
+                              <li class="divider"></li> -->
+                              <li><a href="/personal/@{{logininfo.name}}">我的主页
+                                      <span class="glyphicon glyphicon-user pull-right"></span></a>
+                              </li>
+                              <li class="divider"></li>
+                              <li><a href="/personal/setting">账号设置
+                                      <span class="glyphicon glyphicon-cog pull-right"></span></a>
+                              </li>
+                              <li class="divider"></li>
+                              <li><a href="/index/dologout">安全退出
+                                      <span class="glyphicon glyphicon-log-out pull-right"></span></a>
+                              </li>
+                          </ul>
+                      </li>
+                  </ul>
+            {%endif%}
+          </div>
+        </div>
+      </div>
+</header>
+<style media="screen">
+  .header{padding: 18px 0px 0px}
+</style>

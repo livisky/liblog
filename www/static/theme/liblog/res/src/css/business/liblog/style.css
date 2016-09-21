@@ -1,0 +1,152 @@
+#sc_drag_area_protector div{
+  border-radius: 0px 0px;
+  margin:0;
+  /*max-width:100%;*/
+  min-width: 1px;
+
+}
+
+#sc_drag_area {
+  height:100px;
+  left:150px;
+  position: absolute;
+  top:100px;
+  width:250px;
+  z-index: 9999;
+}
+#sc_drag_container {
+  border: 1px solid #0000FF;
+  cursor: move ;
+  height: 100% ;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative ;
+  width: 100%;
+  z-index:9997;
+}
+#sc_drag_area_protector {
+  border-radius: 0px 0px;
+  display: block;
+  height:100%;
+  left:0;
+  top:0;
+  position: absolute;
+  width:100%;
+  z-index:8500;
+  margin: 0;
+  
+  min-width: 1px;
+  overflow: hidden;
+}
+#sc_drag_size {
+  background-color: rgba(44, 44, 44, 0.5);
+  color:#ffffff;
+  font-family: arial,san-serif;
+  font-weight:bold;
+  font-size:12px;
+  height:18px;
+  min-width:65px !important;
+  left:12px;
+  line-height:18px;
+  position:absolute;
+  padding-left:4px;
+  padding-right:4px;
+  text-align:center;
+  top: -18px;
+  z-index:9998;
+}
+#gtools_scp_drag_cancel, #gtools_scp_drag_crop {
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor:pointer;
+  color:#ffffff;
+  font-size:12px;
+  font-family: arial,san-serif;
+  font-weight:bold;
+  height:22px;
+  line-height:22px;
+  position:absolute ;
+  z-index:9998
+}
+#gtools_scp_drag_crop {
+  bottom:-25px;
+  text-align: center;
+  min-width: 30px !important;
+  padding: 0 10px;
+}
+#gtools_scp_drag_cancel {
+  bottom:-25px;
+  text-align: center;
+  min-width: 30px !important;
+  padding: 0 10px;
+}
+#sc_drag_shadow_top, #sc_drag_shadow_bottom, #sc_drag_shadow_left, #sc_drag_shadow_right {
+  background-color: #000000;
+  opacity: 0.5;
+  position: absolute;
+  z-index:7000;
+  border: 0;
+}
+#sc_drag_shadow_top {
+  left: 0;
+  top: 0;
+}
+#sc_drag_shadow_bottom {
+  bottom: 0;
+  right: 0;
+}
+#sc_drag_shadow_left {
+  bottom: 0;
+  left: 0;
+}
+#sc_drag_shadow_right {
+  right: 0;
+  top: 0;
+}
+#sc_drag_north_east, #sc_drag_north_west, #sc_drag_south_east, #sc_drag_south_west  {
+  border:1px solid #FFFFFF;
+  background-color: #0000FF;
+  height: 5px;
+  position: absolute;
+  width: 5px;
+  z-index:9998;
+}
+#sc_drag_north_east {
+  cursor: ne-resize ;
+  right: -4px ;
+  top: -3px;
+}
+#sc_drag_north_west {
+  cursor: nw-resize ;
+  left: -3px ;
+  top: -3px;
+}
+#sc_drag_south_east {
+  bottom: -4px;
+  cursor: se-resize ;
+  right: -4px ;
+}
+#sc_drag_south_west {
+  bottom: -4px;
+  cursor: sw-resize ;
+  left: -3px ;
+}
+
+.sc_tip_save_status {
+  position :fixed;
+  border-radius: 4px 4px;
+  height: 30px;
+  line-height: 30px;
+  text-indent: 1em;
+  width: 200px;
+  background: #fff1a8;
+  color: #000000;
+  top:5px;
+  left:45%;
+  font-size: 12px;
+}
+
+.sc_tip_save_status a{
+  text-decoration: underline;
+  color: #2A5DB0;
+}

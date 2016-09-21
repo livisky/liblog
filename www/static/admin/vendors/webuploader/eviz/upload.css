@@ -1,0 +1,23 @@
+.show-img-upload {
+    padding-bottom: 20px;
+}
+
+.show-img-upload .add-img-btn {
+    position: relative;
+    display: block;
+    width: 189px;
+    height: 140px;
+    background: url("add_img.png") no-repeat center;
+}
+
+.show-img-upload .add-img-btn input[type=file] {
+    width: 82px;
+    height: 82px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    z-index: 2;
+    cursor: pointer;
+}

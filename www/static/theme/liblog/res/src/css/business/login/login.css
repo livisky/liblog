@@ -1,0 +1,85 @@
+body{padding-top: 0px;}
+.input-group{width: 95%}
+.input-group.code{width: 100%}
+.code-left{float: left;width: 57%;}
+.code-left .code{margin: 0px 0px 10px 0px;}
+.code-right{float: left;width: 40%;margin: 10px 0px 10px 10px;}
+.code-right img{width: 70%;}
+.glyphicon.notop{top:0px;}
+.dologin{width: 83%;line-height: 30px;margin-top: 10px;}
+.row a.btn-dropbox{color: #fff;width: 196px;float: left;margin: 10px;}
+.footer{height: auto;}
+.row{margin: 0px;}
+.login-main{}
+#email{border-top-right-radius: 4px;border-bottom-right-radius: 4px;}
+#oAuth{padding-left: 28px;}
+.input-group .form-control{height: 34px;}
+.btn-social:hover{color: #fff;}
+#loginForm .alert-danger{margin-bottom: 15px;width: 360px;}
+#completeForm .alert-danger{width: 77.5%; margin-bottom: 0px;margin-top: 60px;margin-left: 15px;}
+#code{width: 72%}
+.isright{line-height: 32px;font-size: 16px;padding-left: 10px;color: green;}
+.iswrong{line-height: 46px;font-size: 16px;padding-left: 10px;color: #a94442;}
+.input-group .form-control{width: 75%;}
+.social-buttons a{margin: 8px 0px;display: block;width: 420px;}
+.social-buttons a:visited,.social-buttons a:link {
+    color:#fff;;
+    text-decoration: none;
+}
+.social-buttons .btn.focus, .social-buttons .btn:focus, .social-buttons .btn:hover{color: #fff;}
+#login{width: 100%;float: left;border: none;padding-right:0px;padding-top:0px}
+#login .well{min-height: 412px;}
+.login-main{padding-top: 120px;min-height: 650px;margin-top: -5px;}
+#oAuth{width: 100%;float: right;border-left: 1px solid #ddd;min-height: 412px;}
+.page-header{margin: 0px 0 20px;border-bottom: 1px solid #ddd;}
+#oAuth h3{margin-top: 8px;}
+.qqadd{margin-left: -8px;}
+#login .form-control{width: 296px;}
+#login #code{width: 140px;}
+#login .alert-danger{}
+.login-item{width: 360px;margin-left: 15px;}
+/*完善信息页面*/
+#completeForm {
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 20px;
+  border-right:none;
+  padding-right: 0px;
+}
+.dologin {
+  width: 78.5%;
+}
+
+
+#loginForm .alert-danger {
+  margin-bottom: 15px;
+  width: 360px;
+  line-height: 15px;
+  font-size: 13px;
+}
+.alert {
+border: 1px solid transparent;
+border-radius: 4px;
+}
+
+#loginForm .form-control {
+  width: 325px;
+}
+.code-region{margin-top: 16px;}
+#loginForm .register-item{
+  margin-bottom: 15px;
+}
+#loginForm .dologin {
+  width: 360px;
+  line-height: 30px;
+  margin-top: 0px;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+#notice {
+  color: red;
+}

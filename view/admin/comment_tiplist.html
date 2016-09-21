@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-<%include inc/header.html%>
-<body>
-<!-- Table -->
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> <a href="/admin/index/welcome">首页</a><span class="c-gray en">&gt;</span> 举报列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
-<div class="main" style="width:96%;margin:0 auto;">
+{% extends "../admin/inc/admin_base.html" %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
     <div class="cl pd-5 bg-1 bk-gray mt-20" style="margin-bottom: 15px;">
         <span class="l">
             <a href="javascript:;" onclick="delsome()" class="btn btn-danger radius">
@@ -28,27 +27,27 @@
             </tr>
             </thead>
             <tbody>
-            <% tiplist.forEach(function(item,i){%>
+            {% for item in tiplist %}
             <tr class="text-c odd" role="row">
-                <td><input type="checkbox" value="<%=item.id%>" name=""></td>
-                <td><%=item.id%></td>
-                <td><%=item.author%></td>
-                <td><%-item.comment%></td>
-                <td><%=item.email%></td>
-                <td><%=think.datetime(item.createtime)%></td>
+                <td><input type="checkbox" value="{{item.id}}" name=""></td>
+                <td>{{item.id}}</td>
+                <td>{{item.author}}</td>
+                <td>{{item.comment|safe}}</td>
+                <td>{{item.email}}</td>
+                <td>{{think.datetime(item.createtime)}}</td>
                 <td class="f-14 td-manage">
-                    <a style="text-decoration:none" class="ml-5" href="/page/<%=item.aid%>#comment" target="_blank">查看</a>
-                    <a style="text-decoration:none" class="ml-5 edit" href="/admin/user/item/<%=item.id%>" title="编辑">
+                    <a style="text-decoration:none" class="ml-5" href="/page/{{item.aid}}#comment" target="_blank">查看</a>
+                    <a style="text-decoration:none" class="ml-5 edit" href="/admin/user/item/{{item.id}}" title="编辑">
                         <i class="Hui-iconfont"></i>
                     </a>
-                    <a style="text-decoration:none" class="ml-5 delete" del-id="<%=item.id%>" title="删除"><i class="Hui-iconfont"></i></a>
+                    <a style="text-decoration:none" class="ml-5 delete" del-id="{{item.id}}" title="删除"><i class="Hui-iconfont"></i></a>
                 </td>
             </tr>
-            <% })%>
+            {%endfor%}
             </tbody>
         </table>
     </div>
-</div>
-<script type="text/javascript" src="<%=_web.url%>static/src/js/business/admin/tiplist.js"></script>
-</body>
-</html>
+{% endblock %}
+{% block footer_other %}
+    <script type="text/javascript" src="{{_web.url}}static/admin/js/admin/tiplist.js"></script>
+{% endblock %}

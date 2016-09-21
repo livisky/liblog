@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -9,28 +10,28 @@
     <LINK rel="Bookmark" href="/favicon.ico" >
     <LINK rel="Shortcut Icon" href="/favicon.ico" />
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="<%=_web.url%>static/admin/lib/html5.js"></script>
-    <script type="text/javascript" src="<%=_web.url%>static/admin/lib/respond.min.js"></script>
-    <script type="text/javascript" src="<%=_web.url%>static/admin/lib/PIE_IE678.js"></script>
+    <script type="text/javascript" src="{{_web.url}}static/admin/lib/html5.js"></script>
+    <script type="text/javascript" src="{{_web.url}}static/admin/lib/respond.min.js"></script>
+    <script type="text/javascript" src="{{_web.url}}static/admin/lib/PIE_IE678.js"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="<%=_web.url%>static/admin/css/H-ui.min.css" />
-    <link rel="stylesheet" type="text/css" href="<%=_web.url%>static/admin/css/H-ui.admin.css" />
-    <link rel="stylesheet" type="text/css" href="<%=_web.url%>static/admin/lib/Hui-iconfont/1.0.7/iconfont.css" />
-    <link rel="stylesheet" type="text/css" href="<%=_web.url%>static/admin/lib/icheck/icheck.css" />
-    <link rel="stylesheet" type="text/css" href="<%=_web.url%>static/admin/skin/default/skin.css" id="skin" />
-    <link rel="stylesheet" type="text/css" href="<%=_web.url%>static/admin/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="{{_web.url}}static/admin/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{_web.url}}static/admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="{{_web.url}}static/admin/lib/Hui-iconfont/1.0.7/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="{{_web.url}}static/admin/lib/icheck/icheck.css" />
+    <link rel="stylesheet" type="text/css" href="{{_web.url}}static/admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="{{_web.url}}static/admin/css/style.css" />
     <!--[if IE 6]>
     <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
-    <title>Liblog v1.0</title>
-    <meta name="keywords" content="Liblog v1.0,基于thinkjs框架的nodejs开源博客系统">
-    <meta name="description" content="Liblog v1.0，是一款由国人开发的轻量级博客系统，适合中小型CMS网站。">
+    <title>Liblog v1.2</title>
+    <meta name="keywords" content="Liblog v1.2,基于thinkjs框架的nodejs开源博客系统">
+    <meta name="description" content="Liblog v1.2，是一款由国人开发的轻量级博客系统，适合中小型CMS网站。">
 </head>
 <body>
 <header class="navbar-wrapper">
     <div class="navbar navbar-fixed-top">
-        <div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/admin/index/welcome">Liblog</a><span class="logo navbar-slogan f-l mr-10 hidden-xs">v1.0</span> <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
+        <div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/admin/index/welcome">Liblog</a><span class="logo navbar-slogan f-l mr-10 hidden-xs">v1.2</span> <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
             <nav class="nav navbar-nav">
                 <ul class="cl">
                     <li class="dropDown dropDown_hover"><a href="javascript:;" class="dropDown_A"><i class="Hui-iconfont">&#xe600;</i> 新增 <i class="Hui-iconfont">&#xe6d5;</i></a>
@@ -45,8 +46,8 @@
             </nav>
             <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
                 <ul class="cl">
-                    <li><%=roleName%></li>
-                    <li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A"><%=loginName%> <i class="Hui-iconfont">&#xe6d5;</i></a>
+                    <li>{{roleName}}</li>
+                    <li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">{{loginName}} <i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a href="#">个人信息</a></li>
                             <li><a href="#">切换账户</a></li>
@@ -69,7 +70,7 @@
         </div>
     </div>
 </header>
-<% include inc/menu.html%>
+{% include "../admin/inc/menu.html" %}
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
 <section class="Hui-article-box">
     <div id="Hui-tabNav" class="Hui-tabNav hidden-xs">
@@ -87,10 +88,10 @@
         </div>
     </div>
 </section>s
-<script type="text/javascript" src="<%=_web.url%>static/admin/lib/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="<%=_web.url%>static/admin/lib/layer/2.1/layer.js"></script>
-<script type="text/javascript" src="<%=_web.url%>static/admin/js/H-ui.js"></script>
-<script type="text/javascript" src="<%=_web.url%>static/admin/js/H-ui.admin.js"></script>
+<script type="text/javascript" src="{{_web.url}}static/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{_web.url}}static/admin/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="{{_web.url}}static/admin/js/H-ui.js"></script>
+<script type="text/javascript" src="{{_web.url}}static/admin/js/H-ui.admin.js"></script>
 <script type="text/javascript">
     /*资讯-添加*/
     function article_add(title,url){

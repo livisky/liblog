@@ -1,0 +1,384 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+    overflow-x: hidden;
+}
+input{
+    vertical-align: middle;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+li,li:hover,a,a:hover{
+    text-decoration: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content:'';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.main-left .table-striped{margin-top: 30px;}
+a{
+    color:#000;
+    list-style: none;
+    text-decoration: none;
+}
+.css_span_white{
+    color: #fff!important;
+}
+
+/*公共头部begin*/
+
+.box{
+    width: 100%;
+}
+
+.head-nav{
+    background: #fff;
+}
+
+.head-nav2{
+    background: url(../Images/head-nav.jpg) 17px top repeat-x;
+}
+
+.body{
+    height: 100%;
+    margin: 0 auto;
+}
+
+.head{
+    width: 980px;
+    margin:0 auto;
+    _margin:0 auto;
+    *margin:0 auto;
+    clear: both;
+    _clear: both;
+    *clear: both;
+}
+.breadcrumb {
+    padding: 12px 15px;
+    background-color: #e9e9e9;
+}
+/*左部导航begin*/
+.left-nav{
+    min-height: 700px;
+    width: 180px;
+    float: left;
+    background: #f3f4f8;
+}
+.out-ul{
+    width: 180px;
+    margin-top: 15px;
+}
+.out-ul li{
+    width: 180px;
+    min-height: 40px;
+    _height:40px;
+    cursor: pointer;
+}
+.out-ul li p{
+    width: 180px;
+    height: 35px;
+    margin-top: 5px;
+}
+.span1{
+    width: 45px;
+    height: 35px;
+    display: block;
+    float: left;
+    float:left\9;
+    text-align: center;
+}
+.span1 img{
+    margin-top: 5px;
+    _margin-top: 5px\9;
+}
+
+.span2{
+    width: 135px;
+    height: 34px;
+    float: left;
+    _float: left;
+    float: left\9;
+    font-size: 14px;
+    font-weight: bold;
+    color: #81969b;
+    border-bottom: 1px solid #e2e3e7;
+    display: block;
+    line-height: 34px;
+    text-align: left;
+}
+
+.set-ChildEle{
+    width: 180px;
+}
+.set-ChildEle li{
+    height: 38px;
+    width: 180px;
+    line-height: 38px;
+    text-align: center;
+    color: #81969b;
+    font-size: 14px;
+    cursor: pointer;
+}
+.set-ChildEle li:hover{
+    height: 38px;
+    width: 180px;
+    color: #fff;
+    background: url(../Images/ahover-bg.jpg) no-repeat;
+}
+.set-ChildElebg{
+    height: 38px;
+    width: 180px;
+    color: #fff;
+    background: url(../Images/ahover-bg.jpg) no-repeat;
+}
+li.set-ChildElebg{
+    color: #fff;
+}
+/*左部导航end*/
+/*右部内容begin*/
+.right-info{
+    min-height: 700px;
+    width: 100%;
+    display: inline;
+    float: right;
+    margin-bottom: 40px;
+    _margin-bottom:40px;
+
+}
+
+/*右边头部begin*/
+.right-head{
+    height: 65px;
+    width: 98%;
+    border-bottom: 1px solid #dbdbdb;
+}
+.span3{
+    height: 65px;
+    width: 85%;
+    float: left;
+    color: #010101;
+    font-size: 24px;
+    text-indent: 15px;
+    line-height: 65px;
+}
+.contentbody{padding: 8px 22px;line-height: 25px;}
+.span3 img{
+    margin-right: 5px;
+}
+.span4{
+    height: 65px;
+    width: 105px;
+    float: right;
+    color: #777777;
+    text-indent: 23px;
+    line-height: 65px;
+    font-size: 14px;
+    background: url(return-icon.jpg) 0 24px no-repeat;
+}
+.span4 a{
+    color: #777777;
+}
+/*右边头部end*/
+/*右部Tab-begin*/
+
+.info-set{
+    margin-top: 15px;
+    margin-bottom: 40px
+}
+.change-Tab{
+    height: 48px;
+    border-bottom: 1px solid #dcdcdc;
+    line-height: 48px;
+}
+
+.xinxi-Set{
+    height: 48px;
+    width: 140px;
+    float: left;
+    line-height: 48px;
+    text-align: center;
+    color: #a1a1a1;
+    cursor: pointer;
+}
+
+.xinxi-Set:hover{
+    height: 48px;
+    width: 140px;
+    line-height: 48px;
+    text-align: center;
+    color: #646464;
+    border-left: 1px solid #dcdcdc;
+    border-top: 1px solid #dcdcdc;
+    border-right: 1px solid #dcdcdc;
+    border-bottom: none;
+    background: #fff;
+}
+.tabActive{
+    height: 48px;
+    width: 140px;
+    line-height: 48px;
+    text-align: center;
+    color: #646464;
+    border-left: 1px solid #dcdcdc;
+    border-top: 1px solid #dcdcdc;
+    border-right: 1px solid #dcdcdc;
+    border-bottom: none;
+    background: #fff;
+}
+.n-right {
+    margin-top: 10px;
+}
+/*右部Tab-end*/
+
+/*开发文档*/
+
+.body_new{
+    border: 1px solid #dbdbdb;
+    overflow: hidden;
+}
+
+.left_nav {
+    min-height: 700px;
+    width: 100%;
+    float: left;
+}
+.doc-right{
+  background: #fff;
+}
+.doc-main{
+  background: #e9e9e9;
+}
+.out_ul_new {
+    width: 180px;
+    margin-top: 15px;
+}
+
+.out_ul_new li {
+    width: 180px;
+    _height: 40px;
+    cursor: pointer;
+}
+
+.out_ul_new li p {
+    width: 180px;
+    height: 35px;
+    margin-top: 5px;
+}
+
+.out_ul_span1 {
+    width: 45px;
+    height: 35px;
+    display: block;
+    float: left;
+    float: left\9;
+    text-align: center;
+}
+
+.out_ul_span1 img {
+    margin: 5px 0 0 6px;
+    _margin: 5px 0 0 6px\9;
+}
+
+.out_ul_span2 {
+    width: 135px;
+    height: 34px;
+    float: left;
+    _float: left;
+    float: left\9;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    display: block;
+    line-height: 34px;
+    text-align: left;
+}
+
+.set_ChildEle_new {
+    width: 235px;
+}
+
+.set_ChildEle_new li {
+    height: 24px;
+    width: 235px;
+    line-height: 24px;
+    text-indent: 62px;
+    color: #6e6e6e;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.bottom_s{
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    border-width: 6px;
+    border-style: solid;
+    margin: 14px 0 0 5px;
+    float: left;
+    border-color: #fff transparent transparent transparent;
+
+}
+
+.top_s{
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    border-width: 6px;
+    border-style: solid;
+    margin: 7px 0 0 5px;
+    float: left;
+    border-color: transparent transparent #fff transparent;
+
+}
+
+.nav_title{
+    float: left;
+    font-size: 16px;
+    color: #000;
+}
+
+.xinxineirong_new{
+width: 780px;
+background: #fff;
+color: #666;
+line-height: 24px;
+font-size: 16px;
+}
+
+.xinxineirong_new img {
+max-width: 700px;
+}
+/*开发文档end*/
+
+.main-left{
+  background: #fff;
+  padding: 5px 10px;
+  height: 0;
+  padding-bottom: 100%;
+  border-radius: 6px;
+}
+.main-left a{color: blue;}
+.main-left .breadcrumb a{color: rgb(102, 102, 102);}

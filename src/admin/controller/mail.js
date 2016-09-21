@@ -12,7 +12,7 @@ export default class extends Base {
         //    service: "QQ",
         //    auth: {
         //        user: "262248861@qq.com", // 账号
-        //        pass: "12345678" // 密码
+        //        pass: "wvebvwxcsxpebiai" // 密码
         //    }
         //});
         //smtpTransport.sendMail({
@@ -39,7 +39,7 @@ export default class extends Base {
         });
         smtpTransport.sendMail({
             from: mailer.account,
-              //to: "390039626@qq.com,livisky@163.com", // 收件列表
+            to: "390039626@qq.com,livisky@163.com", // 收件列表
         subject : 'Node.JS通过SMTP协议从QQ邮箱发送邮件',
             html: 'have a try!'
         },function(err, res) {

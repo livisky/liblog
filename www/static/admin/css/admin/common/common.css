@@ -1,0 +1,13 @@
+.breadcrumb{padding: 0 15px;}
+.wangEditor-menu-shadow { z-index: 9999;}
+.form-label{text-align:right}
+.form-horizontal .form-label {
+    text-align: right;
+}
+.dataTables_wrapper{
+  padding: 10px 60px;
+  float: left;
+  min-height: 300px;
+  /*border-bottom: 1px solid #ccc;*/
+}
+.submit_region{width: 100%;margin: 0 auto;text-align: center;margin: 10px;}

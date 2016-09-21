@@ -6,7 +6,7 @@ export default class extends Base {
    * @return {Promise} []
    */
       async nopermissionAction(){
-          this.assign("title","没有权限访问！");
+          this.assign("title","访问受限!");
           return this.display();
       }
 }
