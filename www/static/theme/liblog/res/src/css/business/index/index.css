@@ -53,7 +53,7 @@
 	z-index: 2;
 }
 .blogs figure {
-	width: 22%; overflow: hidden; margin-top: 25px; float: left;
+	width: 22%; overflow: hidden; line-height: 160px; float: left;
 }
 .blogs figure img {
 	margin: auto; transition:0.5s; width: 100%; -webkit-transition: all 0.5s; -o-transition: all 0.5s; -moz-transition: all 0.5s;
