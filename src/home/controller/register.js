@@ -6,8 +6,15 @@ export default class extends Base {
 
     // 注册页面
     async indexAction(){
+
+      let uinfo=await this.session('uInfo');
+      if(!think.isEmpty(uinfo)){
+        //已注册并登陆
+        return this.redirect('/personal/@'+uinfo.name);
+      }else {
         this.assign("title","会员注册");
         return this.displayView("register_index");
+      }
     }
     //注册接口
     async doregisterAction(){
