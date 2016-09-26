@@ -12,10 +12,10 @@ export default class extends Base {
        this.assign("title","问答中心");
        let map,menu;
        if(tab==='all'||tab===''){
-         map={};
+         map={show:1};
          menu="all";
        }else{
-         map={item:tab};
+         map={item:tab,show:1};
          menu=tab;
        }
       //  let topicList=await this.model('topic').getTopicListJoinRecord(map);

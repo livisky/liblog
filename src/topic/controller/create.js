@@ -12,7 +12,7 @@ export default class extends Base {
        this.assign("title","新建主题");
        let uinfo=await this.session('uInfo');
        if(!think.isEmpty(uinfo)){
-           let upic=await this.model("user").getUserPic({name:uinfo.name});
+           let upic=await this.model("topic").getUserPic({name:uinfo.name});
            let itemList=await this.model("topic").findAll("topic_item");
            this.assign('itemList',itemList);
            this.assign('uinfo',uinfo);
@@ -46,7 +46,7 @@ export default class extends Base {
     if(!think.isEmpty(uinfo)){
         let topicInfo=await this.model("topic").findOne("topic",{id:myid,author:uinfo.name});
         if(!think.isEmpty(topicInfo)){
-          let upic=await this.model("user").getUserPic({name:uinfo.name});
+          let upic=await this.model("topic").getUserPic({name:uinfo.name});
           this.assign('upic',upic.pic);
           let itemList=await this.model("topic").findAll("topic_item");
           this.assign('uinfo',uinfo);
