@@ -104,16 +104,3 @@
         })
     })
 
-    //回车触发提交表单
-    $(document).keyup(function(event){
-      if(event.keyCode ==13){
-        $("#savetopic").trigger("click");
-      }
-    });
-
-    //回车触发提交表单
-    $(document).keyup(function(event){
-      if(event.keyCode ==13){
-        $("#updatetopic").trigger("click");
-      }
-    });

@@ -44,10 +44,3 @@
   var errorEl='<small class="help-block alert alert-danger checkright" style="margin-bottom: 0px; margin-top: 10px;">'+errmsg+'</small>';
     obj.parents('.register-item').addClass('has-error').after(errorEl);
   }
-
-  //回车触发提交表单
-  $(document).keyup(function(event){
-    if(event.keyCode ==13){
-      $("#savetag").trigger("click");
-    }
-  });
