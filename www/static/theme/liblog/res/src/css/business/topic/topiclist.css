@@ -14,8 +14,8 @@
 a.topic_title {
     max-width: 65%;
     -o-text-overflow: ellipsis;
-    line-height: 19px;
-    height: 19px;
+    line-height: 22px;
+    height: 22px;
     overflow: hidden;
     display: inline-block;
     vertical-align: middle;
