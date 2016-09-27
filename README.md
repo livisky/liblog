@@ -22,9 +22,9 @@
 
 ### 三.安装及其他介绍
 
->详见：http://www.jsout.com/page/423.html
->前台登陆：admin@jsout.com   123456
->后台登陆：admin 123456
+>安装教程：http://www.jsout.com/page/423.html<br/>
+>前台登陆：admin@jsout.com   123456<br/>
+>后台登陆：admin 123456<br/>
 
 >安装Liblog之前，请`star`并`fork`项目给作者以鼓励。
 
