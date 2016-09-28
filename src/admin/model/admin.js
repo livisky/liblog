@@ -82,4 +82,8 @@ export default class extends think.model.base {
        }).where(where).page(page,pagesize).select();
     }
 
+    //获取主题列表关联表记录
+    getTopicListJoinRecord(page,pagesize){
+      return this.model('topic').page(page,pagesize).select();
+    }
 }

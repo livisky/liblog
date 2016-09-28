@@ -43,6 +43,12 @@
             </div>
         </div>
         <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>主题设置：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text theme" value="{{sysdata.theme}}" placeholder="" id="" name="">
+            </div>
+        </div>
+        <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>友情链接：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <textarea class="form-control textarea links" name="link" rows="4" cols="50" placeholder="友情链接" style="width: 100%; height: 98px;resize:none">{{_web.links}}</textarea></div>
@@ -61,33 +67,5 @@
     </form>
 {% endblock %}
 {% block footer_other %}
-<script type="text/javascript">
-    $(function(){
-        $("#savetag").click(function(){
-            var newData={
-                sitename:$(".sitename").val(),
-                url:$(".url").val(),
-                keywords:$(".keywords").val(),
-                description:$(".description").val(),
-                author:$(".author").val(),
-                copyright:$(".copyright").val(),
-                links:$(".links").val(),
-                tongji:$(".tongji").val(),
-                __CSRF__:G_csrf
-            }
-            $.ajax({
-                url:'/admin/system/edit',
-                data:newData,
-                type:'POST',
-                success:function(json){
-                    if(json.errno===0){
-                        alert("保存成功！");
-                        window.location.href="/admin/system"
-                    }
-                }
-            })
-        })
-
-    })
- </script>
- {% endblock %}
+    <script type="text/javascript" src="{{_web.url}}static/admin/js/admin/system_base.js"></script>
+{% endblock %}
