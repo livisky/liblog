@@ -7,7 +7,7 @@
 .wangEditor-container {
   position: relative;
   background-color: #fff;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   z-index: 1;
   width: 100%;
 }
@@ -50,7 +50,7 @@
   position: absolute;
   background-color: #fff;
   padding: 3px 5px;
-  border-top: 2px solid #666666;
+  border-top: 2px solid #666;
   box-shadow: 1px 3px 3px #999;
   border-left: 1px\9 solid\9 #ccc\9;
   border-bottom: 1px\9 solid\9 #999\9;
@@ -62,13 +62,13 @@
   width: 0;
   height: 0;
   border: 5px solid;
-  border-color: transparent transparent #666666 transparent;
+  border-color: transparent transparent #666 transparent;
   top: -12px;
   left: 50%;
   margin-left: -5px;
 }
 .wangEditor-container .txt-toolbar a {
-  color: #666666;
+  color: #666;
   display: inline-block;
   margin: 0 3px;
   padding: 5px;
@@ -85,7 +85,7 @@
   height: 12px;
   border-radius: 50%;
   cursor: se-resize;
-  background-color: #666666;
+  background-color: #666;
   margin-left: -6px;
   margin-top: -6px;
   box-shadow: 1px 1px 5px #999;
@@ -108,11 +108,13 @@
   right: 0;
 }
 .wangEditor-container .code-textarea {
+  resize: none;
   width: 100%;
   font-size: 14px;
   line-height: 1.5;
   font-family: 'Verdana';
   color: #333;
+  padding: 0 15px 0 15px;
 }
 .wangEditor-menu-container {
   width: 100%;
@@ -140,7 +142,7 @@
 .wangEditor-menu-container .menu-item a {
   display: block;
   text-align: center;
-  color: #666666;
+  color: #666;
   width: 100%;
   padding: 8px 0;
   font-size: 0.9em;
@@ -161,7 +163,7 @@
   z-index: 20;
   width: 60px;
   text-align: center;
-  background-color: #666666;
+  background-color: #666;
   color: #fff;
   padding: 7px 0;
   font-size: 12px;
@@ -193,7 +195,7 @@
   margin-left: -25px;
 }
 .wangEditor-menu-shadow {
-  border-bottom-width: 0;
+  /*border-bottom-width: 0;*/
   border-bottom: 1px\9 solid\9 #f1f1f1\9;
   box-shadow: 0 1px 3px #999;
 }
@@ -212,6 +214,14 @@
 .wangEditor-container .wangEditor-txt h4,
 .wangEditor-container .wangEditor-txt h5 {
   margin: 10px 0;
+  line-height: 1.8;
+}
+.wangEditor-container .wangEditor-txt p *,
+.wangEditor-container .wangEditor-txt h1 *,
+.wangEditor-container .wangEditor-txt h2 *,
+.wangEditor-container .wangEditor-txt h3 *,
+.wangEditor-container .wangEditor-txt h4 *,
+.wangEditor-container .wangEditor-txt h5 * {
   line-height: 1.8;
 }
 .wangEditor-container .wangEditor-txt ul,
@@ -248,7 +258,7 @@
 }
 .wangEditor-container .wangEditor-txt table td,
 .wangEditor-container .wangEditor-txt table th {
-  border: 1px solid #f1f1f1;
+  border: 1px solid #999;
   padding: 3px 5px;
   min-width: 50px;
   height: 20px;
@@ -277,13 +287,14 @@
 .wangEditor-drop-list a {
   text-decoration: none;
   display: block;
-  color: #666666;
+  color: #666;
   padding: 3px 5px;
 }
 .wangEditor-drop-list a:hover {
   background-color: #f1f1f1;
 }
-.wangEditor-drop-panel {
+.wangEditor-drop-panel,
+.txt-toolbar {
   display: none;
   position: absolute;
   padding: 10px;
@@ -291,27 +302,30 @@
   /*border: 1px\9 solid\9 #cccccc\9;*/
   background-color: #fff;
   z-index: 10;
-  border-top: 2px solid #666666;
+  border-top: 2px solid #666;
   box-shadow: 1px 3px 3px #999;
   border-left: 1px\9 solid\9 #ccc\9;
   border-bottom: 1px\9 solid\9 #999\9;
   border-right: 1px\9 solid\9 #999\9;
 }
-.wangEditor-drop-panel .tip-triangle {
+.wangEditor-drop-panel .tip-triangle,
+.txt-toolbar .tip-triangle {
   display: block;
   position: absolute;
   width: 0;
   height: 0;
   border: 5px solid;
-  border-color: transparent transparent #666666 transparent;
+  border-color: transparent transparent #666 transparent;
   top: -12px;
   left: 50%;
   margin-left: -5px;
 }
-.wangEditor-drop-panel a {
+.wangEditor-drop-panel a,
+.txt-toolbar a {
   text-decoration: none;
 }
-.wangEditor-drop-panel input[type=text] {
+.wangEditor-drop-panel input[type=text],
+.txt-toolbar input[type=text] {
   border: none;
   border-bottom: 1px solid #ccc;
   font-size: 14px;
@@ -319,22 +333,27 @@
   color: #333;
   padding: 3px 0;
 }
-.wangEditor-drop-panel input[type=text]:focus {
+.wangEditor-drop-panel input[type=text]:focus,
+.txt-toolbar input[type=text]:focus {
   outline: none;
   border-bottom: 2px solid #1e88e5;
 }
-.wangEditor-drop-panel input[type=text].block {
+.wangEditor-drop-panel input[type=text].block,
+.txt-toolbar input[type=text].block {
   display: block;
   width: 100%;
 }
-.wangEditor-drop-panel textarea {
+.wangEditor-drop-panel textarea,
+.txt-toolbar textarea {
   border: 1px solid #ccc;
 }
-.wangEditor-drop-panel textarea:focus {
+.wangEditor-drop-panel textarea:focus,
+.txt-toolbar textarea:focus {
   outline: none;
   border-color: #1e88e5;
 }
-.wangEditor-drop-panel button {
+.wangEditor-drop-panel button,
+.txt-toolbar button {
   font-size: 14px;
   color: #1e88e5;
   border: none;
@@ -343,27 +362,34 @@
   cursor: pointer;
   border-radius: 3px;
 }
-.wangEditor-drop-panel button:hover {
+.wangEditor-drop-panel button:hover,
+.txt-toolbar button:hover {
   background-color: #f1f1f1;
 }
-.wangEditor-drop-panel button:focus {
+.wangEditor-drop-panel button:focus,
+.txt-toolbar button:focus {
   outline: none;
 }
-.wangEditor-drop-panel button.right {
+.wangEditor-drop-panel button.right,
+.txt-toolbar button.right {
   float: right;
   margin-left: 10px;
 }
-.wangEditor-drop-panel button.gray {
+.wangEditor-drop-panel button.gray,
+.txt-toolbar button.gray {
   color: #999;
 }
-.wangEditor-drop-panel button.link {
+.wangEditor-drop-panel button.link,
+.txt-toolbar button.link {
   padding: 5px 10px;
 }
-.wangEditor-drop-panel button.link:hover {
+.wangEditor-drop-panel button.link:hover,
+.txt-toolbar button.link:hover {
   background-color: #fff;
   text-decoration: underline;
 }
-.wangEditor-drop-panel .color-item {
+.wangEditor-drop-panel .color-item,
+.txt-toolbar .color-item {
   display: block;
   float: left;
   width: 25px;
@@ -373,63 +399,82 @@
   border-radius: 2px;
   text-decoration: underline;
 }
-.wangEditor-drop-panel .color-item:hover {
+.wangEditor-drop-panel .color-item:hover,
+.txt-toolbar .color-item:hover {
   background-color: #f1f1f1;
 }
-.wangEditor-drop-panel .list-menu-item {
+.wangEditor-drop-panel .list-menu-item,
+.txt-toolbar .list-menu-item {
   display: block;
   float: left;
   color: #333;
   padding: 5px 5px;
   border-radius: 2px;
 }
-.wangEditor-drop-panel .list-menu-item:hover {
+.wangEditor-drop-panel .list-menu-item:hover,
+.txt-toolbar .list-menu-item:hover {
   background-color: #f1f1f1;
 }
-.wangEditor-drop-panel table.choose-table {
+.wangEditor-drop-panel table.choose-table,
+.txt-toolbar table.choose-table {
   border: none;
   border-collapse: collapse;
 }
-.wangEditor-drop-panel table.choose-table td {
-  border: 1px solid #f1f1f1;
+.wangEditor-drop-panel table.choose-table td,
+.txt-toolbar table.choose-table td {
+  border: 1px solid #ccc;
   width: 16px;
   height: 12px;
 }
-.wangEditor-drop-panel table.choose-table td.active {
-  background-color: #f1f1f1;
+.wangEditor-drop-panel table.choose-table td.active,
+.txt-toolbar table.choose-table td.active {
+  background-color: #ccc;
   opacity: .5;
   filter: alpha(opacity=50);
 }
-.wangEditor-drop-panel .panel-tab .tab-container {
+.wangEditor-drop-panel .panel-tab .tab-container,
+.txt-toolbar .panel-tab .tab-container {
   margin-bottom: 5px;
 }
-.wangEditor-drop-panel .panel-tab .tab-container a {
+.wangEditor-drop-panel .panel-tab .tab-container a,
+.txt-toolbar .panel-tab .tab-container a {
   display: inline-block;
   color: #999;
   text-align: center;
   margin: 0 5px;
   padding: 5px 5px;
 }
-.wangEditor-drop-panel .panel-tab .tab-container a.selected {
+.wangEditor-drop-panel .panel-tab .tab-container a.selected,
+.txt-toolbar .panel-tab .tab-container a.selected {
   color: #1e88e5;
   border-bottom: 2px solid #1e88e5;
 }
-.wangEditor-drop-panel .panel-tab .content-container .content {
+.wangEditor-drop-panel .panel-tab .content-container .content,
+.txt-toolbar .panel-tab .content-container .content {
   display: none;
 }
-.wangEditor-drop-panel .panel-tab .content-container .content a {
+.wangEditor-drop-panel .panel-tab .content-container .content a,
+.txt-toolbar .panel-tab .content-container .content a {
   display: inline-block;
   margin: 2px;
   padding: 2px;
   border-radius: 2px;
 }
-.wangEditor-drop-panel .panel-tab .content-container .content a:hover {
+.wangEditor-drop-panel .panel-tab .content-container .content a:hover,
+.txt-toolbar .panel-tab .content-container .content a:hover {
   background-color: #f1f1f1;
 }
-.wangEditor-drop-panel .panel-tab .content-container .selected {
+.wangEditor-drop-panel .panel-tab .content-container .selected,
+.txt-toolbar .panel-tab .content-container .selected {
   display: block;
 }
-.wangEditor-drop-panel .upload-icon-container {
+.wangEditor-drop-panel .panel-tab .emotion-content-container,
+.txt-toolbar .panel-tab .emotion-content-container {
+  height: 200px;
+  overflow-y: auto;
+}
+.wangEditor-drop-panel .upload-icon-container,
+.txt-toolbar .upload-icon-container {
   color: #ccc;
   text-align: center;
   margin: 20px 20px 15px 20px !important;
@@ -439,7 +484,8 @@
   border: 2px dotted #f1f1f1;
   display: block !important;
 }
-.wangEditor-drop-panel .upload-icon-container:hover {
+.wangEditor-drop-panel .upload-icon-container:hover,
+.txt-toolbar .upload-icon-container:hover {
   color: #666;
   border-color: #ccc;
 }
@@ -448,6 +494,7 @@
   top: 50%;
   left: 50%;
   background-color: #fff;
+  border-top: 1px solid #f1f1f1;
   box-shadow: 1px 3px 3px #999;
   border-top: 1px\9 solid\9 #ccc\9;
   border-left: 1px\9 solid\9 #ccc\9;
@@ -466,13 +513,13 @@
 }
 @font-face {
   font-family: 'icomoon';
-  src: url('fonts/icomoon.eot?-qdfu1s');
-  src: url('fonts/icomoon.eot?#iefix-qdfu1s') format('embedded-opentype'), url('fonts/icomoon.ttf?-qdfu1s') format('truetype'), url('fonts/icomoon.woff?-qdfu1s') format('woff'), url('fonts/icomoon.svg?-qdfu1s#icomoon') format('svg');
+  src: url('../fonts/icomoon.eot?-qdfu1s');
+  src: url('../fonts/icomoon.eot?#iefix-qdfu1s') format('embedded-opentype'), url('../fonts/icomoon.ttf?-qdfu1s') format('truetype'), url('../fonts/icomoon.woff?-qdfu1s') format('woff'), url('../fonts/icomoon.svg?-qdfu1s#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
-body [class^="wangeditor-menu-img-"],
-body [class*=" wangeditor-menu-img-"] {
+[class^="wangeditor-menu-img-"],
+[class*=" wangeditor-menu-img-"] {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
@@ -484,202 +531,202 @@ body [class*=" wangeditor-menu-img-"] {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-body .wangeditor-menu-img-link:before {
+.wangeditor-menu-img-link:before {
   content: "\e800";
 }
-body .wangeditor-menu-img-unlink:before {
+.wangeditor-menu-img-unlink:before {
   content: "\e801";
 }
-body .wangeditor-menu-img-code:before {
+.wangeditor-menu-img-code:before {
   content: "\e802";
 }
-body .wangeditor-menu-img-cancel:before {
+.wangeditor-menu-img-cancel:before {
   content: "\e803";
 }
-body .wangeditor-menu-img-terminal:before {
+.wangeditor-menu-img-terminal:before {
   content: "\e804";
 }
-body .wangeditor-menu-img-angle-down:before {
+.wangeditor-menu-img-angle-down:before {
   content: "\e805";
 }
-body .wangeditor-menu-img-font:before {
+.wangeditor-menu-img-font:before {
   content: "\e806";
 }
-body .wangeditor-menu-img-bold:before {
+.wangeditor-menu-img-bold:before {
   content: "\e807";
 }
-body .wangeditor-menu-img-italic:before {
+.wangeditor-menu-img-italic:before {
   content: "\e808";
 }
-body .wangeditor-menu-img-header:before {
+.wangeditor-menu-img-header:before {
   content: "\e809";
 }
-body .wangeditor-menu-img-align-left:before {
+.wangeditor-menu-img-align-left:before {
   content: "\e80a";
 }
-body .wangeditor-menu-img-align-center:before {
+.wangeditor-menu-img-align-center:before {
   content: "\e80b";
 }
-body .wangeditor-menu-img-align-right:before {
+.wangeditor-menu-img-align-right:before {
   content: "\e80c";
 }
-body .wangeditor-menu-img-list-bullet:before {
+.wangeditor-menu-img-list-bullet:before {
   content: "\e80d";
 }
-body .wangeditor-menu-img-indent-left:before {
+.wangeditor-menu-img-indent-left:before {
   content: "\e80e";
 }
-body .wangeditor-menu-img-indent-right:before {
+.wangeditor-menu-img-indent-right:before {
   content: "\e80f";
 }
-body .wangeditor-menu-img-list-numbered:before {
+.wangeditor-menu-img-list-numbered:before {
   content: "\e810";
 }
-body .wangeditor-menu-img-underline:before {
+.wangeditor-menu-img-underline:before {
   content: "\e811";
 }
-body .wangeditor-menu-img-table:before {
+.wangeditor-menu-img-table:before {
   content: "\e812";
 }
-body .wangeditor-menu-img-eraser:before {
+.wangeditor-menu-img-eraser:before {
   content: "\e813";
 }
-body .wangeditor-menu-img-text-height:before {
+.wangeditor-menu-img-text-height:before {
   content: "\e814";
 }
-body .wangeditor-menu-img-brush:before {
+.wangeditor-menu-img-brush:before {
   content: "\e815";
 }
-body .wangeditor-menu-img-pencil:before {
+.wangeditor-menu-img-pencil:before {
   content: "\e816";
 }
-body .wangeditor-menu-img-minus:before {
+.wangeditor-menu-img-minus:before {
   content: "\e817";
 }
-body .wangeditor-menu-img-picture:before {
+.wangeditor-menu-img-picture:before {
   content: "\e818";
 }
-body .wangeditor-menu-img-file-image:before {
+.wangeditor-menu-img-file-image:before {
   content: "\e819";
 }
-body .wangeditor-menu-img-cw:before {
+.wangeditor-menu-img-cw:before {
   content: "\e81a";
 }
-body .wangeditor-menu-img-ccw:before {
+.wangeditor-menu-img-ccw:before {
   content: "\e81b";
 }
-body .wangeditor-menu-img-music:before {
+.wangeditor-menu-img-music:before {
   content: "\e911";
 }
-body .wangeditor-menu-img-play:before {
+.wangeditor-menu-img-play:before {
   content: "\e912";
 }
-body .wangeditor-menu-img-location:before {
+.wangeditor-menu-img-location:before {
   content: "\e947";
 }
-body .wangeditor-menu-img-happy:before {
+.wangeditor-menu-img-happy:before {
   content: "\e9df";
 }
-body .wangeditor-menu-img-sigma:before {
+.wangeditor-menu-img-sigma:before {
   content: "\ea67";
 }
-body .wangeditor-menu-img-enlarge2:before {
+.wangeditor-menu-img-enlarge2:before {
   content: "\e98b";
 }
-body .wangeditor-menu-img-shrink2:before {
+.wangeditor-menu-img-shrink2:before {
   content: "\e98c";
 }
-body .wangeditor-menu-img-newspaper:before {
+.wangeditor-menu-img-newspaper:before {
   content: "\e904";
 }
-body .wangeditor-menu-img-camera:before {
+.wangeditor-menu-img-camera:before {
   content: "\e90f";
 }
-body .wangeditor-menu-img-video-camera:before {
+.wangeditor-menu-img-video-camera:before {
   content: "\e914";
 }
-body .wangeditor-menu-img-file-zip:before {
+.wangeditor-menu-img-file-zip:before {
   content: "\e92b";
 }
-body .wangeditor-menu-img-stack:before {
+.wangeditor-menu-img-stack:before {
   content: "\e92e";
 }
-body .wangeditor-menu-img-credit-card:before {
+.wangeditor-menu-img-credit-card:before {
   content: "\e93f";
 }
-body .wangeditor-menu-img-address-book:before {
+.wangeditor-menu-img-address-book:before {
   content: "\e944";
 }
-body .wangeditor-menu-img-envelop:before {
+.wangeditor-menu-img-envelop:before {
   content: "\e945";
 }
-body .wangeditor-menu-img-drawer:before {
+.wangeditor-menu-img-drawer:before {
   content: "\e95c";
 }
-body .wangeditor-menu-img-download:before {
+.wangeditor-menu-img-download:before {
   content: "\e960";
 }
-body .wangeditor-menu-img-upload:before {
+.wangeditor-menu-img-upload:before {
   content: "\e961";
 }
-body .wangeditor-menu-img-lock:before {
+.wangeditor-menu-img-lock:before {
   content: "\e98f";
 }
-body .wangeditor-menu-img-unlocked:before {
+.wangeditor-menu-img-unlocked:before {
   content: "\e990";
 }
-body .wangeditor-menu-img-wrench:before {
+.wangeditor-menu-img-wrench:before {
   content: "\e991";
 }
-body .wangeditor-menu-img-eye:before {
+.wangeditor-menu-img-eye:before {
   content: "\e9ce";
 }
-body .wangeditor-menu-img-eye-blocked:before {
+.wangeditor-menu-img-eye-blocked:before {
   content: "\e9d1";
 }
-body .wangeditor-menu-img-command:before {
+.wangeditor-menu-img-command:before {
   content: "\ea4e";
 }
-body .wangeditor-menu-img-font2:before {
+.wangeditor-menu-img-font2:before {
   content: "\ea5c";
 }
-body .wangeditor-menu-img-libreoffice:before {
+.wangeditor-menu-img-libreoffice:before {
   content: "\eade";
 }
-body .wangeditor-menu-img-quotes-left:before {
+.wangeditor-menu-img-quotes-left:before {
   content: "\e977";
 }
-body .wangeditor-menu-img-strikethrough:before {
+.wangeditor-menu-img-strikethrough:before {
   content: "\ea65";
 }
-body .wangeditor-menu-img-desktop:before {
+.wangeditor-menu-img-desktop:before {
   content: "\f108";
 }
-body .wangeditor-menu-img-tablet:before {
+.wangeditor-menu-img-tablet:before {
   content: "\f10a";
 }
-body .wangeditor-menu-img-search-plus:before {
+.wangeditor-menu-img-search-plus:before {
   content: "\f00e";
 }
-body .wangeditor-menu-img-search-minus:before {
+.wangeditor-menu-img-search-minus:before {
   content: "\f010";
 }
-body .wangeditor-menu-img-trash-o:before {
+.wangeditor-menu-img-trash-o:before {
   content: "\f014";
 }
-body .wangeditor-menu-img-align-justify:before {
+.wangeditor-menu-img-align-justify:before {
   content: "\f039";
 }
-body .wangeditor-menu-img-arrows-v:before {
+.wangeditor-menu-img-arrows-v:before {
   content: "\f07d";
 }
-body .wangeditor-menu-img-sigma2:before {
+.wangeditor-menu-img-sigma2:before {
   content: "\ea68";
 }
-body .wangeditor-menu-img-omega:before {
+.wangeditor-menu-img-omega:before {
   content: "\e900";
 }
-body .wangeditor-menu-img-cancel-circle:before {
+.wangeditor-menu-img-cancel-circle:before {
   content: "\e901";
 }
 .hljs {

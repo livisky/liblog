@@ -86,8 +86,8 @@
     E.getComputedStyle = window.getComputedStyle;
     E.w3cRange = typeof document.createRange === 'function';
     E.hostname = location.hostname.toLowerCase();
-    E.websiteHost = 'wangeditor.github.io';
-    E.isOnWebsite = E.hostname === E.websiteHost;
+    E.websiteHost = 'wangeditor.github.io|www.wangeditor.com|wangeditor.coding.me';
+    E.isOnWebsite = E.websiteHost.indexOf(E.hostname) >= 0;
     E.docsite = 'http://www.kancloud.cn/wangfupeng/wangeditor2/113961';
 
     // 暴露给全局对象
@@ -790,9 +790,19 @@ _e(function (E, $) {
 // undo redo
 _e(function (E, $) {
 
-    var redoList = [];
-    var undoList = [];
     var length = 20;  // 缓存的最大长度
+    function _getRedoList(editor) {
+        if (editor._redoList == null) {
+            editor._redoList = [];
+        }
+        return editor._redoList;
+    }
+    function _getUndoList(editor) {
+        if (editor._undoList == null) {
+            editor._undoList = [];
+        }
+        return editor._undoList;
+    }
 
     // 数据处理
     function _handle(editor, data, type) {
@@ -840,6 +850,8 @@ _e(function (E, $) {
         var editor = this;
         var $txt = editor.txt.$txt;
         var val = $txt.html();
+        var undoList = _getUndoList(editor);
+        var redoList = _getRedoList(editor);
         var currentVal = undoList.length ? undoList[0] : '';
 
         if (val === currentVal.val) {
@@ -865,6 +877,9 @@ _e(function (E, $) {
 
     // undo 操作
     E.fn.undo = function () {
+        var editor = this;
+        var undoList = _getUndoList(editor);
+        var redoList = _getRedoList(editor);
 
         if (!undoList.length) {
             return;
@@ -880,6 +895,9 @@ _e(function (E, $) {
 
     // redo 操作
     E.fn.redo = function () {
+        var editor = this;
+        var undoList = _getUndoList(editor);
+        var redoList = _getRedoList(editor);
         if (!redoList.length) {
             return;
         }
@@ -2411,7 +2429,7 @@ _e(function (E, $) {
                     }
                     // 拼接为 <p> 标签
                     resultHtml = '<p>' + resultHtml + '</p>';
-                    resultHtml = resultHtml.replace((new RegExp('\n', 'g'), '</p><p>'));
+                    resultHtml = resultHtml.replace(new RegExp('\n', 'g'), '</p><p>');
                 } else {
                     // 其他情况
                     return;
@@ -2435,6 +2453,7 @@ _e(function (E, $) {
             var $elem;
             var nodeName = elem.nodeName.toLowerCase();
             var nodeType = elem.nodeType;
+            var childNodesClone;
 
             // 只处理文本和普通node标签
             if (nodeType !== 3 && nodeType !== 1) {
@@ -2445,8 +2464,14 @@ _e(function (E, $) {
 
             // 如果是容器，则继续深度遍历
             if (nodeName === 'div') {
-                $.each(elem.childNodes, function () {
+                childNodesClone = [];
+                $.each(elem.childNodes, function (index, item) {
                     // elem.childNodes 可获取TEXT节点，而 $elem.children() 就获取不到
+                    // 先将 elem.childNodes 拷贝一份，一面在循环递归过程中 elem 发生变化
+                    childNodesClone.push(item);
+                });
+                // 遍历子元素，执行操作
+                $.each(childNodesClone, function () {
                     handle(this);
                 });
                 return;
@@ -3250,28 +3275,28 @@ _e(function (E, $) {
         '宋体', '黑体', '楷体', '微软雅黑',
         'Arial', 'Verdana', 'Georgia',
         'Times New Roman', 'Microsoft JhengHei',
-        'Trebuchet MS', 'Courier New', 'Impact', 'Comic Sans MS'
+        'Trebuchet MS', 'Courier New', 'Impact', 'Comic Sans MS', 'Consolas'
     ];
 
     // 字号
     E.config.fontsizes = {
         // 格式：'value': 'title'
-        1: '10px',
+        1: '12px',
         2: '13px',
         3: '16px',
-        4: '19px',
-        5: '22px',
-        6: '25px',
-        7: '28px'
+        4: '18px',
+        5: '24px',
+        6: '32px',
+        7: '48px'
     };
 
     // 表情包
     E.config.emotionsShow = 'icon'; // 显示项，默认为'icon'，也可以配置成'value'
     E.config.emotions = {
-        'default': {
-            title: '默认',
-            data: './emotions.data'
-        },
+        // 'default': {
+        //     title: '默认',
+        //     data: './emotions.data'
+        // },
         'weibo': {
             title: '微博表情',
             data: [
@@ -3363,11 +3388,17 @@ _e(function (E, $) {
          /* 'Accept' : 'text/x-json' */
     };
 
+    // 隐藏网络图片，默认为 false
+    E.config.hideLinkImg = false;
+
     // 是否过滤粘贴内容
     E.config.pasteFilter = true;
 
     // 是否粘贴纯文本，当 editor.config.pasteFilter === false 时候，此配置将失效
     E.config.pasteText = false;
+
+    // 插入代码时，默认的语言
+    E.config.codeDefaultLang = 'javascript';
 
 });
 // 全局UI
@@ -4719,7 +4750,7 @@ _e(function (E, $) {
 
             // 重置 input
             $textInput.val('');
-            $urlInput.val('');
+            $urlInput.val('http://');
 
             // 获取url
             var url = '';
@@ -5259,12 +5290,20 @@ _e(function (E, $) {
             $linkContent.addClass('selected');
         }
 
+        // 隐藏网络图片
+        function hideLinkImg() {
+            $tabContainer.remove();
+            $linkContent.remove();
+            $uploadContent.addClass('selected');
+        }
+
         // 判断用户是否配置了上传图片
         editor.ready(function () {
             var editor = this;
             var config = editor.config;
             var uploadImgUrl = config.uploadImgUrl;
             var customUpload = config.customUpload;
+            var linkImg = config.hideLinkImg;
             var $uploadImgPanel;
 
             if (uploadImgUrl || customUpload) {
@@ -5273,6 +5312,11 @@ _e(function (E, $) {
 
                 // 第二，绑定tab切换事件
                 tabToggle();
+
+                if (linkImg) {
+                    // 隐藏网络图片
+                    hideLinkImg();
+                }
             } else {
                 // 未配置上传图片功能
                 hideUploadImg();
@@ -5383,7 +5427,7 @@ _e(function (E, $) {
             var width = parseInt($widthInput.val());
             var height = parseInt($heightInput.val());
             var $div = $('<div>');
-            var html = '<p style="text-align:center;">{content}</p>';
+            var html = '<p>{content}</p>';
 
             // 验证数据
             if (!link) {
@@ -5605,7 +5649,7 @@ _e(function (E, $) {
         mapData.loadMapScript = function () {
             var script = document.createElement("script");
             script.type = "text/javascript";
-            script.src = "http://api.map.baidu.com/api?v=2.0&ak=" + ak + "&callback=baiduMapCallBack";  // baiduMapCallBack是一个本地函数
+            script.src = "https://api.map.baidu.com/api?v=2.0&ak=" + ak + "&s=1&callback=baiduMapCallBack";  // baiduMapCallBack是一个本地函数
             try {
                 // IE10- 报错
                 document.body.appendChild(script);
@@ -5807,8 +5851,9 @@ _e(function (E, $) {
                 // 第一次，先加载地图
                 firstTime = true;
             }
-            mapData.initMap();
+            
             dropPanel.show();
+            mapData.initMap();
 
             if (!firstTime) {
                 $searchInput.focus();
@@ -5848,7 +5893,8 @@ _e(function (E, $) {
         setTimeout(loadHljs, 0);
 
         var editor = this;
-        var lang = editor.config.lang;
+        var config = editor.config;
+        var lang = config.lang;
         var $txt = editor.txt.$txt;
 
         // 创建 menu 对象
@@ -5884,7 +5930,14 @@ _e(function (E, $) {
                     'margin-left': '5px'
                 });
                 $.each(hljs.listLanguages(), function (key, lang) {
-                    $langSelect.append('<option value="' + lang + '">' + lang + '</option>');
+                    if (lang === 'xml') {
+                        lang = 'html';
+                    }
+                    if (lang === config.codeDefaultLang) {
+                        $langSelect.append('<option value="' + lang + '" selected="selected">' + lang + '</option>');
+                    } else {
+                        $langSelect.append('<option value="' + lang + '">' + lang + '</option>');
+                    }
                 });
             } else {
                 $langSelect.hide();
@@ -6007,7 +6060,7 @@ _e(function (E, $) {
                 }
 
                 var rangeElem = editor.getRangeElem();
-                if ($.trim($(rangeElem).text())) {
+                if ($.trim($(rangeElem).text()) && codeTpl.indexOf('<p><br></p>') !== 0) {
                     codeTpl = '<p><br></p>' + codeTpl;
                 }
 
@@ -6687,6 +6740,9 @@ _e(function (E, $) {
             $.each(headers, function (key, value) {
                 xhr.setRequestHeader(key, value);
             });
+
+            // 跨域上传时，传cookie
+            xhr.withCredentials = true;
 
             // 发送数据
             xhr.send(formData);
