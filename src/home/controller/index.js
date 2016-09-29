@@ -154,8 +154,8 @@ export default class extends Base {
         let pagenumber=this.get("page")||1;
         let pagesize=this.get("pagesize")||10;
         //分页
-        let itemList=await this.model("home").getPageSelect({ispublished:1},pagenumber,pagesize);
-        let result = await this.model("home").getPageCountSelect({ispublished:1},pagenumber,pagesize);
+        let itemList=await this.model("home").getPageSelect({ispublished:1,item:{"!=":8}},pagenumber,pagesize);
+        let result = await this.model("home").getPageCountSelect({ispublished:1,item:{"!=":8}},pagenumber,pagesize);
         let Page=think.adapter("template", "page");
         let page = new Page(this.http);
         let pageData=page.pagination(result);
