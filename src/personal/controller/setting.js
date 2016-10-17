@@ -39,17 +39,24 @@ export default class extends Base {
     let name=newData.name;
     let nickname=newData.nickname;
     let email=newData.email;
-    let userinfo=await this.model("personal").findAll({name:uinfo.name});
+    let userinfo=await this.model("personal").findOne('user',{name:uinfo.name});
+    console.log(userinfo);
+
     if(name!==''&&nickname!==''&&email!==''){
-      let userFlag=await this.checkIsExist({name:name});
-      let emailFlag=await this.checkIsExist({email:email});
-      if(userFlag===0&&uinfo.name!==name){
-        return this.json({status:0,errno:1,errmsg:'该用户名已存在！'});
-      }else if(emailFlag===0&&userinfo.email!==email){
-        return this.json({status:0,errno:1,errmsg:'该邮箱已存在！'});
-      }else {
-        let rs=await this.model('personal').saveUserInfo(newData,{name:newData.name});
-        if(rs) return this.success();
+      if(userinfo.email===email&&userinfo.nickname===nickname){
+        //邮箱和昵称都未改变
+          return this.json({status:0,errno:1,errmsg:'请填写要提交的修改信息！'});
+      }else{
+          let userFlag=await this.checkIsExist({name:name});
+          let emailFlag=await this.checkIsExist({email:email});
+          if(userFlag===0&&uinfo.name!==name){
+            return this.json({status:0,errno:1,errmsg:'该用户名已存在！'});
+          }else if(emailFlag===0&&userinfo.email!==email){
+            return this.json({status:0,errno:1,errmsg:'该邮箱已存在！'});
+          }else {
+            let rs=await this.model('personal').saveUserInfo(newData,{name:newData.name});
+            if(rs) return this.success();
+          }
       }
     }
   }
