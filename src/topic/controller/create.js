@@ -168,17 +168,31 @@ export default class extends Base {
   }
 
   //上传图片接口
-  async uploadeditorAction(req, res)
-  {
-      let file = think.extend({}, this.file('img'));
-      let filepath = file.path;
-      let newpath = liFormatDate(new Date().toLocaleDateString());
-      let uploadPath = think.UPLOAD_PATH + '/pics/' + newpath;
-      think.mkdir(uploadPath);
-      let basename = path.basename(filepath);
-      fs.renameSync(filepath, uploadPath + basename);
-      this.json("/static/upload/pics/" + newpath + basename);
+  async uploadeditorAction()
+  {   
+      let IS_USE_OSS=think.config('OSS.on');
+      if(IS_USE_OSS){
+          //上传OSS图片接口
+          let ALIOSS = think.service("alioss"); 
+          let alioss = new ALIOSS();
+          let file = think.extend({}, this.file('img'));
+          let rs=await alioss.upload(file);
+          if(rs){
+              return this.json(think.config('OSS.domain')+"/"+rs.name);
+          }else{
+              return this.json("上传失败！");
+          }
+      }else{
+          //上传应用服务器图片接口
+          let file = think.extend({}, this.file('img'));
+          let filepath = file.path;
+          let newpath = liFormatDate(new Date().toLocaleDateString());
+          let uploadPath = think.UPLOAD_PATH + '/pics/' + newpath;
+          think.mkdir(uploadPath);
+          let basename = path.basename(filepath);
+          fs.renameSync(filepath, uploadPath + basename);
+          this.json("/static/upload/pics/" + newpath + basename);
+      }
   }
-
 
 }
