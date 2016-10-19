@@ -16,6 +16,8 @@
     "nodemailer": "^0.7.1",
     "nunjucks": "^2.2.0",
     "pm2": "^1.1.2",
+    "ali-oss":"4.5.0",
+    "co":"4.5.0",
     "request": "^2.74.0",
     "source-map-support": "^0.4.0",
     "thinkjs": "2.2.12"
