@@ -16,8 +16,11 @@ export default class extends think.service.base {
           region: think.config('OSS.region'),
           accessKeyId: think.config('OSS.accessKeyId'),
           accessKeySecret: think.config('OSS.accessKeySecret'),
-          bucket: 'jsout'
+          bucket: think.config('OSS.bucket')
       });
+      console.log(think.config('OSS.region'));
+      console.log(think.config('OSS.accessKeyId'));
+      console.log(think.config('OSS.accessKeySecret'));
       let filepath = imgobj.path;
       let basename = path.basename(filepath);
       let newpath = liFormatDate(new Date().toLocaleDateString());

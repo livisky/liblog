@@ -15,7 +15,7 @@ export default {
      region: '',//例：oss-cn-shanghai
      accessKeyId: '',//id
      accessKeySecret: '',//key
-     bucket: 'jsout'
+     bucket: ''//jsout
   },
   point:{
       addcollect:1,
