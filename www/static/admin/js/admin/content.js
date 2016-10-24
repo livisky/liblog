@@ -63,7 +63,7 @@
                 success: function (result) {
                     if (result) {
                         $("#picUrl").val(result.path);
-                        $('.show-img-upload .add-img-btn').css("background-image",'url(/'+result.path+')')
+                        $('.show-img-upload .add-img-btn').css("background-image",'url('+result.path+')')
                     } else {
                         console.log('上传失败');
                     }
