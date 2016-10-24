@@ -15,8 +15,8 @@ export default class extends Base
         let articlelist ={},result={},list={};
         let selval=this.get('type');
         let searchtxt=this.get('search');
-        let pagenumber=this.get('page')|1;
-        let pagesize=this.get('pagesize')|1;
+        let pagenumber=this.get('page')||1;
+        let pagesize=this.get('pagesize')||1;
         // 设置分页
         if(selval){
             //文章筛选
