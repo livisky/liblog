@@ -1,5 +1,9 @@
 'use strict';
 import Geetest from 'geetest';
+let geetest = new Geetest({
+  geetest_id: think.config('geetest.geetest_id'),
+  geetest_key: think.config('geetest.geetest_key')
+});
 export default class extends think.service.base {
   /**
    * init
@@ -10,25 +14,6 @@ export default class extends think.service.base {
   }
   //初始化
  async register(type){
-    // let setup = await think.cache("setup");
-    // geetest_id: 'a4ba8061bc9741e47980e8b69e9afbf6',
-    // geetest_key: '4da57a23875809329871b4e0be3a53d6'
-    //  let privateKey,publicKey
-    //  if(type == 'mobile'){
-    //      privateKey = setup.GEETEST_KEY_M;//key
-    //      publicKey = setup.GEETEST_ID_M;//id
-    //  }else {
-    //      privateKey = setup.GEETEST_KEY;//key
-    //      publicKey = setup.GEETEST_ID;//id
-     //
-    //  }
-
-     let geetest = new Geetest({
-       geetest_id: 'a4ba8061bc9741e47980e8b69e9afbf6',
-       geetest_key: '4da57a23875809329871b4e0be3a53d6'
-     });
-
-
     //初始
         let register=() =>{
              let deferred = think.defer();
@@ -42,27 +27,10 @@ export default class extends think.service.base {
              });
              return deferred.promise;
          }
-
   return await register();
   }
 // 二次服务器验证
   async validate(data,type){
-    // let setup = await think.cache("setup");
-      // let privateKey,publicKey;
-      // if(type == 'mobile'){
-      //     privateKey = setup.GEETEST_KEY_M;//key
-      //     publicKey = setup.GEETEST_ID_M;//id
-      // }else {
-      //     privateKey = setup.GEETEST_KEY;//key
-      //     publicKey = setup.GEETEST_ID;//id
-      //
-      // }
-
-      let geetest = new Geetest({
-        geetest_id: 'a4ba8061bc9741e47980e8b69e9afbf6',
-        geetest_key: '4da57a23875809329871b4e0be3a53d6'
-      });
-
     //验证
     let validate = (data)=>{
       let deferred = think.defer();
@@ -80,7 +48,6 @@ export default class extends think.service.base {
           console.log(err);
           data.status = "fail";
         }
-
         deferred.resolve(data);
       });
       return deferred.promise;
