@@ -20,6 +20,12 @@
                         <label for="password">密码</label>
                         <input type="password" class="form-control" id="password" placeholder="密码"style="width: 440px;">
                     </div>
+                    <div class="form-group code-region" id="captcha">
+                      <input type="hidden" name="name" value="" id="challenge">
+                      <input type="hidden" name="name" value="" id="seccode">
+                      <input type="hidden" name="name" value="" id="validate">
+                    </div>
+                    <p id="wait" class="show">正在加载验证码......</p>
                     <button type="submit" class="btn btn-default" id="loginBtn">登陆</button>
                 </div>
             </div>
@@ -34,6 +40,7 @@
         </div>
     </footer>
     <script src="{{_web.url}}{{theme_url}}/src/js/widget/jquery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="//static.geetest.com/static/tools/gt.js"></script>
     <script src="{{_web.url}}{{theme_url}}/src/js/business/pagecommon/footer.js"></script>
     <!--访客统计代码-->
     {{_web.tongji|safe}}
