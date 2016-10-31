@@ -11,8 +11,8 @@
 }
 
 .show-img-upload .add-img-btn input[type=file] {
-    width: 82px;
-    height: 82px;
+    width: 182px;
+    height: 132px;
     position: absolute;
     top: 0;
     left: 0;
