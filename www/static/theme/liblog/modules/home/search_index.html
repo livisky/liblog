@@ -22,7 +22,7 @@
 			{% if itemList.length>0 %}
 				{% for item in itemList %}
 					 <div class="blogs">
-							<ul>
+							<ul style="width:98%">
 								<h3><a href="/page/{{item.id}}.html">{{item.title}}</a></h3>
 								<div class="abstract">{{item.abstract}}</div>
 								<div class="author">
@@ -47,7 +47,7 @@
 					您可能感兴趣
 				</div>
 				<div class="blogs">
-					<ul>
+					<ul style="width:98%">
 						{% for item in torecomList %}
 							<li><a href="/page/{{item.id}}.html" target="_blank" title="{{item.title}}">{{item.title}}</a></li>
 						{%endfor%}
