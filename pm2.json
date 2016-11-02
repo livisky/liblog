@@ -7,6 +7,8 @@
     "autorestart": true,
     "node_args": [],
     "args": [],
+    "instances": "max",
+    "exec_mode": "cluster",
     "env": {
 
     }
