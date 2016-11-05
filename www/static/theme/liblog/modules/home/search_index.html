@@ -56,9 +56,9 @@
 			</div>
 			{%endif%}
 		</div>
-	    {%if pageData.count>10 %}
-				 {% include "../common/inc/pagination.html" %}
-	    {%endif%}
+		{%if pageData.count>10 %}
+			 {% include "../common/inc/pagination_search.html" %}
+		{%endif%}
 {% endblock %}
 
 {% block footer_other %}
