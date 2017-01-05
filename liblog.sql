@@ -10,26 +10,10 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2017-01-05 14:26:16
+Date: 2017-01-05 15:23:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
-
--- ----------------------------
--- Table structure for li_account
--- ----------------------------
-DROP TABLE IF EXISTS `li_account`;
-CREATE TABLE `li_account` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of li_account
--- ----------------------------
-INSERT INTO `li_account` VALUES ('1', 'admin', 'c7434c0ee2ef62392ba704d4db9c3488');
 
 -- ----------------------------
 -- Table structure for li_article
@@ -608,7 +592,7 @@ CREATE TABLE `li_user` (
 -- ----------------------------
 -- Records of li_user
 -- ----------------------------
-INSERT INTO `li_user` VALUES ('56', 'admin', 'admin', 'fcea920f7412b5da7be0cf42b8c93759', 'admin@jsout.com', '1', null, 'common/images/pic/avatar_7.jpg', 'site', '15', null, '2016-08-22 14:44:32', '1', '0', '0');
+INSERT INTO `li_user` VALUES ('56', 'admin', 'admin', 'c7434c0ee2ef62392ba704d4db9c3488', 'admin@jsout.com', '1', null, 'common/images/pic/avatar_7.jpg', 'site', '15', null, '2016-08-22 14:44:32', '1', '0', '0');
 INSERT INTO `li_user` VALUES ('85', 'livi', 'livi', null, 'livisky@163.com', '4', null, '', 'site', '10', null, null, '1', '0', '0');
 
 -- ----------------------------
