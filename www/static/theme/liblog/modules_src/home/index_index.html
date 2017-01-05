@@ -1,0 +1,139 @@
+{% extends "../common/inc/base_home.html" %}
+{% block head %}
+    <title>{{_web.sitename}}</title>
+    <meta name="keywords" content="{{_web.keywords}}">
+    <meta name="description" content="{{_web.description}}">
+    {{ super() }}
+    <link href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/index/index_topic.css" rel="stylesheet">
+{% endblock %}
+{% block content_top %}
+    <section class="focusbox-wrapper container">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="focusmo">
+            <ul>
+              {% article data = "largetopList",limit= "1",flag="flag_a"%}
+              {% for item in largetopList %}
+              <li class="large">
+                <span>
+                  <a href="/page/{{item.id}}.html" target="_blank">
+                    <img src="{{_web.url}}{{'static/common/images/common/default.jpg' if item.picurl=='' else item.picurl }}" alt="" class="thumb" title="{{item.title}}">
+                    <span>
+                      <h4>{{item.title}}</h4></span>
+                  </a>
+                </span>
+              </li>
+              {%endfor%}
+              {% article data = "topList",limit= "4",flag="totop"%}
+              {% for item in topList %}
+                <li>
+                  <span>
+                    <a href="/page/{{item.id}}.html" target="_blank">
+                      <img src="{{_web.url}}{{'static/common/images/common/default.jpg' if item.picurl=='' else item.picurl }}" alt="" class="thumb" title="{{item.title}}">
+                      <span>
+                        <h4>{{item.title}}</h4></span>
+                    </a>
+                  </span>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="most-comment-posts">
+            <h3 class="widget_titx">
+              <strong>大家推荐</strong></h3>
+            <ul>
+              {% article data = "torecomList",limit= "9",flag="torecom"%}
+              {% for item in torecomList %}
+                <li class="item-{{loop.index}}">
+                  <span class="label label-1">{{loop.index}}</span>
+                  <a href="/page/{{item.id}}.html" title="{{item.title}}">
+                    {{item.title}}
+                  </a>
+                </li>
+              {%endfor%}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
+{% block content %}
+    <div class="topnews">
+      <div class="h2">
+       <span>
+         <a href="/more.html" target="_blank">更多>></a>
+       </span>
+       文章推荐
+      </div>
+      {% article data = "topList",limit= "5",flag="totop"%}
+      {% for item in topList %}
+      <div class="blogs">
+         <figure>
+         <a href="/page/{{item.id}}.html" target="_blank"><img src="{{_web.url}}{{'static/common/images/common/default.jpg' if item.picurl=='' else item.picurl }}" title="{{item.title}}"></a>
+          </figure>
+          <ul class="articleul">
+          <h3><a href="/page/{{item.id}}.html" target="_blank">{{item.title}}</a></h3>
+           <p>{{item.abstract}}</p>
+          <div class="author">
+           <span class="lm f_l">
+             <a href="javascript:void(0);">{{item.tagname}}</a>
+            </span>
+            <span class="dtime f_l">{{think.datetime(item.createtime,"YYYY-MM-DD")}}</span>
+           </div>
+                       <div class="author">
+                          <span class="viewnum f_r">
+             浏览（{{item.view}}）</span>
+            <span class="pingl f_r">
+             评论（<span id="sourceId::{{item.id}}" class="cy_cmt_count" style="margin: 0px;padding: 0px"></span>）
+            </span>
+                       </div>
+          </ul>
+        </div>
+       {% endfor %}
+    </div>
+    <div class="topnews">
+       <div class="h2">
+           <span>
+             <a href="/topic.html" target="_blank">更多>></a>
+           </span>
+           最新话题
+       </div>
+       {% topic data = "topicList",limit= "8"%}
+       {% for item in topicList %}
+         <div class="cell">
+            <a class="user_avatar pull-left" href="/personal/@{{item.author}}">
+              <img src="{{_web.url}}{{theme_url}}/{{'common/images/pic/man.jpg' if item.pic=='' else item.pic }}" title="{{item.author}}">
+            </a>
+
+            <span class="reply_count pull-left">
+              <span class="count_of_replies" title="回复数">
+                {{item.replycount}}
+              </span>
+              <span class="count_seperator">/</span>
+              <span class="count_of_visits" title="点击数">
+                {{item.view}}
+              </span>
+            </span>
+            <span class="last_time pull-right">
+              <a href="/personal/@{{item.updateauthor}}">
+                <img class="user_small_avatar" src="{{_web.url}}{{theme_url}}/{{'common/images/pic/man.jpg' if item.updatepic=='' else item.updatepic }}" title="{{item.updateauthor}}">
+              </a>
+              <span class="last_active_time">
+                <time class="timeago" datetime="{{think.datetime(item.updatetime)}}"></time>
+              </span>
+            </span>
+            <div class="topic_title_wrapper">
+                    <span class="topiclist-tab">{{item.item|tagname}}</span>
+              <a class="topic_title" href="/topic/item/{{item.tid}}.html" title="{{item.title}}">
+                {{item.title}}
+              </a>
+            </div>
+          </div>
+       {% endfor %}
+    </div>
+{% endblock %}
+{% block footer_other %}
+<script id="cy_cmt_num" src="//changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysoRJNxO"></script>
+{% endblock %}

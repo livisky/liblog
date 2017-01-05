@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+      <meta name="baidu-site-verification" content="MoFwmO6WMW" />
+      <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="shortcut icon" href="{{_web.url}}{{theme_url}}/common/images/common/favicon.ico" type="image/x-icon">
+      <link href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/index/layout.css" rel="stylesheet">
+      <link href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/index/index.css" rel="stylesheet">
+      <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" media="screen and (max-width: 600px)" href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/index/smallscreen.css" />
+      <link href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/topic/topiclist.css" rel="stylesheet">
+    {% endblock %}
+    <!--[if lt IE 9]>
+      <script src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}js/widget/html5/html5.min.js"></script>
+    <![endif]-->
+    <script>
+        var G_csrf="{{csrf}}";
+    </script>
+</head>
+<body>
+    {% include "../../common/inc/menu.html" %}
+    <article class="container">
+       <div class="row">
+           <div class="col-lg-9 right-padding">
+               <div class="main-left">
+                    {% block content %}{% endblock %}
+               </div>
+            </div>
+            {% include "../inc/right.html" %}
+            <div style="clear: both"></div>
+        </div>
+     </article>
+    {% include "../../common/inc/footer.html" %}
+    {% block footer_other %}{% endblock %}
+</body>
+</html>

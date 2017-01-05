@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+      <meta name="baidu-site-verification" content="MoFwmO6WMW" />
+      <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="shortcut icon" href="{{_web.url}}{{theme_url}}/common/images/common/favicon.ico" type="image/x-icon">
+      <link href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/index/layout.css" rel="stylesheet">
+      <link rel="stylesheet" href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/personal/setting/style.css">
+      <link rel="stylesheet" href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/personal/setting/app.min.css">
+      <link href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/personal/personal.css" rel="stylesheet">
+    {% endblock %}
+    <!--[if lt IE 9]>
+      <script src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}js/widget/html5/html5.min.js"></script>
+    <![endif]-->
+    <script>
+        var G_csrf="{{csrf}}";
+    </script>
+</head>
+<body>
+  <div class="m-wrap">
+      <div class="m-page page-member container">
+          <div class="page-head">
+            {% include "../inc/personal_header.html" %}
+          </div>
+          <div class="page-body">
+              <div class="page-left">
+                  {% block page_left %}{% endblock %}
+              </div>
+              <div class="page-right">
+                  {% block page_right %}{% endblock %}
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="m-foot">
+    {% include "../inc/setting_footer.html" %}
+    {% block footer_other %}{% endblock %}
+  </div>
+</body>
+</html>

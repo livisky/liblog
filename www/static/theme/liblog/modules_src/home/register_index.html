@@ -1,0 +1,56 @@
+{% extends "../common/inc/base_about.html" %}
+{% block head %}
+    <title>{{title}}-{{_web.sitename}}</title>
+    <meta name="keywords" content="{{_web.keywords}}">
+    <meta name="description" content="{{title}}-{{_web.sitename}}">
+    {{ super() }}
+    <link href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/register/register.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <h1 class="article-title">用户注册</h1>
+    <article class="article-content">
+        <div class="right-main" id="registerForm">
+              <div class="register-item">
+                  <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-user notop" id="basic-addon1"></span>
+                    <input type="text" class="form-control username" id="username" placeholder="用户名" validate="required|isok|user" maxlength="16" aria-describedby="basic-addon1">
+                    <input type="hidden" id="csrf" value="{{csrf}}">
+                  </div>
+              </div>
+              <div class="register-item">
+                  <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-lock notop" id="basic-addon1"></span>
+                    <input type="password" class="form-control password" id="password" placeholder="密码" validate="required|password|minpwd" maxlength="16" aria-describedby="basic-addon1">
+                  </div>
+              </div>
+              <div class="register-item">
+                <div class="input-group">
+                  <span class="input-group-addon glyphicon glyphicon-lock notop" id="basic-addon1"></span>
+                  <input type="password" class="form-control repassword" placeholder="确认密码" validate="required|password|repassword|minpwd" maxlength="16" aria-describedby="basic-addon1">
+                </div>
+              </div>
+              <div class="register-item">
+                <div class="input-group">
+                  <span class="input-group-addon glyphicon glyphicon-envelope notop" id="basic-addon1"></span>
+                  <input type="text" class="form-control email" id="email" placeholder="邮箱将用于帐号校验" validate="required|email|checkemail" aria-describedby="basic-addon1">
+                </div>
+              </div>
+              <div class="register-item code-region" id="captcha">
+                <input type="hidden" name="name" value="" id="challenge">
+                <input type="hidden" name="name" value="" id="seccode">
+                <input type="hidden" name="name" value="" id="validate">
+              </div>
+              <p id="wait" class="show">正在加载验证码......</p>
+              <div class="agree-region">
+                <span class="agree"><a href="/policy.html">《网站注册协议》</a></span><br/>
+              </div>
+              <button type="submit" class="btn btn-primary" id="register">同意并注册</button>
+        </div>
+    </article>
+{% endblock %}
+{% block footer_other %}
+    <script type="text/javascript" src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}js/business/register/jquery.validate.js"></script>
+    <script type="text/javascript" src="//static.geetest.com/static/tools/gt.js"></script>
+    <script type="text/javascript" src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}js/business/register/register.js"></script>
+{% endblock %}

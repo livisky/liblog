@@ -1,0 +1,77 @@
+{% extends "../common/inc/base_home.html" %}
+{% block head %}
+    <title>{{title}}-{{_web.sitename}}</title>
+    <meta name="keywords" content="{{blogInfo.keywords}}">
+    <meta name="description" content="{{title}}-{{_web.sitename}}">
+    {{ super() }}
+    <link rel="stylesheet" href="{{_web.url}}{{theme_url}}/vendors/github-markdown/github-markdown.css">
+    <link rel="stylesheet" href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/page/page.css">
+{% endblock %}
+
+{% block content %}
+    <div class="topnews">
+        <div class="h2">
+            <ol class="breadcrumb">
+                <li><a href="{{_web.url}}">首页</a></li>
+                <li><a href="/category/{{blogInfo.tag}}.html" target="_blank">{{tagname}}</a></li>
+                <li class="active">{{blogInfo.title}}</li>
+            </ol>
+        </div>
+        <article class="markdown-body">
+            <header class="article-header">
+                <input type="hidden" id="aid" value="{{blogInfo.id}}"/>
+                <h1 class="article-title" id="article-title">{{blogInfo.title}}</h1>
+                <div class="article-meta">
+                    <span><i class="glyphicon glyphicon-time"></i> 日期：{{think.datetime(blogInfo.createtime,"YYYY-MM-DD")}}</span>
+                    <span>
+                        <i class="glyphicon glyphicon-tags"></i>
+                        栏目：<a href="/category/{{blogInfo.tag}}.html" target="_blank">{{tagname}}</a>
+                    </span>
+                    <span><i class="glyphicon glyphicon-eye-open"></i> 浏览：{{blogInfo.view}}次</span>
+                    <span><i class="glyphicon glyphicon-user"></i> 评论：<a href="#SOHUCS" id="changyan_count_unit"></a>条</span>
+                 </div>
+            </header>
+            <div id="showContent">
+               {%if particle.length>0 %}
+                 {{particle}}
+               {%else%}
+                 {{blogInfo.content|safe}}
+               {%endif%}
+            </div>
+            {%if blogInfo.from!="" %}
+                <div class="from">
+                    文章转载：{{blogInfo.from}}
+                </div>
+            {%endif%}
+            <div class="copyrights">
+                感谢你的阅读，本文由 <a href="http://www.jsout.com">前端汇</a> 版权所有。<br/>
+                如若转载，请注明出处：前端汇（{{_web.url}}page/{{blogInfo.id}}.html）
+            </div>
+            <div class="topnews recom">
+                <div class="h2">
+        <span>
+          <a href="/more.html" target="_blank">更多&gt;&gt;</a>
+        </span>
+                    您可能感兴趣
+                </div>
+                <div class="blogs">
+                    <ul>
+                        {% for item in relatearticle %}
+                        <li><a href="/page/{{item.id}}.html" target="_blank" title="{{item.title}}">{{item.title}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+                <!--畅言评论代码-->
+                    {{setting.appcode|safe}}
+                <!--畅言评论代码-->
+        </article>
+    </div>
+{% endblock %}
+
+{% block footer_other %}
+<script id="cy_cmt_num" src="//changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysoRJNxO"></script>
+<script src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}js/business/page/page.js"></script>
+{% endblock %}
+</body>
+</html>

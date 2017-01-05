@@ -1,0 +1,66 @@
+{% extends "../personal/inc/personal_base.html" %}
+{% block head %}
+    <title>{{title}}-{{_web.sitename}}</title>
+    <meta name="keywords" content="{{_web.keywords}}">
+    <meta name="description" content="{{_web.description}}">
+    {{ super() }}
+{% endblock %}
+
+{% block page_left %}
+    <ul class="menu">
+      <li class="">
+        <a class="item" href="/personal/setting/index">
+          <i class="icon icon-user"></i>基本信息</a>
+      </li>
+      <li class="">
+        <a class="item" href="/personal/setting/password">
+          <i class="icon icon-lock2"></i>修改密码</a>
+      </li>
+      <li class="active">
+        <a class="item" href="/personal/setting/pic">
+          <i class="icon icon-kindle"></i>头像设置</a>
+      </li>
+    </ul>
+{% endblock %}
+
+{% block page_right %}
+    <div class="m-box">
+      <div class="box-head">
+        <strong class="box-title">头像选择</strong></div>
+      <div class="box-body">
+        <div class="m-manual-create">
+          <div class="form-left">
+            <div id="userInfoForm">
+              <div class="page-body avatar-list">
+                <p><b>更换头像</b></p>
+                <input type="hidden" id="csrf" value="{{csrf}}">
+                <ul class="j_Alteravatar" id="j_Alteravatar" data-url="/member/save-avatar.html">
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_1.jpg" avatar-url="common/images/pic/avatar_1.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_2.jpg" avatar-url="common/images/pic/avatar_2.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_3.jpg" avatar-url="common/images/pic/avatar_3.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_4.jpg" avatar-url="common/images/pic/avatar_4.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_5.jpg" avatar-url="common/images/pic/avatar_5.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_6.jpg" avatar-url="common/images/pic/avatar_6.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_7.jpg" avatar-url="common/images/pic/avatar_7.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_8.jpg" avatar-url="common/images/pic/avatar_8.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_9.jpg" avatar-url="common/images/pic/avatar_9.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_10.jpg" avatar-url="common/images/pic/avatar_10.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_11.jpg" avatar-url="common/images/pic/avatar_11.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_12.jpg" avatar-url="common/images/pic/avatar_12.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_13.jpg" avatar-url="common/images/pic/avatar_13.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_14.jpg" avatar-url="common/images/pic/avatar_14.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_15.jpg" avatar-url="common/images/pic/avatar_15.jpg"><div class="mask">设为头像</div></li>
+                    <li><img src="{{_web.url}}{{theme_url}}/common/images/pic/avatar_16.jpg" avatar-url="common/images/pic/avatar_16.jpg"><div class="mask">设为头像</div></li>
+                </ul>
+                <div style="clear:both"></div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
+{% block footer_other %}
+    <script type="text/javascript" src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}js/business/personal/setpic.js"></script>
+{% endblock %}

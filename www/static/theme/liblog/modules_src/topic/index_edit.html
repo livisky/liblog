@@ -1,0 +1,31 @@
+{% extends "../topic/inc/topic_base.html" %}
+{% block head %}
+    <title>{{title}}-{{_web.sitename}}</title>
+    <meta name="keywords" content="{{_web.keywords}}">
+    <meta name="description" content="{{_web.description}}">
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{_web.url}}{{theme_url}}/vendors/wangeditor/css/wangEditor.min.css">
+{% endblock %}
+
+{% block content %}
+    <div class="topnews" id="createtop">
+      <div class="header">
+           <ol class="breadcrumb">
+             <li><a href="/">主页</a><span class="divider"></span></li>
+             <li class="active">编辑回复</li>
+           </ol>
+      </div>
+      <div id="editor" style="height:400px;max-height:500px;margin:15px 0;">
+        {{replyInfo.oldcomment|safe}}
+      </div>
+      <input type="hidden" name="name" value="{{replyInfo.tid}}" id="tid">
+      <input type="hidden" value="{{replyInfo.author}}" id="replyauthor">
+      <input type="hidden" value="{{topicInfo.title}}" id="replytitle">
+      <input type="hidden" value="{{replyInfo.pic}}" id="replypic">
+    </div>
+    <span class="span-success" id="saveedittopic" rid="{{replyInfo.id}}">提交</span>
+{% endblock %}
+{% block footer_other %}
+    <script type="text/javascript" src="{{_web.url}}{{theme_url}}/vendors/wangeditor/js/wangEditor.min.js"></script>
+    <script type="text/javascript" src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}js/business/topic/reply.js"></script>
+{% endblock %}

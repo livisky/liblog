@@ -1,0 +1,98 @@
+{% extends "../topic/inc/topic_base.html" %}
+{% block head %}
+    <title>{{title}}-{{_web.sitename}}</title>
+    <meta name="keywords" content="{{_web.keywords}}">
+    <meta name="description" content="{{_web.description}}">
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{_web.url}}{{theme_url}}/vendors/wangeditor/css/wangEditor.min.css">
+    <link href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/topic/reply.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{_web.url}}{{theme_url}}/vendors/github-markdown/github-markdown.css">
+{% endblock %}
+
+{% block content %}
+    <div class="topnews" id="createtop">
+      <div class="topicTitle">
+        <div class="header topic_header">
+         <span class="topic_full_title" id="article-title"> {{topicInfo.title}} </span>
+         <div class="changes">
+            <span> 发布于 <time class="timeago" datetime="{{think.datetime(topicInfo.createtime)}}"></time></span>
+            <span> 作者 <a href="/personal/@{{topicInfo.author}}">{{topicInfo.author}}</a> </span>
+            <input type="hidden" name="name" value="{{loginuserinfo.name}}"  id="loginname">
+            <span> {{topicInfo.view}} 次浏览 </span>
+            <span> 来自 {{topicItem}}</span>
+            {% if islogin==1%}
+              <input class="span-common span-success pull-right collect_btn {%if iscollect==1%}cancel{%endif%}" type="submit" value="{%if iscollect==1%}取消收藏{%else%}收藏{%endif%}" itype="topic" aid="{{topicInfo.id}}" cid="{{cid}}" flag="{{iscollect}}"/><br/>
+            {%endif%}
+            {% if topicInfo.author==loginuserinfo.name %}
+              <div class="topic_item" id="topic_item">
+                <a href="/topic/create/edit/{{topicInfo.id}}"><i class="fa fa-icon fa-pencil-square-o fa-edit" rid={{topicInfo.id}} title="编辑"></i></a>
+                <i class="fa fa-icon fa-trash" rid={{topicInfo.id}} title="删除" id="removeItem"></i>
+              </div>
+            {%endif%}
+         </div>
+         <div id="manage_topic"></div>
+        </div>
+      </div>
+       <div id="topicbody">
+         {{topicInfo.content|safe}}
+       </div>
+    </div>
+    {% if replycount!=0 %}
+      <div class="replylist">
+        <div class="header">
+          <span class="col_fade">{{replycount}} 回复</span>
+        </div>
+        {% for item in replyList %}
+          <div class="cell reply_area reply_item">
+             <div class="author_content">
+                <a href="/personal/@{{item.author}}" class="user_avatar"> <img src="{{_web.url}}{{theme_url}}/{{'common/images/pic/man.jpg' if item.pic=='' else item.pic}}" title="{{item.author}}" /></a>
+                <div class="user_info">
+                   <a class="dark reply_author" href="/personal/@{{item.author}}">{{item.author}}</a>
+                   <a class="reply_time">{{loop.index}}楼•
+                      <time class="timeago" datetime="{{think.datetime(item.mytime)}}"></time>
+                   </a>
+                </div>
+                <div class="user_action">
+                   <span>
+                     <i class="fa up_btn fa-thumbs-o-up invisible {%if item.like>0 %}haslike{%endif%}" title="喜欢" rid={{item.tid}} login="{{loginuserinfo.name}}"></i>
+                     <span class="likeCount">{%if item.like>0 %}{{item.like}}{%endif%}</span><span class="up-count"> </span>
+                    {% if item.author==loginuserinfo.name %}
+                      <a href="/topic/edit/{{item.tid}}"><i class="fa fa-icon fa-pencil-square-o fa-edit" rid={{item.tid}} title="编辑"></i></a>
+                      <i class="fa fa-icon fa-trash" rid={{item.tid}} tid="{{topicInfo.id}}" title="删除"></i>
+                    {%endif%}
+                  </span>
+                   <span> <i class="fa fa-reply reply2_btn" title="回复" rname="{{item.author}}"></i> </span>
+                </div>
+             </div>
+             <div class="reply_content from-SuperZee">
+              <div class="markdown-text">
+                {{item.oldcomment|safe}}
+              </div>
+             </div>
+         </div>
+        {%endfor%}
+      </div>
+    {%endif%}
+    {% if islogin==1 %}
+      <div class="reply-region">
+         <div class="topnews" id="createreply">
+           <div class="reply">
+             <div class="header">
+              <span class="col_fade">添加回复</span>
+             </div>
+             <div id="editor" style="height:400px;max-height:500px;margin:15px 0;"></div>
+             <input type="hidden" value="{{loginuserinfo.name}}" id="replyauthor">
+             <input type="hidden" value="{{topicInfo.title}}" id="replytitle">
+             <input type="hidden" value="{{loginuserinfo.pic}}" id="replypic">
+             <input type="hidden" value="{{topicInfo.id}}" id="tid">
+           </div>
+         </div>
+         <span class="span-success" id="savetopic">提交</span>
+      </div>
+    {%endif%}
+{% endblock %}
+
+{% block footer_other %}
+    <script type="text/javascript" src="{{_web.url}}{{theme_url}}/vendors/wangeditor/js/wangEditor.min.js"></script>
+    <script type="text/javascript" src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}js/business/topic/reply.js"></script>
+{% endblock %}

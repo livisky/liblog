@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="baidu-site-verification" content="MoFwmO6WMW" />
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{{_web.url}}{{theme_url}}/common/images/common/favicon.ico" type="image/x-icon">
+    <link href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/index/layout.css" rel="stylesheet">
+    <link href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/index/index.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/index/smallscreen.css" />
+    <link href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/about/about.css" rel="stylesheet"> {% endblock %}
+    <!--[if lt IE 9]>
+        <script src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}js/widget/html5/html5.min.js"></script>
+      <![endif]-->
+    <script>
+        var G_csrf = "{{csrf}}";
+    </script>
+</head>
+
+<body>
+    {% include "../inc/about_nav.html" %}
+    <article class="mainbd">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 right-padding">
+                    <div class="left">
+                        <ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
+                            <li role="presentation" class='{% if action=="donate"%}active{%else%}{%endif%}'>
+                                <a href="/donate.html">捐赠</a>
+                            </li>
+                            <li role="presentation" class='{% if action=="register"%}active{%else%}{%endif%}'>
+                                <a href="/register.html">用户注册</a>
+                            </li>
+                            <li role="presentation" class='{% if action=="ads"%}active{%else%}{%endif%}'>
+                                <a href="/ads.html">推广服务</a>
+                            </li>
+                            <li role="presentation" class='{% if action=="policy"%}active{%else%}{%endif%}'>
+                                <a href="/policy.html">注册协议</a>
+                            </li>
+                            <li role="presentation" class='{% if action=="copyright"%}active{%else%}{%endif%}'>
+                                <a href="/copyright.html">版权声明</a>
+                            </li>
+                            <li role="presentation" class='{% if action=="links"%}active{%else%}{%endif%}'>
+                                <a href="/links.html">友情链接</a>
+                            </li>
+                            <li role="presentation" class='{% if action=="guest"%}active{%else%}{%endif%}'>
+                                <a href="/guest.html">留言板</a>
+                            </li>
+                            <li role="presentation" class='{% if action=="about"%}active{%else%}{%endif%}'>
+                                <a href="/about.html">关于我们</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9 main-right">
+                    <div class="right markdown-body">
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    {% include "../inc/footer.html" %} {% block footer_other %}{% endblock %}
+</body>
+
+</html>

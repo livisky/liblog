@@ -1,0 +1,156 @@
+{% extends "../doc/inc/doc_base.html" %}
+{% block head %}
+    <title>{{articleInfo.title}},thinkjs 2.0 — thinkjs2.0手册 — 前端汇 — Power by liblog</title>
+    <meta name="keywords" content="thinkjs 2.0,thinkjs2.0手册,liblog">
+    <meta name="description" content="{{_web.description}}">
+    {{ super() }}
+{% endblock %}
+
+{% block doc_title %}
+  thinkjs2.1
+{% endblock %}
+
+{% block left_nav %}
+    <ul class="out_ul_new">
+       <li>
+         <p>
+           <span class="out_ul_span1">
+               <img src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/doc/API_word.png" />
+           </span>
+           <span class="out_ul_span2">
+             <span class="nav_title">快速入门</span>
+           </span>
+         </p>
+        <ul class="set_ChildEle_new">
+           <a href="/doc/thinkjs2/230.html"><li>介绍</li></a>
+           <a href="/doc/thinkjs2/231.html"><li>创建项目</li></a>
+           <a href="/doc/thinkjs2/232.html"><li>项目结构</li></a>
+           <a href="/doc/thinkjs2/233.html"><li>代码规范</li></a>
+           <a href="/doc/thinkjs2/234.html"><li>升级指南</li></a>
+           <a href="/doc/thinkjs2/235.html"><li>常见问题</li></a>
+        </ul>
+      </li>
+        <li>
+         <p>
+           <span class="out_ul_span1">
+               <img src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/doc/API_word.png" />
+           </span>
+           <span class="out_ul_span2">
+             <span class="nav_title">进阶应用</span>
+           </span>
+         </p>
+        <ul class="set_ChildEle_new">
+           <a href="/doc/thinkjs2/236.html"><li>模块</li></a>
+           <a href="/doc/thinkjs2/237.html"><li>控制器</li></a>
+           <a href="/doc/thinkjs2/238.html"><li>视图</li></a>
+           <a href="/doc/thinkjs2/239.html"><li>配置</li></a>
+           <a href="/doc/thinkjs2/240.html"><li>路由</li></a>
+        </ul>
+      </li>
+        <li>
+         <p>
+           <span class="out_ul_span1">
+               <img src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/doc/API_word.png" />
+           </span>
+           <span class="out_ul_span2">
+             <span class="nav_title">模型</span>
+           </span>
+         </p>
+        <ul class="set_ChildEle_new">
+           <a href="/doc/thinkjs2/241.html"><li>介绍</li></a>
+           <a href="/doc/thinkjs2/242.html"><li>数据库配置</li></a>
+           <a href="/doc/thinkjs2/243.html"><li>CRUD 操作</li></a>
+           <a href="/doc/thinkjs2/244.html"><li>事务</li></a>
+           <a href="/doc/thinkjs2/245.html"><li>关联模型</li></a>
+           <a href="/doc/thinkjs2/246.html"><li>MySQL</li></a>
+           <a href="/doc/thinkjs2/247.html"><li>MongoDB</li></a>
+           <a href="/doc/thinkjs2/248.html"><li>SQLite</li></a>
+           <a href="/doc/thinkjs2/249.html"><li>PostgreSQL</li></a>
+        </ul>
+      </li>
+        <li>
+         <p>
+           <span class="out_ul_span1">
+               <img src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/doc/API_word.png" />
+           </span>
+           <span class="out_ul_span2">
+             <span class="nav_title">Adapter</span>
+           </span>
+         </p>
+        <ul class="set_ChildEle_new">
+           <a href="/doc/thinkjs2/251.html"><li>介绍</li></a>
+           <a href="/doc/thinkjs2/252.html"><li>Cache</li></a>
+           <a href="/doc/thinkjs2/253.html"><li>Session</li></a>
+           <a href="/doc/thinkjs2/254.html"><li>WebSocket</li></a>
+           <a href="/doc/thinkjs2/255.html"><li>Template</li></a>
+        </ul>
+      </li>
+        <li>
+         <p>
+           <span class="out_ul_span1">
+               <img src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/doc/API_word.png" />
+           </span>
+           <span class="out_ul_span2">
+             <span class="nav_title">Middleware</span>
+           </span>
+         </p>
+        <ul class="set_ChildEle_new">
+           <a href="/doc/thinkjs2/256.html"><li>介绍</li></a>
+           <a href="/doc/thinkjs2/257.html"><li>CSRF</li></a>
+           <a href="/doc/thinkjs2/258.html"><li>子域名部署</li></a>
+           <a href="/doc/thinkjs2/259.html"><li>禁止端口访问</li></a>
+        </ul>
+      </li>
+        <li>
+         <p>
+           <span class="out_ul_span1">
+               <img src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/doc/API_word.png" />
+           </span>
+           <span class="out_ul_span2">
+             <span class="nav_title">扩展功能</span>
+           </span>
+         </p>
+        <ul class="set_ChildEle_new">
+           <a href="/doc/thinkjs2/273.html"><li>TypeScript</li></a>
+           <a href="/doc/thinkjs2/274.html"><li>Logic</li></a>
+           <a href="/doc/thinkjs2/275.html"><li>Service</li></a>
+           <a href="/doc/thinkjs2/276.html"><li>Cookie</li></a>
+           <a href="/doc/thinkjs2/277.html"><li>REST API</li></a>
+           <a href="/doc/thinkjs2/278.html"><li>Babel</li></a>
+           <a href="/doc/thinkjs2/279.html"><li>ThinkJS 命令</li></a>
+           <a href="/doc/thinkjs2/280.html"><li>静态资源访问</li></a>
+           <a href="/doc/thinkjs2/281.html"><li>错误处理</li></a>
+           <a href="/doc/thinkjs2/282.html"><li>错误信息</li></a>
+           <a href="/doc/thinkjs2/283.html"><li>国际化</li></a>
+           <a href="/doc/thinkjs2/284.html"><li>路径常量</li></a>
+           <a href="/doc/thinkjs2/285.html"><li>定时任务</li></a>
+           <a href="/doc/thinkjs2/286.html"><li>线上部署</li></a>
+           <a href="/doc/thinkjs2/287.html"><li>单元测试</li></a>
+           <a href="/doc/thinkjs2/288.html"><li>开发插件</li></a>
+           <a href="/doc/thinkjs2/289.html"><li>推荐模块</li></a>
+           <a href="/doc/thinkjs2/290.html"><li>更多功能</li></a>
+        </ul>
+      </li>
+        <li>
+         <p>
+           <span class="out_ul_span1">
+               <img src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/doc/API_word.png" />
+           </span>
+           <span class="out_ul_span2">
+             <span class="nav_title">API</span>
+           </span>
+         </p>
+        <ul class="set_ChildEle_new">
+           <a href="/doc/thinkjs2/273.html"><li>think</li></a>
+           <a href="/doc/thinkjs2/274.html"><li>think.base</li></a>
+           <a href="/doc/thinkjs2/275.html"><li>think.http.base</li></a>
+           <a href="/doc/thinkjs2/276.html"><li>http</li></a>
+           <a href="/doc/thinkjs2/277.html"><li>controller</li></a>
+           <a href="/doc/thinkjs2/278.html"><li>controller.rest</li></a>
+           <a href="/doc/thinkjs2/279.html"><li>model</li></a>
+           <a href="/doc/thinkjs2/280.html"><li>model.mongo</li></a>
+           <a href="/doc/thinkjs2/280.html"><li>middleware</li></a>
+        </ul>
+      </li>
+    </ul>
+{% endblock %}

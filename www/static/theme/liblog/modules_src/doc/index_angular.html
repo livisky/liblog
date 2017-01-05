@@ -1,0 +1,60 @@
+{% extends "../doc/inc/doc_base.html" %}
+{% block head %}
+    <title>{{articleInfo.title}},angular快速入门教程 — 前端汇 — Power by liblog</title>
+    <meta name="keywords" content="angular教程,angular快速入门,liblog">
+    <meta name="description" content="{{_web.description}}">
+    {{ super() }}
+{% endblock %}
+
+{% block doc_title %}
+  angular教程
+{% endblock %}
+
+{% block left_nav %}
+    <ul class="out_ul_new">
+       <li>
+         <p>
+           <span class="out_ul_span1">
+               <img src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/doc/API_word.png" />
+           </span>
+           <span class="out_ul_span2">
+             <span class="nav_title">快速入门</span>
+           </span>
+         </p>
+        <ul class="set_ChildEle_new">
+           <a href="/doc/angular/310.html"><li>AngularJS快速入门</li></a>
+           <a href="/doc/angular/312.html"><li>AngularJS环境设置</li></a>
+           <a href="/doc/angular/313.html"><li>AngularJS MVC体系结构</li></a>
+           <a href="/doc/angular/314.html"><li>AngularJS第一个程序</li></a>
+           <a href="/doc/angular/315.html"><li>AngularJS指令</li></a>
+           <a href="/doc/angular/316.html"><li>AngularJS表达式</li></a>
+        </ul>
+      </li>
+        <li>
+         <p>
+           <span class="out_ul_span1">
+               <img src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/doc/API_word.png" />
+           </span>
+           <span class="out_ul_span2">
+             <span class="nav_title">进阶应用</span>
+           </span>
+         </p>
+        <ul class="set_ChildEle_new">
+           <a href="/doc/angular/317.html"><li>AngularJS控制器</li></a>
+           <a href="/doc/angular/318.html"><li>AngularJS过滤器</li></a>
+           <a href="/doc/angular/319.html"><li>AngularJS表格</li></a>
+           <a href="/doc/angular/320.html"><li>AngularJS HTML DOM</li></a>
+           <a href="/doc/angular/321.html"><li>AngularJS模块</li></a>
+           <a href="/doc/angular/321.html"><li>AngularJS表单</li></a>
+           <a href="/doc/angular/322.html"><li>AngularJS包括</li></a>
+           <a href="/doc/angular/323.html"><li>AngularJS Ajax</li></a>
+           <a href="/doc/angular/324.html"><li>AngularJS视图</li></a>
+           <a href="/doc/angular/325.html"><li>AngularJS作用域</li></a>
+           <a href="/doc/angular/326.html"><li>AngularJS服务</li></a>
+           <a href="/doc/angular/327.html"><li>AngularJS依赖注入</li></a>
+           <a href="/doc/angular/328.html"><li>AngularJS自定义指令</li></a>
+           <a href="/doc/angular/329.html"><li>AngularJS国际化</li></a>
+        </ul>
+      </li>
+    </ul>
+{% endblock %}
