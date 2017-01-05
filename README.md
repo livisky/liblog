@@ -49,3 +49,27 @@
 >Liblog QQ群：`256687601`  
 >作者邮箱：`262248861@qq.com`    
 >演示网站：http://www.jsout.com
+
+
+####　2017/1/5更新
+
+>添加静态资源一键打包功能(html,css,javascript)配置
+>添加开发和生产运行模式
+
+运行程序请选择运行模式
+```javascript
+//压缩html,css,js 并生成相应目录
+npm run compress
+
+//运行开发模式，html,css,js均加载未压缩版本
+npm run dev  
+
+//运行生产模式，html,css,js均加载压缩版本
+npm run app  
+
+//首次运行/更新运行前请先编译项目
+npm run compile
+
+//线上推荐用pm2来运行(先配置好pm2.json)
+pm2 start pm2.json
+```
