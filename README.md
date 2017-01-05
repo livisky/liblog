@@ -50,10 +50,11 @@
 >作者邮箱：`262248861@qq.com`    
 >演示网站：http://www.jsout.com
 
+### 六.更新日志
 
 ####　2017/1/5更新
 
->添加静态资源一键打包功能(html,css,javascript)配置
+>添加静态资源一键打包功能(html,css,javascript) gulp配置
 >添加开发和生产运行模式
 
 运行程序请选择运行模式
