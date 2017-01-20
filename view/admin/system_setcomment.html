@@ -1,36 +1,30 @@
-{% extends "../admin/inc/admin_base.html" %}
-{% block head %}
-    {{ super() }}
-{% endblock %}
-
-{% block content %}
-    <form class="form form-horizontal" id="form-article-add">
-        <input type="hidden" value="" id="aid"/>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>APP ID：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text appid" value="{{sysdata.appid}}" placeholder="" id="" name="">
-            </div>
+{% extends "../admin/inc/admin_base.html" %} {% block head %} {{ super() }} {% endblock %} {% block content %}
+<form class="form form-horizontal" id="form-article-add">
+    <input type="hidden" value="" id="aid" />
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>APP ID：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text appid" value="{{sysdata.appid}}" placeholder="" id="" name="">
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>APP KEY：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text appkey" value="{{sysdata.appkey}}" placeholder="" id="" name="">
-            </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>APP KEY：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text appkey" value="{{sysdata.appkey}}" placeholder="" id="" name="">
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>安装代码：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <textarea class="form-control textarea appcode" name="link" rows="4" cols="50" placeholder="安装代码" style="width: 100%; height: 98px;resize:none">{{sysdata.appcode}}</textarea></div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>安装代码：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <textarea class="form-control textarea appcode" name="link" rows="4" cols="50" placeholder="安装代码" style="width: 100%; height: 98px;resize:none">{{sysdata.appcode}}</textarea></div>
+    </div>
+    <div class="row cl">
+        <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+            <button class="btn btn-secondary radius" id="savetag" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+            <button onClick="window.location.href='/admin/system'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
         </div>
-        <div class="row cl">
-            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button class="btn btn-secondary radius" id="savetag" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
-                <button onClick="window.location.href='/admin/system'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
-            </div>
-        </div>
-    </form>
-{% endblock %}
-{% block footer_other %}
-    <script type="text/javascript" src="{{_web.url}}static/admin/js/admin/system_setcomment.js"></script>
+    </div>
+</form>
+{% endblock %} {% block footer_other %}
+<script type="text/javascript" src="/static/admin/js/admin/system_setcomment.js"></script>
 {% endblock %}

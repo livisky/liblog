@@ -1,35 +1,28 @@
-{% extends "../admin/inc/admin_base.html" %}
-{% block head %}
-    {{ super() }}
-{% endblock %}
-
-{% block content %}
-    <div class="cl pd-5 bg-1 bk-gray mt-20" style="margin-bottom: 15px;">
-       <input type="hidden" id="rid" value="{{rid}}">
-        {% for item in itemList%}
-        <div class="dataTables_wrapper no-footer main">
-          <h4>{{item.name}}</h4>
-            <ul>
-                {% for el in (item.perlist)%}
-                  <li>
-                    <span><input type="checkbox" class="percheck"name="name" value="{{el.permission}}" pid='{{el.id}}' {%if newArr.indexOf(el.id)>=0 %}checked{%endif%}></span>
-                    <span>{{el.pername}}</span>
-                    <input type="hidden" class="pids" value="">
-                    <input type="hidden" class="permissions" value="">
-                  </li>
-                {%endfor%}
-            </ul>
-        </div>
-        {%endfor%}
-        <div style="clear:both"></div>
-        <div class="row cl submit_region">
-            <div class="">
-                <button class="btn btn-secondary radius" id="savepermission" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
-                <button onClick="window.location.href='/admin/role'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
-            </div>
+{% extends "../admin/inc/admin_base.html" %} {% block head %} {{ super() }} {% endblock %} {% block content %}
+<div class="cl pd-5 bg-1 bk-gray mt-20" style="margin-bottom: 15px;">
+    <input type="hidden" id="rid" value="{{rid}}"> {% for item in itemList%}
+    <div class="dataTables_wrapper no-footer main">
+        <h4>{{item.name}}</h4>
+        <ul>
+            {% for el in (item.perlist)%}
+            <li>
+                <span><input type="checkbox" class="percheck"name="name" value="{{el.permission}}" pid='{{el.id}}' {%if newArr.indexOf(el.id)>=0 %}checked{%endif%}></span>
+                <span>{{el.pername}}</span>
+                <input type="hidden" class="pids" value="">
+                <input type="hidden" class="permissions" value="">
+            </li>
+            {%endfor%}
+        </ul>
+    </div>
+    {%endfor%}
+    <div style="clear:both"></div>
+    <div class="row cl submit_region">
+        <div class="">
+            <button class="btn btn-secondary radius" id="savepermission" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+            <button onClick="window.location.href='/admin/role'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
         </div>
     </div>
-{% endblock %}
-{% block footer_other %}
-    <script type="text/javascript" src="{{_web.url}}static/admin/js/admin/role.js"></script>
+</div>
+{% endblock %} {% block footer_other %}
+<script type="text/javascript" src="/static/admin/js/admin/role.js"></script>
 {% endblock %}

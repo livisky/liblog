@@ -1,32 +1,27 @@
-{% extends "../admin/inc/admin_base.html" %}
-{% block head %}
-    {{ super() }}
-{% endblock %}
-
-{% block content %}
-    <div class="cl pd-5 bg-1 bk-gray mt-20" style="margin-bottom: 15px;">
-        <span class="l">
+{% extends "../admin/inc/admin_base.html" %} {% block head %} {{ super() }} {% endblock %} {% block content %}
+<div class="cl pd-5 bg-1 bk-gray mt-20" style="margin-bottom: 15px;">
+    <span class="l">
             <a href="javascript:;" onclick="delsome()" class="btn btn-danger radius">
                 <i class="Hui-iconfont"></i> 批量删除
             </a>
         </span>
-        <span class="r">共有数据：<strong>{{pageData.count}}</strong> 条</span>
-    </div>
-    <div class="dataTables_wrapper no-footer">
-        <table class="table table-border table-bordered table-bg table-hover table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
-            <thead>
+    <span class="r">共有数据：<strong>{{pageData.count}}</strong> 条</span>
+</div>
+<div class="dataTables_wrapper no-footer">
+    <table class="table table-border table-bordered table-bg table-hover table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+        <thead>
             <tr class="text-c" role="row">
                 <th width="25" class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 25px;">
                     <input type="checkbox" name="" value="">
                 </th>
-                <th width="80"  class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="descending" aria-label="ID: 升序排列" style="width: 80px;">ID</th>
+                <th width="80" class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="descending" aria-label="ID: 升序排列" style="width: 80px;">ID</th>
                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="标题: 升序排列" style="width: 247px;">昵称</th>
                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="标题: 升序排列" style="width: 247px;">联系方式</th>
                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="标题: 升序排列" style="width: 247px;">留言</th>
                 <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="操作" style="width: 120px;">操作</th>
             </tr>
-            </thead>
-            <tbody>
+        </thead>
+        <tbody>
             {% for item in itemList %}
             <tr class="text-c odd" role="row">
                 <td><input type="checkbox" value="{{item.id}}" name=""></td>
@@ -39,13 +34,10 @@
                 </td>
             </tr>
             {%endfor%}
-            </tbody>
-        </table>
-        {% if pageData.count>10 %}
-           {% include "../admin/inc/pagination.html" %}
-        {%endif%}
-    </div>
-{% endblock %}
-{% block footer_other %}
-    <script type="text/javascript" src="{{_web.url}}static/admin/js/admin/{{action}}.js"></script>
+        </tbody>
+    </table>
+    {% if pageData.count>10 %} {% include "../admin/inc/pagination.html" %} {%endif%}
+</div>
+{% endblock %} {% block footer_other %}
+<script type="text/javascript" src="/static/admin/js/admin/{{action}}.js"></script>
 {% endblock %}

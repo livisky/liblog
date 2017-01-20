@@ -1,22 +1,15 @@
-{% extends "../admin/inc/admin_base.html" %}
-{% block head %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{_web.url}}static/admin/vendors/webuploader/eviz/upload.css"/>
-    <script src="{{_web.url}}static/admin/vendors/webuploader/eviz/jquery.form.js"></script>
-    <script src="{{_web.url}}static/admin/vendors/webuploader/eviz/uploader.js"></script>
-    <link rel="stylesheet" href="{{_web.url}}static/admin/css/admin/article/article.css">
-{% endblock %}
-
-{% block content %}
-    {% if isdraft %}
-    {%else%}
-        <div class="text-c">
-                <input type="text" name="searchText" id="searchText" placeholder="文章名称或ID" style="width:250px" class="input-text">
-                <button name="" id="search_article" class="btn btn-success" type="submit"><i class="Hui-iconfont"></i> 搜资讯</button>
-        </div>
-    {%endif%}
-    <div class="cl pd-5 bg-1 bk-gray mt-20" style="margin-bottom: 15px;">
-        <span class="l">
+{% extends "../admin/inc/admin_base.html" %} {% block head %} {{ super() }}
+<link rel="stylesheet" href="/static/admin/vendors/webuploader/eviz/upload.css" />
+<script src="/static/admin/vendors/webuploader/eviz/jquery.form.js"></script>
+<script src="/static/admin/vendors/webuploader/eviz/uploader.js"></script>
+<link rel="stylesheet" href="/static/admin/css/admin/article/article.css"> {% endblock %} {% block content %} {% if isdraft %} {%else%}
+<div class="text-c">
+    <input type="text" name="searchText" id="searchText" placeholder="文章名称或ID" style="width:250px" class="input-text">
+    <button name="" id="search_article" class="btn btn-success" type="submit"><i class="Hui-iconfont"></i> 搜资讯</button>
+</div>
+{%endif%}
+<div class="cl pd-5 bg-1 bk-gray mt-20" style="margin-bottom: 15px;">
+    <span class="l">
             <a class="btn btn-primary radius" data-title="添加文章" href="/admin/content/article">
                 <i class="Hui-iconfont"></i> 普通文章
             </a>
@@ -26,10 +19,8 @@
             <a href="javascript:;" onclick="delsome()" class="btn btn-danger radius">
                 <i class="Hui-iconfont"></i> 批量删除
             </a>
-        </span>
-        {% if isdraft %}
-        {%else%}
-            <span class="r">
+        </span> {% if isdraft %} {%else%}
+    <span class="r">
                 标记筛选&nbsp;
                 <span class="select-box inline">
                     <select name="" class="select" id="markselect">
@@ -40,71 +31,62 @@
                     </select>
                     <input type="hidden" id="markval" value="{{type}}">
                 </span>&nbsp;
-            </span>
-        {%endif%}
-    </div>
+    </span>
+    {%endif%}
+</div>
 
-    <div class="dataTables_wrapper no-footer">
-        <table class="table table-border table-bordered table-bg table-hover table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
-            <thead>
-                <tr class="text-c" role="row">
-                    <th width="25" class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 25px;">
-                        <input type="checkbox" name="" value="">
-                    </th>
-                    <th width="80" class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="descending" aria-label="ID: 升序排列" style="width: 80px;">ID</th>
-                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="标题: 升序排列" style="width: 247px;">标题</th>
-                    <th width="80" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="分类: 升序排列" style="width: 80px;">文章类型</th>
-                    <th width="80" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="来源: 升序排列" style="width: 80px;">文章分类</th>
-                    <th width="120" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="更新时间: 升序排列" style="width: 120px;">更新时间</th>
-                    <th width="75" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="浏览次数: 升序排列" style="width: 75px;">浏览次数</th>
-                    <th width="60" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="发布状态: 升序排列" style="width: 60px;">发布状态</th><th width="120" class="sorting_disabled" rowspan="1" colspan="1" aria-label="操作" style="width: 120px;">操作</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in articlelist %}
-                    <tr class="text-c odd" role="row">
-                        <td><input type="checkbox" value="{{item.aid}}" name=""></td>
-                        <td class="sorting_1">{{(pagecount-1)*pagesize+loop.index0+1}}</td>
-                        <td class="text-l">
-                            {% if item.ispublished==1 %}
-                                <a style="cursor:pointer" class="text-primary" onclick="window.open('/page/{{item.aid}}','_blank')" title="查看">{{item.title}}</a>
-                            {%else%}
-                            <a style="cursor:pointer" class="text-primary" onclick="window.open('/preview/{{item.aid}}','_blank')" title="查看">{{item.title}}</a>
-                            {%endif%}
-                        </td>
-                        <td>{{item.itemname}}</td>
-                        <td>{{item.tagname}}</td>
-                        <td>{{think.datetime(item.createtime,"YYYY-MM-DD")}}</td>
-                        <td>{{item.view}}</td>
-                        <td class="td-status">
-                            {% if item.ispublished==1 %}
-                                <span class="label label-success radius">已发布</span>
-                            {%else%}
-                                <span class="label label-defaunt radius">未发布</span>
-                            {%endif%}
-                        </td>
-                        <td class="f-14 td-manage">
-                            {% if isdraft %}
-                                <a style="text-decoration:none" id="published" pub-id="{{item.aid}}" title="发布">发布</a>
-                            {%endif%}
-                            <a style="text-decoration:none" class="ml-5 edit" href="/admin/content/article/{{item.aid}}" title="编辑">
-                                <i class="Hui-iconfont"></i>
-                            </a>
-                            <a style="text-decoration:none" class="ml-5 delete" del-id="{{item.aid}}" title="删除"><i class="Hui-iconfont"></i></a>
-                        </td>
-                    </tr>
-                {%endfor%}
-            </tbody>
-        </table>
-        <span class="l" style="line-height: 40px;">
+<div class="dataTables_wrapper no-footer">
+    <table class="table table-border table-bordered table-bg table-hover table-sort dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+        <thead>
+            <tr class="text-c" role="row">
+                <th width="25" class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 25px;">
+                    <input type="checkbox" name="" value="">
+                </th>
+                <th width="80" class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="descending" aria-label="ID: 升序排列" style="width: 80px;">ID</th>
+                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="标题: 升序排列" style="width: 247px;">标题</th>
+                <th width="80" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="分类: 升序排列" style="width: 80px;">文章类型</th>
+                <th width="80" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="来源: 升序排列" style="width: 80px;">文章分类</th>
+                <th width="120" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="更新时间: 升序排列" style="width: 120px;">更新时间</th>
+                <th width="75" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="浏览次数: 升序排列" style="width: 75px;">浏览次数</th>
+                <th width="60" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="发布状态: 升序排列" style="width: 60px;">发布状态</th>
+                <th width="120" class="sorting_disabled" rowspan="1" colspan="1" aria-label="操作" style="width: 120px;">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in articlelist %}
+            <tr class="text-c odd" role="row">
+                <td><input type="checkbox" value="{{item.aid}}" name=""></td>
+                <td class="sorting_1">{{(pagecount-1)*pagesize+loop.index0+1}}</td>
+                <td class="text-l">
+                    {% if item.ispublished==1 %}
+                    <a style="cursor:pointer" class="text-primary" onclick="window.open('/page/{{item.aid}}','_blank')" title="查看">{{item.title}}</a> {%else%}
+                    <a style="cursor:pointer" class="text-primary" onclick="window.open('/preview/{{item.aid}}','_blank')" title="查看">{{item.title}}</a> {%endif%}
+                </td>
+                <td>{{item.itemname}}</td>
+                <td>{{item.tagname}}</td>
+                <td>{{think.datetime(item.createtime,"YYYY-MM-DD")}}</td>
+                <td>{{item.view}}</td>
+                <td class="td-status">
+                    {% if item.ispublished==1 %}
+                    <span class="label label-success radius">已发布</span> {%else%}
+                    <span class="label label-defaunt radius">未发布</span> {%endif%}
+                </td>
+                <td class="f-14 td-manage">
+                    {% if isdraft %}
+                    <a style="text-decoration:none" id="published" pub-id="{{item.aid}}" title="发布">发布</a> {%endif%}
+                    <a style="text-decoration:none" class="ml-5 edit" href="/admin/content/article/{{item.aid}}" title="编辑">
+                        <i class="Hui-iconfont"></i>
+                    </a>
+                    <a style="text-decoration:none" class="ml-5 delete" del-id="{{item.aid}}" title="删除"><i class="Hui-iconfont"></i></a>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <span class="l" style="line-height: 40px;">
             共有数据：<strong>{{pageData.count}}</strong> 条
-        </span>
-        {% if pageData.count>10 %}
-           {% include "../admin/inc/pagination.html" %}
-        {%endif%}
-    </div>
-{% endblock %}
-
-{% block footer_other %}
-    <script type="text/javascript" src="{{_web.url}}static/admin/js/admin/contentList.js"></script>
+        </span> {% if pageData.count>10 %} {% include "../admin/inc/pagination.html" %} {%endif%}
+</div>
+{% endblock %} {% block footer_other %}
+<script type="text/javascript" src="/static/admin/js/admin/contentList.js"></script>
 {% endblock %}
