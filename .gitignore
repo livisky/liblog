@@ -6,3 +6,6 @@ npm-debug.log
 src/common/config/db.js
 /src/common/config/config.js
 /src/common/config/db.js
+/www/static/theme/liblog/modules
+/www/static/theme/liblog/res/css
+/www/static/theme/liblog/res/js
