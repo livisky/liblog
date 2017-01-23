@@ -33,6 +33,10 @@ export default class extends think.controller.base {
         let navList = await this.model("home").findAll('menu');
         this.assign("navList", navList);
 
+        //获取友情链接
+        let linksList = await this.model("home").getLinksList();
+        this.assign("linksList", linksList);
+
         //assgin页面action
         let action = this.http.action;
         this.assign("action", action);

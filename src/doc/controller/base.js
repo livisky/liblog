@@ -33,6 +33,10 @@ export default class extends think.controller.base {
         let navList = await this.model('doc').findAll('menu');
         this.assign("navList", navList);
 
+        //获取友情链接
+        let linksList = await this.model("doc").getLinksList();
+        this.assign("linksList", linksList);
+
         // 设置主题地址
         this.THEME_VIEW_PATH = `${think.THEME_PATH}${think.sep}${_web.theme}${think.sep}${think.Modules_Src}${think.sep}${this.http.module}${think.sep}`;
         this.assign("theme_url", 'static/theme/' + _web.theme + '/res');
