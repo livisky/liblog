@@ -14,9 +14,9 @@ export default class extends think.model.base {
     getOneArticle(db, where) {
             return this.model(db).where(where).find();
         }
-        //获取友情链接列表
-    getLinksList() {
-        return this.model("links").where({ flag: 1 }).order("orders").select();
+        //获取排序后的列表
+    getOrderList(db, where) {
+        return this.model(db).where(where).order("orders").select();
     }
 
 }

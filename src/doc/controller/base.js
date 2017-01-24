@@ -26,15 +26,15 @@ export default class extends think.controller.base {
         //是否登陆
 
         //获取tags
-        let tagList = await this.model('doc').findAll('tags', { appear: 1 });
+        let tagList = await this.model("doc").getOrderList("tags", { appear: 1 });
         this.assign('tagList', tagList);
 
         //获取导航链接
-        let navList = await this.model('doc').findAll('menu');
+        let navList = await this.model("doc").findAll('menu');
         this.assign("navList", navList);
 
         //获取友情链接
-        let linksList = await this.model("doc").getLinksList();
+        let linksList = await this.model("doc").getOrderList("links", { flag: 1 });
         this.assign("linksList", linksList);
 
         // 设置主题地址

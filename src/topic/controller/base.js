@@ -24,20 +24,20 @@ export default class extends think.controller.base {
         }
         //是否登陆
 
-        //获取tags
-        let tagList = await this.model('topic').findAll('tags', { appear: 1 });
-        this.assign('tagList', tagList);
-
         // 获取最新会员
         let memberList = await this.model("topic").getMemberList({ role: 4 }, 9);
         this.assign("memberList", memberList);
 
+        //获取tags
+        let tagList = await this.model("topic").getOrderList("tags", { appear: 1 });
+        this.assign('tagList', tagList);
+
         //获取导航链接
-        let navList = await this.model('topic').findAll('menu');
+        let navList = await this.model("topic").findAll('menu');
         this.assign("navList", navList);
 
         //获取友情链接
-        let linksList = await this.model("topic").getLinksList();
+        let linksList = await this.model("topic").getOrderList("links", { flag: 1 });
         this.assign("linksList", linksList);
 
         // 设置主题地址

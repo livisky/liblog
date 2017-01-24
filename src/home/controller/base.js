@@ -26,7 +26,7 @@ export default class extends think.controller.base {
         //是否登陆
 
         //获取tags
-        let tagList = await this.model("home").findAll('tags', { appear: 1 });
+        let tagList = await this.model("home").getOrderList("tags", { appear: 1 });
         this.assign('tagList', tagList);
 
         //获取导航链接
@@ -34,7 +34,7 @@ export default class extends think.controller.base {
         this.assign("navList", navList);
 
         //获取友情链接
-        let linksList = await this.model("home").getLinksList();
+        let linksList = await this.model("home").getOrderList("links", { flag: 1 });
         this.assign("linksList", linksList);
 
         //assgin页面action
