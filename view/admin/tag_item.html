@@ -9,6 +9,22 @@
         </div>
     </div>
     <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>是否显示：</label>
+        <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+                <select name="" class="select" id="tagselect">
+                    <option value="" selected>请选择</option>
+                    <option value="1" {%if item.appear==1 %}selected{%endif%}>显示</option>
+                    <option value="0" {%if item.appear==0 %}selected{%endif%}>隐藏</option>
+                </select>
+        </span> </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>显示顺序：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text orders" value="{{item.orders}}" placeholder="请输入整数，默认为0" id="" name="">
+        </div>
+    </div>
+    <div class="row cl">
         <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
             <button class="btn btn-secondary radius" id="savetag" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
             <button onClick="window.location.href='/admin/{{action}}'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>

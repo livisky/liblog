@@ -30,8 +30,9 @@
         <label class="form-label col-xs-4 col-sm-2">审核：</label>
         <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
                 <select name="" class="select" id="tagselect">
-                    <option value="1" selected>通过</option>
-                    <option value="0">不通过</option>
+                    <option value="" selected>请选择</option>
+                    <option value="1" {%if item.flag==1 %}selected{%endif%}>通过</option>
+                    <option value="0" {%if item.flag==0 %}selected{%endif%}>不通过</option>
                 </select>
         </span> </div>
     </div>
