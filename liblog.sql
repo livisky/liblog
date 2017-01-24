@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50619
 File Encoding         : 65001
 
-Date: 2017-01-23 15:46:17
+Date: 2017-01-24 14:52:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -463,34 +463,35 @@ CREATE TABLE `li_tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tagname` varchar(255) DEFAULT NULL,
   `appear` int(11) DEFAULT '1',
+  `orders` int(255) DEFAULT '0' COMMENT '显示顺序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of li_tags
 -- ----------------------------
-INSERT INTO `li_tags` VALUES ('1', 'web开发', '1');
-INSERT INTO `li_tags` VALUES ('2', 'thinkjs', '1');
-INSERT INTO `li_tags` VALUES ('3', 'nodejs', '1');
-INSERT INTO `li_tags` VALUES ('4', 'jquery', '0');
-INSERT INTO `li_tags` VALUES ('5', 'css3', '1');
-INSERT INTO `li_tags` VALUES ('6', 'css3+html5', '1');
-INSERT INTO `li_tags` VALUES ('7', 'javascript', '1');
-INSERT INTO `li_tags` VALUES ('8', 'html', '1');
-INSERT INTO `li_tags` VALUES ('9', '前端设计', '0');
-INSERT INTO `li_tags` VALUES ('10', 'fis', '0');
-INSERT INTO `li_tags` VALUES ('11', 'grunt', '0');
-INSERT INTO `li_tags` VALUES ('12', 'vscode', '0');
-INSERT INTO `li_tags` VALUES ('13', '前端工具', '1');
-INSERT INTO `li_tags` VALUES ('14', '活动', '1');
-INSERT INTO `li_tags` VALUES ('15', '招聘', '1');
-INSERT INTO `li_tags` VALUES ('16', 'nginx', '0');
-INSERT INTO `li_tags` VALUES ('17', 'liblog', '1');
-INSERT INTO `li_tags` VALUES ('18', 'thinkjs2.1', '1');
-INSERT INTO `li_tags` VALUES ('19', 'angular', '1');
-INSERT INTO `li_tags` VALUES ('20', 'react', '1');
-INSERT INTO `li_tags` VALUES ('21', 'wangeditor', '1');
-INSERT INTO `li_tags` VALUES ('22', 'numjucks', '1');
+INSERT INTO `li_tags` VALUES ('1', 'web开发', '1', '0');
+INSERT INTO `li_tags` VALUES ('2', 'thinkjs', '1', '1');
+INSERT INTO `li_tags` VALUES ('3', 'nodejs', '1', '2');
+INSERT INTO `li_tags` VALUES ('4', 'jquery', '0', '3');
+INSERT INTO `li_tags` VALUES ('5', 'css3', '1', '4');
+INSERT INTO `li_tags` VALUES ('6', 'css3+html5', '1', '5');
+INSERT INTO `li_tags` VALUES ('7', 'javascript', '1', '6');
+INSERT INTO `li_tags` VALUES ('8', 'html', '1', '7');
+INSERT INTO `li_tags` VALUES ('9', '前端设计', '0', '0');
+INSERT INTO `li_tags` VALUES ('10', 'fis', '0', '0');
+INSERT INTO `li_tags` VALUES ('11', 'grunt', '0', '0');
+INSERT INTO `li_tags` VALUES ('12', 'vscode', '0', '0');
+INSERT INTO `li_tags` VALUES ('13', '前端工具', '1', '8');
+INSERT INTO `li_tags` VALUES ('14', '活动', '1', '9');
+INSERT INTO `li_tags` VALUES ('15', '招聘', '1', '10');
+INSERT INTO `li_tags` VALUES ('16', 'nginx', '0', '0');
+INSERT INTO `li_tags` VALUES ('17', 'liblog', '1', '11');
+INSERT INTO `li_tags` VALUES ('18', 'thinkjs2.1', '1', '12');
+INSERT INTO `li_tags` VALUES ('19', 'angular', '1', '13');
+INSERT INTO `li_tags` VALUES ('20', 'react', '1', '14');
+INSERT INTO `li_tags` VALUES ('21', 'wangeditor', '1', '15');
+INSERT INTO `li_tags` VALUES ('22', 'numjucks', '1', '16');
 
 -- ----------------------------
 -- Table structure for li_topic
