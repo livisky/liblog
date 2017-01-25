@@ -1,4 +1,4 @@
-### Liblog最新教程已收录在w3cschool(http://www.w3cschool.cn/liblog/),欢迎评论和支持！
+### Liblog最新教程已收录在w3cschool(http://www.w3cschool.cn/liblog/) ,欢迎评论和支持！
 
 ### 一.简介
 
