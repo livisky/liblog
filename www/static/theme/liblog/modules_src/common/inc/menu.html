@@ -17,7 +17,7 @@
           <ul class="site-nav site-navbar">
              {% for item in navList %}
                 <li class="item">
-                    <a href="{{ item.url }}">{{ item.menuname }}</a>
+                    <a href="{{ item.url }}" target="{%if(item.target=='0') %}_self{%else%}_blank{% endif %}">{{ item.menuname }}</a>
                       {% if (item.menuname=="社区") %}
                         <i class="newicon"></i>
                       {% endif %}

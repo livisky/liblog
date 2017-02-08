@@ -26,7 +26,7 @@ export default class extends think.controller.base {
         //是否登陆
 
         //获取导航链接
-        let navList = await this.model('personal').findAll('menu');
+        let navList = await this.model('personal').getOrderList('menu', { appear: 1 });
         this.assign("navList", navList);
 
         // 设置主题地址

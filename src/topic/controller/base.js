@@ -33,7 +33,7 @@ export default class extends think.controller.base {
         this.assign('tagList', tagList);
 
         //获取导航链接
-        let navList = await this.model("topic").findAll('menu');
+        let navList = await this.model("topic").getOrderList('menu', { appear: 1 });
         this.assign("navList", navList);
 
         //获取友情链接

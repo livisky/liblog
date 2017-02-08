@@ -1,22 +1,22 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_liblog_3306
-Source Server Version : 50619
+Source Server         : localhost_3306
+Source Server Version : 50520
 Source Host           : localhost:3306
 Source Database       : liblog
 
 Target Server Type    : MYSQL
-Target Server Version : 50619
+Target Server Version : 50520
 File Encoding         : 65001
 
-Date: 2017-01-24 14:52:37
+Date: 2017-02-08 15:01:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for li_article
+-- Table structure for `li_article`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_article`;
 CREATE TABLE `li_article` (
@@ -164,7 +164,7 @@ INSERT INTO `li_article` VALUES ('308', '杭州微易信息科技－互联网金
 INSERT INTO `li_article` VALUES ('309', '【杭州】OSC源创会第51期报名开始', '时间：2016-08-13 14:00\n地点：杭州 拱墅区莫干山路188-200号之江饭店\n费用：现场缴费￥50/人，女士免费，积分50以上，开源软件作者和学生（出示学生证）均免费，提供饮料和小食', '<dl><dd>时间：2016-08-13 14:00</dd><dd>地点：杭州 拱墅区莫干山路188-200号之江饭店</dd><dd>费用：现场缴费￥50/人，女士免费，积分50以上，开源软件作者和学生（出示学生证）均免费，提供饮料和小食</dd><dd>类型：&nbsp;源创会</dd><dd>引用标识：&nbsp;<a href=\"http://city.oschina.net/hangzhou?ei=hz784\" target=\"_blank\">hz784</a></dd><dd>发起人：<a href=\"http://my.oschina.net/iris22\" target=\"_blank\">Alaise</a></dd><dd>活动链接：<a href=\"http://www.oschina.net/question/2686220_2187784\" target=\"_blank\">http://www.oschina.net/question/2686220_2187784</a></dd></dl><p>活动介绍：</p><p>邀请超过3个好友报名并确认，你将可以免费参加此次源创会	邀请链接：<a href=\"http://city.oschina.net/hangzhou/event/2187784?inviter=\">http://city.oschina.net/hangzhou/event/2187784?inviter=</a></p><p>都说上有天堂，下有杭州，OSC源创会也不能抵挡的美丽，这已经是我们第五次来到杭州，与各位OSCer共约线下，本次八月杭州站我们依旧和去年一样在之江饭店，等你来赴约。</p><p>本期主题有：</p><p>1.云时代的企业运维转型</p><p>内容简介：随着云的概念逐步被接受，很多企业开始尝试公有云，这给传统运维模式带来了一系列的变化，例如跨云的管理、虚拟化及容器化带来的操作单元暴增、运维职能被部分新技术所取代，运维如何探索职能边界的延伸、运维如何利用云及大数据技术帮助业务实现精细化运营。</p><p>分享嘉宾：党受辉，腾讯游戏蓝鲸产品中心总监，曾就职于东软集团，为能源行业定制信息化体系。加入腾讯后负责过游戏运维团队管理。2012年负责腾讯游戏技术支撑体系（蓝鲸）的设计、建设和运营。</p><p>2.Freezer—OpenStack Backup/Restore as a Service</p><p>内容简介：在OpenStack的使用过程中，你是不是遇到过这样的问题，虚拟机突然不可用或者被误删！&nbsp;云硬盘突然无法使用或不小心被删除！对此，数据备份才是关键所在，其重要性不言而喻。&nbsp;本次内容主要分享&nbsp;Freezer&nbsp;作为OpenStack的一个Official&nbsp;项目，在OpenStack开源云环境中，针对数据备份存在的痛点，通过Freezer构建备份机制，以及进行有效的配置对虚拟机、云硬盘数据进行全量以及增量的数据备份。</p><p>分享嘉宾：杨亚鹏，现就职于九州云99Cloud，从事OpenStack相关工作两年。现主要从事OpenStack&nbsp;备份相关工作。</p><p>3.数据可视化与大数据的结合</p><p>内容简介：分享数据可视化与大数据结合的相关技术点及经验。</p><p>分享嘉宾：乔刚，高德开放平台资深前端开发工程师，从事SPA应用开发，对此有丰富的经验。目前主要负责地图数据可视化相关的开发工作。</p><p>4.透过 TheDAO 众筹安全事件看区块链安全问题</p><p>内容简介：2016年6月17日，TheDAO（目前人类历史上最大规模的众筹项目）发生了区块链领域重大的安全事件，期间剧情跌宕起伏，注定会被载入区块链安全史册。由于其编写的智能合约存在着重大缺陷,区块链业界最大的众筹项目TheDAO(被攻击前 拥有1亿美元左右资产)遭到攻击，目前已导致300多万以太币资产被分离出去。本次分享将为大家介绍 TheDAO 事件的始末，以及区块链和智能合约的安全性方面的探讨。</p><p>分享嘉宾：吕国宁，资深程序员 & 区块链技术专家，杭州融识科技合伙人，EthFans 以太坊爱好者社区运营负责人，前云币交易所 CTO，国内最大的线上技术社区 RubyChina 的创始人，管理员，RubyConfChina 大会组织者，技术音频播客 Teahour.FM 主播。</p><p>5.跨平台移动开发工具 Weex 开源之路</p><p>内容简介：介绍 Weex 从诞生到开源的心路历程，希望给所有对开源有兴趣的同学一些帮助和启发。</p><p>分享嘉宾：赵锦江，花名勾股，就职于阿里巴巴淘宝，h5slides 作者，Weex 团队一员。</p><p>本次杭州站源创会礼品之丰厚可谓超乎想象，除了经典的大型鼠标垫、开源内裤、扑克，还有樱桃机械键盘等着你哟！</p><p>本次源创会需要摄影、录像及会务协助志愿者，有意愿的小伙伴请站内私信<a href=\"http://my.oschina.net/penny55\"></a><a href=\"http://my.oschina.net/penny55\" target=\"_blank\">@penny-osc</a>&nbsp;，会后还将有精美礼品相送呦~</p><p>请大家下载 OSC 客户端用于现场扫描二维码签到和抽奖：<a href=\"http://www.oschina.net/app\">http://www.oschina.net/app</a></p><p>为了方便大家线上交流，本次源创会提供微信群，报名的小伙伴可扫描以下二维码，备注杭州源创会，添加好友，拉你入群~</p><p><img src=\"/static/upload/pics/8/4/2016SqQXBZ9dgVwMv43NhlM1eYto.jpg\" alt=\"171848_v9EO_2686220\" style=\"max-width:100%;\"><br></p><p>活动详情：<a href=\"http://city.oschina.net/hangzhou/event/2187784\" target=\"_blank\">http://city.oschina.net/hangzhou/event/2187784</a></p><p><br></p>', 'static/upload/pics/8/6/2016sS0SWY9BOhOiFqyMDzDpTmLP.png', '前端汇', '2016-08-16 10:10:22', '283', '0', '0', '0', '14', '', '1', '1', '', '6', '0', null, null, null, null);
 
 -- ----------------------------
--- Table structure for li_comment
+-- Table structure for `li_comment`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_comment`;
 CREATE TABLE `li_comment` (
@@ -187,7 +187,7 @@ CREATE TABLE `li_comment` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for li_guest
+-- Table structure for `li_guest`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_guest`;
 CREATE TABLE `li_guest` (
@@ -206,7 +206,7 @@ INSERT INTO `li_guest` VALUES ('37', '范德萨发斯蒂芬', '的说法是否',
 INSERT INTO `li_guest` VALUES ('38', '猿天地', '1304489315@qq.com', '我申请了交换友情链接');
 
 -- ----------------------------
--- Table structure for li_item
+-- Table structure for `li_item`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_item`;
 CREATE TABLE `li_item` (
@@ -227,7 +227,7 @@ INSERT INTO `li_item` VALUES ('6', '活动');
 INSERT INTO `li_item` VALUES ('8', '文档');
 
 -- ----------------------------
--- Table structure for li_links
+-- Table structure for `li_links`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_links`;
 CREATE TABLE `li_links` (
@@ -264,7 +264,7 @@ INSERT INTO `li_links` VALUES ('28', 'Falost的小窝', 'http://www.fedte.cc/', 
 INSERT INTO `li_links` VALUES ('29', '小松博客', 'https://www.phpsong.com/', '', '', null, '1', '14');
 
 -- ----------------------------
--- Table structure for li_manage_permission
+-- Table structure for `li_manage_permission`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_manage_permission`;
 CREATE TABLE `li_manage_permission` (
@@ -344,7 +344,7 @@ INSERT INTO `li_manage_permission` VALUES ('66', '新增/编辑友情链接接�
 INSERT INTO `li_manage_permission` VALUES ('67', '显示/隐藏友情链接接口', 'admin/links/upstatus', '14');
 
 -- ----------------------------
--- Table structure for li_manage_role
+-- Table structure for `li_manage_role`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_manage_role`;
 CREATE TABLE `li_manage_role` (
@@ -365,7 +365,7 @@ INSERT INTO `li_manage_role` VALUES ('3', 'editor', '编辑', '1,2,3,9,10,11,12,
 INSERT INTO `li_manage_role` VALUES ('4', 'visitor', '访客', '3,9,25,7,8,18,16,19,23,47,43', 0x61646D696E2F636F6E74656E742F696E6465782C61646D696E2F636F6E74656E742F64726166746C6973742C61646D696E2F6D656E752F696E6465782C61646D696E2F696E6465782F696E6465782C61646D696E2F696E6465782F77656C636F6D652C61646D696E2F696E6465782F6C6F676F75742C61646D696E2F67756573742F696E6465782C61646D696E2F6974656D2F696E6465782C61646D696E2F6C696E6B732F696E6465782C61646D696E2F757365722F696E6465782C61646D696E2F7461672F696E646578);
 
 -- ----------------------------
--- Table structure for li_manage_tag
+-- Table structure for `li_manage_tag`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_manage_tag`;
 CREATE TABLE `li_manage_tag` (
@@ -391,7 +391,7 @@ INSERT INTO `li_manage_tag` VALUES ('13', '社区管理');
 INSERT INTO `li_manage_tag` VALUES ('14', '友情链接');
 
 -- ----------------------------
--- Table structure for li_menu
+-- Table structure for `li_menu`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_menu`;
 CREATE TABLE `li_menu` (
@@ -399,22 +399,25 @@ CREATE TABLE `li_menu` (
   `menuname` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '菜单名',
   `url` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '导航链接',
   `info` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '备注',
+  `appear` int(11) DEFAULT '1',
+  `orders` int(255) DEFAULT '0' COMMENT '排序',
+  `target` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of li_menu
 -- ----------------------------
-INSERT INTO `li_menu` VALUES ('1', '首页', '/', '');
-INSERT INTO `li_menu` VALUES ('2', '文档', '/doc.html', null);
-INSERT INTO `li_menu` VALUES ('8', '资源下载', '/download.html', null);
-INSERT INTO `li_menu` VALUES ('9', '活动', '/activity.html', null);
-INSERT INTO `li_menu` VALUES ('10', '社区', '/topic.html', null);
-INSERT INTO `li_menu` VALUES ('11', '招聘', '/topic/job.html', null);
-INSERT INTO `li_menu` VALUES ('14', '捐赠', '/donate.html', null);
+INSERT INTO `li_menu` VALUES ('1', '首页', '/', '', '1', '1', '1');
+INSERT INTO `li_menu` VALUES ('2', '文档', '/doc.html', null, '0', '0', '0');
+INSERT INTO `li_menu` VALUES ('8', '资源下载', '/download.html', null, '1', '0', '0');
+INSERT INTO `li_menu` VALUES ('9', '活动', '/activity.html', null, '1', '0', '0');
+INSERT INTO `li_menu` VALUES ('10', '社区', '/topic.html', null, '1', '0', '0');
+INSERT INTO `li_menu` VALUES ('11', '招聘', '/topic/job.html', null, '1', '0', '0');
+INSERT INTO `li_menu` VALUES ('14', '捐赠', '/donate.html', null, '1', '0', '0');
 
 -- ----------------------------
--- Table structure for li_system
+-- Table structure for `li_system`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_system`;
 CREATE TABLE `li_system` (
@@ -438,7 +441,7 @@ CREATE TABLE `li_system` (
 INSERT INTO `li_system` VALUES ('1', '里部落阁-liblog演示站点', '/', '前端汇,liblog,thinkjs,全栈开发', '里部落阁是liblog的演示站点，是基于thinkjs框架的nodejs博客系统，具备完善的轻量级网站后台，完全免费，简单灵活，兼容性好 让您快速搭建中小型网站、博客', '前端汇', '@2015 copyright', '<li><a href=\"http://www.jsout.com\" target=\"_blank\">前端汇</a></li>\n<li><a href=\"http://www.yii-china.com\" target=\"_blank\">Yii中文网</a></li>\n<li><a href=\"http://laravelacademy.org\" target=\"_blank\">laravel学院</a></li>\n<li><a href=\"http://wangeditor.github.io\" target=\"_blank\">wangEditor</a></li>\n<li><a href=\"http://www.drupalchina.cn\" target=\"_blank\">Drupal中国</a></li>\n<li><a href=\"http://www.mairuier.com/\" target=\"_blank\">麦锐尔</a></li>\n<li><a href=\"http://blog.bestbole.com\" target=\"_blank\">百思伯乐</a></li>\n<li><a href=\"http://iquan.kuaizhan.com\" target=\"_blank\">爱圈快站</a></li>\n<li><a href=\"http://www.imenger.cn\" target=\"_blank\">IM极客小站</a></li>\n<li><a href=\"http://www.zslin.com\" target=\"_blank\">知识林</a></li>\n<li><a href=\"http://iotechie.info\" target=\"_blank\">I/OTechie技术社区</a></li>\n<li><a href=\"http://www.17ky.net\" target=\"_blank\">一起开源</a></li>\n<li><a href=\"http://www.cxytiandi.com\" target=\"_blank\">猿天地</a></li>', '0', '<script>\n    var _hmt = _hmt || [];\n    (function() {\n        var hm = document.createElement(\"script\");\n        hm.src = \"//hm.baidu.com/hm.js?8c04fc9ebc7d286e7c03911b6affb970\";\n        var s = document.getElementsByTagName(\"script\")[0];\n        s.parentNode.insertBefore(hm, s);\n    })();\n</script>', 'liblog');
 
 -- ----------------------------
--- Table structure for li_system_comment
+-- Table structure for `li_system_comment`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_system_comment`;
 CREATE TABLE `li_system_comment` (
@@ -456,7 +459,7 @@ CREATE TABLE `li_system_comment` (
 INSERT INTO `li_system_comment` VALUES ('clientId', '<!--高速版-->\n<div id=\"SOHUCS\"></div>\n<script charset=\"utf-8\" type=\"text/javascript\" src=\"http://changyan.sohu.com/upload/changyan.js\" ></script>\n<script type=\"text/javascript\">\n    window.changyan.api.config({\n        appid: \'cysoRJNxO\',\n        conf: \'prod_1fbcbcaf3589e576afe2785fe80d6684\'\n    });\n</script>', 'ce46948884ce9504641c9c97d3171bce', 'cysoRJNxO', '1');
 
 -- ----------------------------
--- Table structure for li_tags
+-- Table structure for `li_tags`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_tags`;
 CREATE TABLE `li_tags` (
@@ -465,12 +468,12 @@ CREATE TABLE `li_tags` (
   `appear` int(11) DEFAULT '1',
   `orders` int(255) DEFAULT '0' COMMENT '显示顺序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of li_tags
 -- ----------------------------
-INSERT INTO `li_tags` VALUES ('1', 'web开发', '1', '0');
+INSERT INTO `li_tags` VALUES ('1', 'web开发', '0', '0');
 INSERT INTO `li_tags` VALUES ('2', 'thinkjs', '1', '1');
 INSERT INTO `li_tags` VALUES ('3', 'nodejs', '1', '2');
 INSERT INTO `li_tags` VALUES ('4', 'jquery', '0', '3');
@@ -494,7 +497,7 @@ INSERT INTO `li_tags` VALUES ('21', 'wangeditor', '1', '15');
 INSERT INTO `li_tags` VALUES ('22', 'numjucks', '1', '16');
 
 -- ----------------------------
--- Table structure for li_topic
+-- Table structure for `li_topic`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_topic`;
 CREATE TABLE `li_topic` (
@@ -523,7 +526,7 @@ INSERT INTO `li_topic` VALUES ('34', 'liblog', 0x3C703EE4BFAEE694B9E6B3A8E5868CE
 INSERT INTO `li_topic` VALUES ('35', 'share', 0x3C703E676974E68F90E4BAA4E697B6E587BAE78EB022596F7572266E6273703B6C6F63616C266E6273703B6368616E676573266E6273703B746F266E6273703B746865266E6273703B666F6C6C6F77696E67266E6273703B66696C6573266E6273703B776F756C64266E6273703B6265266E6273703B6F7665727772697474656E266E6273703B6279266E6273703B6D6572676522EFBC8CE698AFE59BA0E4B8BA6769742070756C6CE79A84E794B5E88491E69CACE59CB0E4BFAEE694B9E4BA86EFBC8CE8B79F676974E79A84E5BA93E9878CE4B88DE4B880E887B4EFBC8CE68980E4BBA5E68F90E7A4BAE99499E8AFAFE4BFA1E681AFE380823C2F703E3C703E3C62723E3C2F703E, 'admin', '2016-09-19 10:22:07', 'git提交时出现\"Your local changes to the following files would be overwritten by merge\"', '9', '2016-09-19 10:22:07', 'admin', 'common/images/pic/avatar_7.jpg', '0', '1');
 
 -- ----------------------------
--- Table structure for li_topic_comment
+-- Table structure for `li_topic_comment`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_topic_comment`;
 CREATE TABLE `li_topic_comment` (
@@ -571,7 +574,7 @@ INSERT INTO `li_topic_comment` VALUES ('44', 'livisky', '34', 'liblog v2.0功能
 INSERT INTO `li_topic_comment` VALUES ('45', 'liweifeng', '34', 'liblog v2.0功能更新(2016/9/18)', '2016-09-18 18:52:27', 'common/images/pic/avatar_11.jpg', '0', 0xE6A5BCE4B8BBE8BE9BE88BA6E4BA86EFBC8CE69C9FE5BE856C69626C6F67322E30, null, 0x3C703EE6A5BCE4B8BBE8BE9BE88BA6E4BA86EFBC8CE69C9FE5BE853C623E6C69626C6F67322E303C2F623E3C2F703E3C703E3C696D67207372633D22687474703A2F2F696D672E742E73696E616A732E636E2F74342F6170707374796C652F65787072657373696F6E2F6578742F6E6F726D616C2F64392F79655F7468756D622E676966223E3C62723E3C2F703E3C703E3C62723E3C2F703E);
 
 -- ----------------------------
--- Table structure for li_topic_item
+-- Table structure for `li_topic_item`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_topic_item`;
 CREATE TABLE `li_topic_item` (
@@ -579,7 +582,7 @@ CREATE TABLE `li_topic_item` (
   `name` varchar(255) NOT NULL,
   `comment` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of li_topic_item
@@ -592,7 +595,7 @@ INSERT INTO `li_topic_item` VALUES ('5', 'wangeditor', 'wangeditor');
 INSERT INTO `li_topic_item` VALUES ('6', 'thinkjs', 'thinkjs');
 
 -- ----------------------------
--- Table structure for li_user
+-- Table structure for `li_user`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_user`;
 CREATE TABLE `li_user` (
@@ -621,7 +624,7 @@ INSERT INTO `li_user` VALUES ('56', 'admin', 'admin', 'e10adc3949ba59abbe56e057f
 INSERT INTO `li_user` VALUES ('85', 'livi', 'livi', null, 'livisky@163.com', '4', null, '', 'site', '10', null, null, '1', '0', '0');
 
 -- ----------------------------
--- Table structure for li_user_collect
+-- Table structure for `li_user_collect`
 -- ----------------------------
 DROP TABLE IF EXISTS `li_user_collect`;
 CREATE TABLE `li_user_collect` (
