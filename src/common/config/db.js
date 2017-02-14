@@ -13,7 +13,7 @@ export default {
       port: '3306',
       database: 'liblog',
       user: 'root',
-      password: 'root',
+      password: '',
       prefix: 'li_',
       encoding: 'utf8'
     },
