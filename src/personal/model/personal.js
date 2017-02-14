@@ -55,4 +55,8 @@ export default class extends think.model.base {
             user: { on: "author,name" }
         }).where(where).select();
     }
+        // 积分排行
+    getPointList() {
+        return this.model('user').field("id,name,point").order("point desc").limit(10).select();
+    }    
 }

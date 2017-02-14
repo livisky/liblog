@@ -32,7 +32,10 @@ export default class extends Base {
       this.assign("islogin",islogin);
       this.assign("isself",isself);
       this.assign("isselftag",isselftag);
-
+      // 排行
+      let pointList = await think.cache("pointList", () => {
+          return this.model("personal").getPointList();
+      });
       //我的话题
       let topicList=await this.model('personal').getMytopic({author:uname});
       this.assign("topicList",topicList);
