@@ -51,12 +51,16 @@ export default class extends think.model.base {
     }
 
     getMycollect(where) {
-        return this.model('user_collect').field("*,li_user_collect.createtime as mytime").join({
-            user: { on: "author,name" }
-        }).where(where).select();
-    }
+            return this.model('user_collect').field("*,li_user_collect.createtime as mytime").join({
+                user: { on: "author,name" }
+            }).where(where).select();
+        }
         // 积分排行
     getPointList() {
-        return this.model('user').field("id,name,point").order("point desc").limit(10).select();
-    }    
+            return this.model('user').field("id,name,point").order("point desc").limit(10).select();
+        }
+        //获取排序后的列表
+    getOrderList(db, where) {
+        return this.model(db).where(where).order("orders").select();
+    }
 }

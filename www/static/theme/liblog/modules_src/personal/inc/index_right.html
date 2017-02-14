@@ -1,27 +1,31 @@
 {% if isself==1 %}
-  <div class="col-md-2 col-md-offset-2 mypublish">
+<div class="col-md-2 col-md-offset-2 mypublish">
     <a href="/topic/create/index.html">
-      <button type="button" class="btn btn-success">发布话题</button>
+        <button type="button" class="btn btn-success">发布话题</button>
     </a>
-  </div>
+</div>
 {%endif%}
-  <div class="panel panel-default">
-      <table class="table table-hover table-rank">
-          <thead>
-              <tr><th>积分榜</th><th>昵称</th><th>积分</th></tr>
-          </thead>
-          <tbody>
-            {% for item in pointList %}
-            <tr class="">
+<div class="panel panel-default">
+    <table class="table table-hover table-rank">
+        <thead>
+            <tr>
+                <th>积分榜</th>
+                <th>昵称</th>
+                <th>积分</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set cls = cycler("info", " ") %} {% for item in pointList %}
+            <tr class="{{ cls.next() }}">
                 <td class="text-center">
                     <span style="background-color:#108a93;" class="badge">{{loop.index}}</span>
                 </td>
                 <td>
-                  <a title="{{item.name}}" href="/personal/@{{item.name}}">{{item.name}}</a>
+                    <a title="{{item.name}}" href="/personal/@{{item.name}}">{{item.name}}</a>
                 </td>
                 <td class="text-center">{{item.point}}</td>
             </tr>
-            {%endfor%}
-          </tbody>
-      </table>
-  </div>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
