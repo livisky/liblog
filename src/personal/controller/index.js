@@ -37,6 +37,7 @@ export default class extends Base {
                 return this.model("personal").getPointList();
             });
             this.assign("pointList", pointList);
+
             //我的话题
             let topicList = await this.model('personal').getMytopic({ author: uname });
             this.assign("topicList", topicList);
@@ -51,6 +52,21 @@ export default class extends Base {
 
             let userinfo = await this.model('personal').findAll('user', { name: uname });
             if (!think.isEmpty(userinfo)) {
+                // 个人排名
+                let ranking = await think.cache("ranking");
+                if (ranking === undefined) {
+                    let allPoints = await this.model("personal").getAllPoint();
+                    for (var i = 0; i < allPoints.length; i++) {
+                        if (allPoints[i].id == userinfo[0].id) {
+                            ranking = i+1;
+                            think.cache("ranking", ranking);
+                            break;
+                        }
+                    }
+                }
+
+                this.assign("ranking", ranking);
+
                 //他人的个人中心基本信息
                 this.assign("userinfo", userinfo[0]);
                 return this.displayView("index_index");
