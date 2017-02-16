@@ -53,13 +53,13 @@ export default class extends Base {
             let userinfo = await this.model('personal').findAll('user', { name: uname });
             if (!think.isEmpty(userinfo)) {
                 // 个人排名
-                let ranking = await think.cache("ranking");
+                let ranking = await think.cache("ranking_" + userinfo[0].id);
                 if (ranking === undefined) {
                     let allPoints = await this.model("personal").getAllPoint();
                     for (var i = 0; i < allPoints.length; i++) {
                         if (allPoints[i].id == userinfo[0].id) {
                             ranking = i+1;
-                            think.cache("ranking", ranking);
+                            think.cache("ranking_" + userinfo[0].id, ranking);
                             break;
                         }
                     }
