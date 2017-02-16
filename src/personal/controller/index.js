@@ -88,15 +88,15 @@ export default class extends Base {
         let data = await this.post();
         let mycreatetime = think.datetime(this.post("createtime"));
         if (!think.isEmpty(this.post("cid"))) {
-            //已收藏
+            //已收藏，这里取消收藏。
             let rs = await this.model("personal").deleteRecord("user_collect", { id: data.cid });
-            let points = await this.model("personal").decrepoint({ name: data.author }, 1);
+            let points = await this.model("personal").decrepoint({ name: data.author }, this.config('point.addcollect'));
             if (rs) return this.success({ status: 0, msg: "取消收藏成功！", cid: data.cid });
         } else {
-            //未收藏
+            //未收藏，这里收藏
             data.createtime = mycreatetime;
             let rs = await this.model("personal").addRecord("user_collect", data);
-            let points = await this.model("personal").decrepoint({ name: data.author }, this.config('point.addcollect'));
+            let points = await this.model("personal").increpoint({ name: data.author }, this.config('point.addcollect'));
             if (rs) return this.success({ status: 1, msg: "收藏成功！", cid: rs });
         }
     }

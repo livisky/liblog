@@ -34,7 +34,7 @@ export default class extends Base {
           if(rs) return this.success();
       }else{
           let rs=await this.model("topic").addRecord("topic",data);
-          let points=await this.model("topic").decrepoint({name:data.author},this.config('point.addtopic'));
+          let points=await this.model("topic").increpoint({name:data.author},this.config('point.addtopic'));
           if(rs) return this.success();
       }
   }
