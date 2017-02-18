@@ -9,7 +9,7 @@ export default class extends Base {
    */
   async loginAction(){
 
-      this.assign("title","管理员登陆")
+      this.assign("title","管理员登录")
       return this.displayView('admin_login');
   }
   async redirectAction(){
@@ -26,7 +26,7 @@ export default class extends Base {
         }
         if(uname===result.name&&md5Pas===result.password){
               await this.session("userInfo", info);
-              return this.json({status:1,msg:"登陆成功!"});
+              return this.json({status:1,msg:"登录成功!"});
         }else{
             return this.json({status:0,msg:"用户名或密码错误!"});
         }

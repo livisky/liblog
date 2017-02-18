@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
-    {%include "../common/inc/header.html"%}
-    <link rel="stylesheet" href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/admin/login/login.css">
-    <title>{{title}}</title>
+{%include "../common/inc/header.html"%}
+<link rel="stylesheet" href="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}css/business/admin/login/login.css">
+<title>{{title}}</title>
+
 <body>
     <div class="login-regions">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <h3 class="panel-title">管理员登陆</h3>
+                <h3 class="panel-title">管理员登录</h3>
             </div>
             <div class="panel-body">
                 <div>
@@ -18,15 +19,15 @@
                     </div>
                     <div class="form-group">
                         <label for="password">密码</label>
-                        <input type="password" class="form-control" id="password" placeholder="密码"style="width: 440px;">
+                        <input type="password" class="form-control" id="password" placeholder="密码" style="width: 440px;">
                     </div>
                     <div class="form-group code-region" id="captcha">
-                      <input type="hidden" name="name" value="" id="challenge">
-                      <input type="hidden" name="name" value="" id="seccode">
-                      <input type="hidden" name="name" value="" id="validate">
+                        <input type="hidden" name="name" value="" id="challenge">
+                        <input type="hidden" name="name" value="" id="seccode">
+                        <input type="hidden" name="name" value="" id="validate">
                     </div>
                     <p id="wait" class="show">正在加载验证码......</p>
-                    <button type="submit" class="btn btn-default" id="loginBtn">登陆</button>
+                    <button type="submit" class="btn btn-default" id="loginBtn">登录</button>
                 </div>
             </div>
         </div>
@@ -47,4 +48,5 @@
     <!--访客统计代码-->
     <script src="{{_web.url}}{{theme_url}}/{{think.Dev_Src}}js/business/admin/login.js"></script>
 </body>
+
 </html>

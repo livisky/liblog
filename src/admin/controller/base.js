@@ -6,14 +6,14 @@ export default class extends think.controller.base {
    */
     async __before() {
         await this.getConfig();
-        //判断登陆
+        //判断登录
         let userinfo=await this.session("userInfo");
         if(think.isEmpty(userinfo)){
             return this.redirect("/admin/redirect");
         }else{
             this.assign('userinfo',userinfo);
         }
-        //判断登陆
+        //判断登录
 
         //判断权限
         let myurl=this.http.module+"/"+this.http.controller+"/"+this.http.action;

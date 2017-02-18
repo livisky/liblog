@@ -12,11 +12,11 @@ export default class extends Base {
         let uname = await this.get('uname');
         let isself, isselftag;
         if (!think.isEmpty(uname)) {
-            // 是否登陆
+            // 是否登录
             let islogin = (!think.isEmpty(uinfo)) ? 1 : 0;
             //是否本人
             if (!think.isEmpty(uinfo)) {
-                //登陆
+                //登录
                 if (uinfo.name === uname) {
                     isselftag = "我的";
                     isself = 1;

@@ -14,7 +14,7 @@ export default class extends think.controller.base {
         let csrf = await this.session("__CSRF__");
         this.assign("csrf", csrf);
 
-        // 是否登陆
+        // 是否登录
         let uinfo = await this.session('uInfo');
         let islogin = (!think.isEmpty(uinfo)) ? 1 : 0;
         this.assign("islogin", islogin);
@@ -22,7 +22,7 @@ export default class extends think.controller.base {
             let logininfo = await this.model('topic').findAll('user', { name: uinfo.name });
             this.assign("logininfo", logininfo[0]);
         }
-        //是否登陆
+        //是否登录
 
         // 获取最新会员
         let memberList = await this.model("topic").getMemberList({ role: 4 }, 9);
