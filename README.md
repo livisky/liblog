@@ -61,8 +61,7 @@
 
 ### 六.更新日志
 
-https://github.com/livisky/liblog/wiki/versionLog
-
+>详见：https://github.com/livisky/liblog/wiki/updateLog<br/>
 >添加静态资源一键打包功能(html,css,javascript) gulp配置<br/>
 >添加开发和生产运行模式
 
