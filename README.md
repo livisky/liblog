@@ -1,4 +1,4 @@
-### Liblog已更新至V1.2.1版本，源码下载地址：https://github.com/livisky/liblog/archive/1.2.1.tar.gz
+﻿### Liblog已更新至V1.2.1版本，源码下载地址：https://github.com/livisky/liblog/archive/1.2.1.tar.gz
 ### Liblog最新教程已收录在w3cschool(http://www.w3cschool.cn/liblog/) ,欢迎评论和支持！
 
 ### 一.简介
@@ -57,7 +57,7 @@
 
 >Liblog QQ群：`256687601`  
 >作者邮箱：`262248861@qq.com`    
->演示网站：http://www.jsout.com
+>演示网站：https://www.jsout.com
 
 ### 六.更新日志
 
