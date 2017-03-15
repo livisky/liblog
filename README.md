@@ -1,4 +1,5 @@
 ### Liblog最新教程已收录在w3cschool(http://www.w3cschool.cn/liblog/) ,欢迎评论和支持！
+### Liblog已更新至V1.2.1版本，源码下载地址：https://github.com/livisky/liblog/archive/1.2.1.tar.gz
 
 ### 一.简介
 
@@ -32,17 +33,20 @@
 
 >如果你认可并支持Liblog，还可通过扫描二维码捐赠Liblog(http://www.jsout.com/donate.html）
 
-### 四.最新版本Liblogv1.2更新
+### 四.最新版本Liblogv1.2.1更新
 
-1. 注册/登录/QQ登录/github登录
-2. 个人中心/个人设置
-3. 系统主题设置
-4. 小型社区(类似cnodejs.org)/发布主题/编辑主题/添加回复/编辑回复
-5. 改nodejs模版引擎ejs改为nunjucks,通过标签配置即可实现内容的读取如：
-```javascript
-  {% article data = "topList",limit= "6",flag="totop"%}
-```
-详见：http://www.jsout.com/topic/item/33.html
+>1. 【后台管理】添加友情链接管理<br/>
+     1)友情链接增加独立管理菜单，增加审核、排序、隐藏功能<br/>
+     2)友情链接增删查改<br/>
+     3)系统设置-常规设置的友情链接设置项删除<br/>
+>2. 【后台管理】后台主题设置优化,修复设置错误后台打不开的bug<br/>
+>3. 【个人中心】修复个性签名设置bug,积分算法bug修复-forlong401<br/>
+>4. 【后台管理】添加社区标签管理功能-forlong401<br/>
+>5. 【后台管理】添加后台文章标签排序功能<br/>
+>6. 【个人中心】积分排名榜修复，添加缓存<br/>
+>7. 【后台管理】完善导航管理(新窗口打开、排序等)-斯迈欧<br/>
+>8. 【后台管理】添加系统logo设置-斯迈欧<br/>
+>9. 修复部分已知bug<br/>
 
 ### 五.感谢
 
@@ -57,12 +61,12 @@
 
 ### 六.更新日志
 
-####　2017/1/5更新
+https://github.com/livisky/liblog/wiki/versionLog
 
 >添加静态资源一键打包功能(html,css,javascript) gulp配置<br/>
 >添加开发和生产运行模式
 
-运行程序请选择运行模式
+### 七.运行程序请选择运行模式
 ```javascript
 //压缩html,css,js 并生成相应目录
 npm run compress
