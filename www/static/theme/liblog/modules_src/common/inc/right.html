@@ -80,6 +80,8 @@
 <div class="links main-right">
     <h3><span><a href="/links.html">申请友情链接</a></span>友情链接</h3>
     <ul>
-        {{_web.links|safe}}
+        {% for item in linksList %}
+        <li><a href="{{item.link}}" target="_blank">{{item.domain}}</a></li>
+        {%endfor%}
     </ul>
 </div>

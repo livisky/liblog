@@ -9,7 +9,7 @@ export default class extends Base {
    */
   async indexAction(){
        let tab=this.get("tab");
-       this.assign("title","问答中心");
+       this.assign("title","社区");
        let map,menu;
        if(tab==='all'||tab===''){
          map={show:1};

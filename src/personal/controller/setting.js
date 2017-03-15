@@ -39,11 +39,12 @@ export default class extends Base {
     let name=newData.name;
     let nickname=newData.nickname;
     let email=newData.email;
+    let sign=newData.sign;
     let userinfo=await this.model("personal").findOne('user',{name:uinfo.name});
     console.log(userinfo);
 
-    if(name!==''&&nickname!==''&&email!==''){
-      if(userinfo.email===email&&userinfo.nickname===nickname){
+    if(name!==''&&nickname!==''&&email!==''&&sign!==''){
+      if(userinfo.email===email&&userinfo.nickname===nickname&&userinfo.sign===sign){
         //邮箱和昵称都未改变
           return this.json({status:0,errno:1,errmsg:'请填写要提交的修改信息！'});
       }else{

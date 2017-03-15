@@ -1,0 +1,54 @@
+{% extends "../admin/inc/admin_base.html" %} {% block head %} {{ super() }} {% endblock %} {% block content %}
+<form class="form form-horizontal" id="form-article-add">
+    <input type="hidden" value="" id="aid" />
+    <div class="row cl">
+        <input type="hidden" value="{{item.id}}" id="tid" />
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>网站名称：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text domain" value="{{item.domain}}" placeholder="友情链接关键字" id="" name="">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>链接：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text link" value="{{item.link}}" placeholder="请输入完整的地址，如：https://www.baidu.com" id="" name="">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">logo：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text logo" value="{{item.logo}}" placeholder="logo为图片地址" id="" name="">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">联系qq：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text qq" value="{{item.qq}}" placeholder="" id="" name="">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">审核：</label>
+        <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+                <select name="" class="select" id="tagselect">
+                    <option value="" selected>请选择</option>
+                    <option value="1" {%if item.flag==1 %}selected{%endif%}>通过</option>
+                    <option value="0" {%if item.flag==0 %}selected{%endif%}>不通过</option>
+                </select>
+        </span> </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">显示顺序：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text orders" value="{{item.orders}}" placeholder="请输入整数，默认为0" id="" name="">
+        </div>
+    </div>
+    <div class="row cl">
+        <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+            <button class="btn btn-secondary radius" id="savetag" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+            <button onClick="window.location.href='/admin/{{action}}'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+        </div>
+    </div>
+</form>
+{% endblock %} {% block footer_other %}
+<script type="text/javascript" src="/static/admin/js/admin/{{action}}.js"></script>
+{% endblock %}

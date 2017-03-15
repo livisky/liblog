@@ -1,33 +1,68 @@
-{% extends "../admin/inc/admin_base.html" %}
-{% block head %}
-    {{ super() }}
-{% endblock %}
-
-{% block content %}
-    <form class="form form-horizontal" id="form-article-add">
-        <input type="hidden" value="" id="aid"/>
-        <div class="row cl">
-            <input type="hidden" value="{{item.id}}" id="tid"/>
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>导航名称：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text menuname" value="{{item.menuname}}" placeholder="" id="" name="">
-            </div>
+{% extends "../admin/inc/admin_base.html" %} {% block head %} {{ super() }} {% endblock %} {% block content %}
+<form class="form form-horizontal" id="form-article-add">
+    <input type="hidden" value="" id="aid" />
+    <div class="row cl">
+        <input type="hidden" value="{{item.id}}" id="tid" />
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>导航名称：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text menuname" value="{{item.menuname}}" placeholder="" id="" name="">
         </div>
-        <div class="row cl">
-            <input type="hidden" value="{{item.id}}" id="tid"/>
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>导航链接：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text url" value="{{item.url}}" placeholder="" id="" name="">
-            </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>导航链接：</label>
+        <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+                <select name="" class="select" id="linkselect" data-val={{item.url}}>
+                    <option value="" selected>请选择</option>
+                    <option value="/" {%if item.url=="/" %}selected{%endif%}>首页</option>
+                    <option value="/doc.html" {%if item.url=="/doc.html" %}selected{%endif%}>文档</option>
+                    <option value="/download.html" {%if item.url=="/download.html" %}selected{%endif%}>资源下载</option>
+                    <option value="/activity.html" {%if item.url=="/activity.html" %}selected{%endif%}>活动</option>
+                    <option value="/topic.html" {%if item.url=="/topic.html" %}selected{%endif%}>社区</option>
+                    <option value="/topic/job.html" {%if item.url=="/topic/job.html" %}selected{%endif%}>招聘</option>
+                    <option value="/donate.html" {%if item.url=="/donate.html" %}selected{%endif%}>捐赠</option>
+                    <option value="custom">自定义</option>
+                </select>
+        </span> </div>
+    </div>
+    <div class="row cl customlink" style="display: none;">
+        <label class="form-label col-xs-4 col-sm-2"></label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text url" value="{{item.url}}" placeholder="" id="" name="">
         </div>
-        <div class="row cl">
-            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button class="btn btn-secondary radius" id="savemenu" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
-                <button onClick="window.location.href='/admin/{{action}}'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
-            </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>是否显示：</label>
+        <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+                <select name="" class="select" id="menuselect">
+                    <option value="" selected>请选择</option>
+                    <option value="1" {%if item.appear==1 %}selected{%endif%}>显示</option>
+                    <option value="0" {%if item.appear==0 %}selected{%endif%}>隐藏</option>
+                </select>
+        </span> </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red"></span>打开方式：</label>
+        <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+                <select name="" class="select" id="targetselect">
+                    <option value="" selected>请选择</option>
+                    <option value="1" {%if item.target==1 %}selected{%endif%}>新窗口</option>
+                    <option value="0" {%if item.target==0 %}selected{%endif%}>默认</option>
+                </select>
+        </span> </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red"></span>显示顺序：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text orders" value="{{item.orders}}" placeholder="请输入整数，默认为0" id="" name="">
         </div>
-    </form>
-{% endblock %}
-{% block footer_other %}
-    <script type="text/javascript" src="{{_web.url}}static/admin/js/admin/{{action}}.js"></script>
+    </div>
+    <div class="row cl">
+        <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+            <button class="btn btn-secondary radius" id="savemenu" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+            <button onClick="window.location.href='/admin/{{action}}'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+        </div>
+    </div>
+</form>
+{% endblock %} {% block footer_other %}
+<script type="text/javascript" src="/static/admin/js/admin/{{action}}.js"></script>
 {% endblock %}

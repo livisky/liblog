@@ -19,7 +19,7 @@ export default class extends Base {
         return this.redirect("/admin/login");
   }
   welcomeAction(){
-      this.assign("title","欢迎登陆！");
+      this.assign("title","欢迎登录！");
       return this.display();
   }
 }

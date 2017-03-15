@@ -14,7 +14,7 @@ export default class extends think.controller.base {
         let csrf = await this.session("__CSRF__");
         this.assign("csrf", csrf);
 
-        // 是否登陆
+        // 是否登录
         let uinfo = await this.session('uInfo');
         let islogin = (!think.isEmpty(uinfo)) ? 1 : 0;
         this.assign("islogin", islogin);
@@ -23,15 +23,19 @@ export default class extends think.controller.base {
             //自己的个人中心基本信息
             this.assign("logininfo", logininfo[0]);
         }
-        //是否登陆
+        //是否登录
 
         //获取tags
-        let tagList = await this.model('doc').findAll('tags', { appear: 1 });
+        let tagList = await this.model("doc").getOrderList("tags", { appear: 1 });
         this.assign('tagList', tagList);
 
         //获取导航链接
-        let navList = await this.model('doc').findAll('menu');
+        let navList = await this.model("doc").getOrderList('menu', { appear: 1 });
         this.assign("navList", navList);
+
+        //获取友情链接
+        let linksList = await this.model("doc").getOrderList("links", { flag: 1 });
+        this.assign("linksList", linksList);
 
         // 设置主题地址
         this.THEME_VIEW_PATH = `${think.THEME_PATH}${think.sep}${_web.theme}${think.sep}${think.Modules_Src}${think.sep}${this.http.module}${think.sep}`;

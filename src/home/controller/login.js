@@ -41,7 +41,7 @@ export default class extends Base {
                 way:'site'
               }
             await this.session("uInfo", uInfo);
-            return this.json({status:1,errno:0,uname:result.name,errmsg:"登陆成功!"});
+            return this.json({status:1,errno:0,uname:result.name,errmsg:"登录成功!"});
           }
       }else{
           return this.json({status:0,errno:1,errmsg:"用户名或密码错误!"});

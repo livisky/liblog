@@ -1,12 +1,19 @@
-.login-regions{
-  width: 500px;
-  margin: 0 auto;
-  margin-top: 12%;
-  margin-bottom: 15%;
+.login-regions {
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 12%;
+    margin-bottom: 15%;
 }
-.footer{
-  bottom: 0;
-  position: absolute;
-  width: 100%;
-  padding: 40px 0px 0px 0px;
+
+.footer {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    padding: 40px 0px 0px 0px;
+}
+
+.alert-danger.checkright {
+    width: 94%;
+    margin-top: 10px;
+    padding: 10px;
 }

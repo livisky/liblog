@@ -9,7 +9,7 @@ export default class extends Base {
 
       let uinfo=await this.session('uInfo');
       if(!think.isEmpty(uinfo)){
-        //已注册并登陆
+        //已注册并登录
         return this.redirect('/personal/@'+uinfo.name);
       }else {
         this.assign("title","会员注册");

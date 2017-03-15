@@ -1,26 +1,21 @@
-{% extends "../admin/inc/admin_base.html" %}
-{% block head %}
-    {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{_web.url}}static/admin/vendors/wangeditor/css/wangEditor.min.css">
-    <link rel="stylesheet" href="{{_web.url}}static/admin/vendors/webuploader/eviz/upload.css"/>
-    <script src="{{_web.url}}static/admin/vendors/webuploader/eviz/jquery.form.js"></script>
-    <script src="{{_web.url}}static/admin/vendors/webuploader/eviz/uploader.js"></script>
-    <link rel="stylesheet" href="{{_web.url}}static/admin/css/admin/article/article.css">
-{% endblock %}
-
-{% block content %}
-    <form class="form form-horizontal" id="form-article-add">
-        <input type="hidden" value="{{article.id}}" id="aid"/>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text title" value="{{article.title}}" placeholder="" id="" name="">
-            </div>
+{% extends "../admin/inc/admin_base.html" %} {% block head %} {{ super() }}
+<link rel="stylesheet" type="text/css" href="/static/admin/vendors/wangeditor/css/wangEditor.min.css">
+<link rel="stylesheet" href="/static/admin/vendors/webuploader/eviz/upload.css" />
+<script src="/static/admin/vendors/webuploader/eviz/jquery.form.js"></script>
+<script src="/static/admin/vendors/webuploader/eviz/uploader.js"></script>
+<link rel="stylesheet" href="/static/admin/css/admin/article/article.css"> {% endblock %} {% block content %}
+<form class="form form-horizontal" id="form-article-add">
+    <input type="hidden" value="{{article.id}}" id="aid" />
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text title" value="{{article.title}}" placeholder="" id="" name="">
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                    <span class="select-box">
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <span class="select-box">
                         <select name="" class="select" id="itemselect">
                             <option value="0">请选择栏目</option>
                             {% for item in itemList %}
@@ -28,11 +23,11 @@
                             {%endfor%}
                         </select>
             </span>
-            </div>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章类型：</label>
-            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章类型：</label>
+        <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
                 <select name="" class="select" id="tagselect">
                     <option value="0">请选择分类</option>
                     {% for item in tagsList %}
@@ -40,100 +35,98 @@
                     {%endfor%}
                 </select>
         </span> </div>
-        </div>
-        {% if ismarkdown %}
-            <div class="row cl">
-                <label class="form-label col-xs-4 col-sm-2">导入markdown：</label>
-                <div class="formControls col-xs-8 col-sm-9">
-                    <div class="show-file-upload">
-                        <form>
-                            <a class="add-img-btn2">
-                                <input fileType="md" type="file" id='uploadfile' name="file" accept="md/*">
-                            </a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        {%endif%}
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">文章摘要：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <textarea name="" cols="" rows="" class="textarea abstract" id="abstract"  placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)">{{article.abstract}}</textarea>
-                <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+    </div>
+    {% if ismarkdown %}
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">导入markdown：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <div class="show-file-upload">
+                <form>
+                    <a class="add-img-btn2">
+                        <input fileType="md" type="file" id='uploadfile' name="file" accept="md/*">
+                    </a>
+                </form>
             </div>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">文章内容：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <div id="editor" style="height:400px;max-height:500px;margin:15px 0;">{{article.content|safe}}</div>
+    </div>
+    {%endif%}
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">文章摘要：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <textarea name="" cols="" rows="" class="textarea abstract" id="abstract" placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)">{{article.abstract}}</textarea>
+            <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">文章内容：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <div id="editor" style="height:400px;max-height:500px;margin:15px 0;">{{article.content|safe}}</div>
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">关键词：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text keywords" value="{{article.keywords}}" placeholder="以英文','隔开" id="keywords" name="">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">文章作者：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text author" value="{{_web.author}}" placeholder="" id="author" name="">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">文章来源：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="text" class="input-text from" value="{{article.from}}" placeholder="" id="" name="">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">允许评论：</label>
+        <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+            <div class="check-box" style="padding-left: 0px;">
+                <input type="checkbox" id="allowcomment" {% if article.allowcomment==1 %}checked{%endif%}>
+                <label for="checkbox-pinglun">&nbsp;</label>
             </div>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">关键词：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text keywords" value="{{article.keywords}}" placeholder="以英文','隔开" id="keywords" name="">
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">标记：</label>
+        <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+            <div class="flag">
+                <span>置顶 <input type="checkbox" id="totop" {% if article.totop==1 %}checked{%endif%}></span>
+                <span>推荐 <input type="checkbox" id="torecom" {% if article.torecom==1 %}checked{%endif%}></span>
+                <span>图文推荐 <input type="checkbox" id="topicrecom" {% if article.topicrecom==1 %}checked{%endif%}></span>
+                <span>标记a <input type="checkbox" id="flag_a" {% if article.flag_a==1 %}checked{%endif%}></span>
+                <span>标记b <input type="checkbox" id="flag_b" {% if article.flag_b==1 %}checked{%endif%}></span>
+                <span>标记c <input type="checkbox" id="flag_c" {% if article.flag_c==1 %}checked{%endif%}></span>
+                <span>标记d <input type="checkbox" id="flag_d" {% if article.flag_d==1 %}checked{%endif%}></span>
             </div>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">文章作者：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text author" value="{{_web.author}}" placeholder="" id="author" name="">
+    </div>
+    <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">缩略图：</label>
+        <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+            <div class="show-img-upload">
+                <form>
+                    <a class="add-img-btn" style="background-image:url({% if article.picurl %}/{{article.picurl}}{%else%}/static/admin/vendors/webuploader/eviz/add_img.png{%endif%});background-position: left;">
+                        <input filetype="img" type="file" id="uploadfile" name="file" accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp">
+                    </a>
+                </form>
+                <div id="list"></div>
+                <input type="hidden" id="picUrl" value="{{article.picurl}}">
             </div>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">文章来源：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text from" value="{{article.from}}" placeholder="" id="" name="">
-            </div>
+    </div>
+    <div class="row cl">
+        <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+            <button id="previewArticle" class="btn btn-primary radius" pid="{{article.id}}" type="submit"><i class="Hui-iconfont">&#xe632;</i>预览</button>
+            <button id="addArticle" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 发布</button>
+            <button onClick="window.location.href='/admin/content'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">允许评论：</label>
-            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
-                <div class="check-box" style="padding-left: 0px;">
-                    <input type="checkbox" id="allowcomment" {% if article.allowcomment==1 %}checked{%endif%}>
-                    <label for="checkbox-pinglun">&nbsp;</label>
-                </div>
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">标记：</label>
-            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
-                <div class="flag">
-                    <span>置顶 <input type="checkbox" id="totop" {% if article.totop==1 %}checked{%endif%}></span>
-                    <span>推荐 <input type="checkbox" id="torecom" {% if article.torecom==1 %}checked{%endif%}></span>
-                    <span>图文推荐 <input type="checkbox" id="topicrecom" {% if article.topicrecom==1 %}checked{%endif%}></span>
-                    <span>标记a <input type="checkbox" id="flag_a" {% if article.flag_a==1 %}checked{%endif%}></span>
-                    <span>标记b <input type="checkbox" id="flag_b" {% if article.flag_b==1 %}checked{%endif%}></span>
-                    <span>标记c <input type="checkbox" id="flag_c" {% if article.flag_c==1 %}checked{%endif%}></span>
-                    <span>标记d <input type="checkbox" id="flag_d" {% if article.flag_d==1 %}checked{%endif%}></span>
-                </div>
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">缩略图：</label>
-            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
-                <div class="show-img-upload">
-                    <form>
-                        <a class="add-img-btn" style="background-image:url({% if article.picurl %}/{{article.picurl}}{%else%}/static/admin/vendors/webuploader/eviz/add_img.png{%endif%});background-position: left;">
-                            <input filetype="img" type="file" id="uploadfile" name="file" accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp">
-                        </a>
-                    </form>
-                    <div id="list"></div>
-                    <input type="hidden" id="picUrl" value="{{article.picurl}}">
-                </div>
-            </div>
-        </div>
-        <div class="row cl">
-            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button id="previewArticle" class="btn btn-primary radius" pid="{{article.id}}" type="submit"><i class="Hui-iconfont">&#xe632;</i>预览</button>
-                <button id="addArticle" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 发布</button>
-                <button onClick="window.location.href='/admin/content'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
-            </div>
-        </div>
-    </form>
-{% endblock %}
-
-{% block footer_other %}
-  <script type="text/javascript" src="{{_web.url}}static/admin/vendors/wangeditor/js/wangEditor.min.js"></script>
-  <script type="text/javascript" src="{{_web.url}}static/admin/js/admin/content.js"></script>
+    </div>
+</form>
+{% endblock %} {% block footer_other %}
+<script type="text/javascript" src="/static/admin/vendors/wangeditor/js/wangEditor.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/content.js"></script>
 {% endblock %}

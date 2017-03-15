@@ -1,0 +1,35 @@
+{% extends "../admin/inc/admin_base.html" %} {% block head %} {{ super() }}
+<link rel="stylesheet" type="text/css" href="/static/admin/vendors/wangeditor/css/wangEditor.min.css">
+<link rel="stylesheet" href="/static/admin/vendors/webuploader/eviz/upload.css" />
+<script src="/static/admin/vendors/webuploader/eviz/jquery.form.js"></script>
+<script src="/static/admin/vendors/webuploader/eviz/uploader.js"></script>
+<link rel="stylesheet" href="/static/admin/css/admin/article/article.css"> {% endblock %} {% block content %}
+<form class="form form-horizontal" id="form-article-add"  >
+    <input type="hidden" value="" id="aid" />
+     <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-2">上传LOGO图片：</label>
+        <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+            <div class="show-img-upload">
+                <form>
+                    <a class="add-img-btn" style="background-image:url(/static/theme/liblog/res/common/images/common/logo.jpg);background-position: center center; border:solid 1px #eee;">
+                        <input filetype="img" type="file" id="uploadfile" name="file" accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp">
+                    </a>
+                    <span style="color:#ccc; padding-top:10px;font-size:12px;float:left;">温馨提示：Logo图片最佳尺寸为：155px * 45px</span>
+                </form>
+                <div id="list"></div>
+                <input type="hidden" id="picUrl" value="{{logo.picurl}}">
+            </div>
+        </div>
+    </div>
+  
+    <div class="row cl" style="display: none">
+        <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+            <button class="btn btn-secondary radius" id="savetag" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+            <button onClick="window.location.href='/admin/system'" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+        </div>
+    </div>
+</form>
+{% endblock %} {% block footer_other %}
+<script type="text/javascript" src="/static/admin/vendors/wangeditor/js/wangEditor.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/system_setlogo.js"></script>
+{% endblock %}
