@@ -1,5 +1,5 @@
-### Liblog最新教程已收录在w3cschool(http://www.w3cschool.cn/liblog/) ,欢迎评论和支持！
 ### Liblog已更新至V1.2.1版本，源码下载地址：https://github.com/livisky/liblog/archive/1.2.1.tar.gz
+### Liblog最新教程已收录在w3cschool(http://www.w3cschool.cn/liblog/) ,欢迎评论和支持！
 
 ### 一.简介
 
