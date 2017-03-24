@@ -1,0 +1,1 @@
+$("#nav-tabs").delegate("li","click",function(){var e=$(this),a=e.attr("pid");$("#nav-tabs").find("li").removeClass("active"),$(".tab-pane").removeClass("active"),$(".tab-pane").hide(),e.addClass("active"),$("#"+a).show()}),$("#userInfo").on("mouseover",function(){$("#userMenu").show()}),$("#userInfo").on("mouseout",function(){$("#userMenu").hide()});

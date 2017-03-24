@@ -1,0 +1,1 @@
+var el=$("#j_Alteravatar");el.delegate("li","click",function(){var a=$(this).find("img").attr("avatar-url");if(a){var r={pic:a,__CSRF__:$("#csrf").val()};$.ajax({url:"/personal/setting/resetpic",data:r,type:"POST",success:function(a){0===a.errno?(alert("更新成功！"),document.location.reload()):alert(a.errmsg)}})}});
