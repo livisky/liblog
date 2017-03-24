@@ -1,0 +1,55 @@
+<div class="container li-widget">
+      <div class="blocktitle title">
+        <span class="titletext">前端开发</span>
+        <span class="subtitle fr">
+          <a href="more.html" target="_blank">MORE&gt;</a>
+        </span>
+      </div>
+      <div class="widget-content">
+        <ul>
+          {% article data = "torecomList",limit= "2",flag="flag_b"%}
+          {% for item in torecomList %}
+          <li class="col-md-6 first-posts">
+            <div class="inner-content">
+              <a href="/page/{{item.id}}.html" class="post-thumbnail" title="{{item.title}}" rel="bookmark" target="_blank">
+                <img src="{{item.picurl}}" alt="{{item.title}}" width="190" height="135">
+              </a>
+              <div class="first-content">
+                <h3>
+                  <a href="/page/{{item.id}}.html" title="{{item.title}}" rel="bookmark" target="_blank">{{item.title|shorten(20)}}</a></h3>
+                <p class="summary">
+                  <a href="/page/{{item.id}}.html" title="{{item.title}}" target="_blank">
+                    {{item.abstract|shorten(108)}} ...
+                  </a>
+                </p>
+                <p class="post-meta">
+                  <span>
+                    <i class="fa fa-clock-o fa-fw"></i>{{think.datetime(item.createtime,"YYYY/MM/DD")}}</span>
+                  <span>
+                    <i class="fa fa-eye fa-fw"></i>{{item.view}}</span>
+                  <span>
+                    <i class="fa fa-comment-o fa-fw"></i>
+                    <span id="sourceId::{{item.id}}" class="cy_cmt_count" style="margin: 0px;padding: 0px"></span>
+                  </span>
+                </p>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </li>
+          {%endfor%}
+          <!-- .first-posts -->
+
+          <!-- .first-posts -->
+          <div class="clear"></div>
+          {% article data = "torecomList",limit= "14",flag="torecom"%}
+          {% for item in torecomList %}
+          <li class="col-md-6 other-news">
+            <span>{{think.datetime(item.createtime,'MM-DD')}}</span>
+            <a href="/page/{{item.id}}.html" title="{{item.title}}" rel="bookmark" target="_blank">
+              <i class="fa fa-angle-right"></i>{{item.title}}</a>
+          </li>
+          {%endfor%}
+        </ul>
+        <div class="clear"></div>
+      </div>
+</div>

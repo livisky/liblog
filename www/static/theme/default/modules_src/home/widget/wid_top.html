@@ -1,0 +1,47 @@
+<section class="focusbox-wrapper container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="focusmo">
+                <ul>
+                    {% article data = "largetopList",limit= "1",flag="flag_a"%} {% for item in largetopList %}
+                    <li class="large">
+                        <span>
+              <a href="/page/{{item.id}}.html" target="_blank">
+                <img src="{{'{{_web.url}}static/common/images/common/default.jpg' if item.picurl=='' else item.picurl }}" alt="{{item.title}}" class="thumb" title="{{item.title}}">
+                <span>
+                  <h4>{{item.title}}</h4></span>
+                        </a>
+                        </span>
+                    </li>
+                    {%endfor%} {% article data = "topList",limit= "4",flag="totop"%} {% for item in topList %}
+                    <li>
+                        <span>
+                <a href="/page/{{item.id}}.html" target="_blank">
+                  <img src="{{'{{_web.url}}static/common/images/common/default.jpg' if item.picurl=='' else item.picurl }}" alt="{{item.title}}" class="thumb" title="{{item.title}}">
+                  <span>
+                    <h4>{{item.title}}</h4></span>
+                        </a>
+                        </span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="most-comment-posts">
+                <h3 class="widget_titx">
+                    <strong>大家推荐</strong></h3>
+                <ul>
+                    {% article data = "torecomList",limit= "9",flag="torecom"%} {% for item in torecomList %}
+                    <li class="item-{{loop.index}}">
+                        <span class="label label-1">{{loop.index}}</span>
+                        <a href="/page/{{item.id}}.html" title="{{item.title}}">
+                {{item.title}}
+              </a>
+                    </li>
+                    {%endfor%}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

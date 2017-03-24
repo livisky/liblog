@@ -1,18 +1,20 @@
-{% extends "../common/inc/base_about.html" %}
-{% block head %}
-    <title>{{title}}-{{_web.sitename}}</title>
-    <meta name="keywords" content="{{_web.keywords}}">
-    <meta name="description" content="{{title}}-{{_web.sitename}}">
-    {{ super() }}
-{% endblock %}
-
-{% block content %}
-    <header class="article-header">
-        <h1 class="article-title">捐赠</h1>
-    </header>
-    <article class="article-content donate">
-        <div class="right-main no-border">
-
+{% extends "../common/inc/base_about.html" %} {% block head %}
+<title>{{title}}-{{_web.sitename}}</title>
+<meta name="keywords" content="{{_web.keywords}}">
+<meta name="description" content="{{title}}-{{_web.sitename}}"> {{ super() }} {% endblock %} {% block content %}
+<header class="article-header">
+    <h1 class="article-title">捐赠</h1>
+</header>
+<article class="article-content donate">
+    <div class="right-main no-border">
+        本站前端汇(jsout.com）由阿华田个人出资构建和维护，服务器搭建于阿里云服务器，每月需提供一定主机和云存储费用。此外，阿华田坚持每天更新网站内容，坚持Liblog开源持续更新，需要耗费大量的时间与精力，保证网站的正常运作，如果您对前端汇的成果表示认同或对您有所帮助， 我们乐意接受您的捐赠。我们的开源事业离不开您的支持，您可使用支付宝钱包或微信，扫描下面二维码即可完成捐赠。
+        <br/>注：捐赠时可留言，或备注会员号！
+        <div class="donateImg">
+            <img src="{{_web.url}}{{theme_url}}/common/images/common/wx.jpg" width="200" height="250" alt="支付宝">
+            <img src="{{_web.url}}{{theme_url}}/common/images/common/zfb.jpg" width="200" height="250" alt="微信支付">
+            <div style="clear:both"></div>
         </div>
-    </article>
+    </div>
+    <div class="arlast">感谢您对本站的大力支持!!</div>
+</article>
 {% endblock %}

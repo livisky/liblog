@@ -1,17 +1,34 @@
-{% extends "../common/inc/base_about.html" %}
-{% block head %}
-    <title>{{title}}-{{_web.sitename}}</title>
-    <meta name="keywords" content="{{_web.keywords}}">
-    <meta name="description" content="{{title}}-{{_web.sitename}}">
-    {{ super() }}
-{% endblock %}
-
-{% block content %}
-    <header class="article-header">
-        <h1 class="article-title">关于本站</h1>
-    </header>
-    <article class="article-content">
-        <div class="right-main no-border">
-        </div>
-    </article>
+{% extends "../common/inc/base_about.html" %} {% block head %}
+<title>{{title}}-{{_web.sitename}}</title>
+<meta name="keywords" content="{{_web.keywords}}">
+<meta name="description" content="{{title}}-{{_web.sitename}}"> {{ super() }} {% endblock %} {% block content %}
+<header class="article-header">
+    <h1 class="article-title">关于本站</h1>
+</header>
+<article class="article-content">
+    <div class="right-main no-border">
+        前端汇，汇集前端最新技术博文,以原创为主,专注web前端开发,javascript全栈开发,前端性能优化,网站建设优化,前端工程化,崇尚复杂的事情简单化,是前端编程从业者的交流和学习的平台。<br/> 前端大神入驻本群，数百位一线前端从业者，加入官方QQ群，与大神亲密接触。
+        <br/>
+    </div>
+    <div style="margin-left:26%">
+        <div class="">
+            有“神”则灵！<br/><br/> 欢迎thinkjs原创作者李成银老大入驻本群！
+            <br/> Liblog采用的是基于thinkjs框架 <a href="https://thinkjs.org/">https://thinkjs.org/</a><br/> wangeditor原创作者入驻
+            <br/>
+        </div><br/><br/>
+        <div class="">
+            欢迎wangeditor原创作者王福鹏入驻本群<br/> liblog博客系统的编辑器采用的是wangeditor
+            <br/>
+            <a href="http://www.wangeditor.com/">http://www.wangeditor.com/</a>
+        </div><br/><br/>
+        <div class="">
+            欢迎cmswing原创作者"阿特"入驻本群<br/> 基于thinkjs的电子商务平台及CMS建站系统
+            <br/>
+            <a href="http://www.cmswing.com/">http://www.cmswing.com/</a>
+        </div><br/><br/>
+    </div>
+    <div style="margin-left:26%">
+        <b>站长联系方式：262248861@qq.com<br/>官方QQ群：256687601</b>
+    </div>
+</article>
 {% endblock %}

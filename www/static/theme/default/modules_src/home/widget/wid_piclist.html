@@ -1,0 +1,28 @@
+<div class="container li-widget">
+    <div class="blocktitle title">
+        <span class="titletext">前端资源</span>
+        <span class="subtitle fr">
+          <a href="/download.html" target="_blank">MORE&gt;</a>
+        </span>
+    </div>
+    <div class="widget-content pic-list">
+        <div class="bx-wrapper">
+            <div class="bx-viewport">
+                <ul class="cat-scroll">
+                    {% article data = "picList",limit= "5",flag="topicrecom"%} {% for item in picList %}
+                    <li class="bx-clone">
+                        <a href="/page/{{item.id}}.html" title="{{item.title}}" rel="bookmark" target="_blank">
+                            <img src="{{item.picurl}}" alt="{{item.title}}" width="250" height="330"></a>
+                    </li>
+                    {%endfor%}
+                </ul>
+            </div>
+            <!-- <div class="bx-controls bx-has-controls-direction">
+              <div class="bx-controls-direction">
+                <a class="bx-prev" href="">Prev</a>
+                <a class="bx-next" href="">Next</a></div>
+            </div> -->
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
