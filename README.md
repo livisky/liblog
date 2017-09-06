@@ -31,7 +31,7 @@
 
 >安装Liblog之前，请`star`并`fork`项目给作者以鼓励。
 
->如果你认可并支持Liblog，还可通过扫描二维码捐赠Liblog(http://www.jsout.com/donate.html）
+>如果你认可并支持Liblog，还可通过扫描二维码捐赠Liblog(http://www.jsout.com/donate.html
 
 ### 四.最新版本Liblogv1.2.1更新
 
